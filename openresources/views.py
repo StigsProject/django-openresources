@@ -297,7 +297,13 @@ def index(request):
     featured_views = View.objects.filter(featured=True, **protect_attrs)
     featured_resources = Resource.objects.filter(featured=True, **protect_attrs)
     latest_resources = Resource.objects.filter(**protect_attrs).order_by('-creation_date')[:15]
-    upcoming_resources = Resource.objects.filter(tags__value_date__gte=datetime.now().replace(hour=0, minute=0, second=0, microsecond=0), tags__key='start_date', **protect_attrs).order_by('tags__value_date')[:15]
+    upcoming_resources = Resource.objects\
+        .filter(tags__value_date__gte=datetime.now().replace(hour=0, minute=0, second=0, microsecond=0), tags__key='start_date', **protect_attrs)\
+        .extra(select={
+            'start_date':"select value_date from openresources_tag where resource_id = openresources_resource.id and openresources_tag.key = 'start_date'",       
+            'end_date':"select value_date from openresources_tag where resource_id = openresources_resource.id and openresources_tag.key = 'end_date'"        
+        })\
+        .order_by('tags__value_date')[:15]
 
     context_form = ContextForm(instance=_get_context(request))
 
