@@ -33,17 +33,18 @@ def smart_date(start_date=None, end_date=None, date_format='j.n.'):
         if start_date.year != now.year: components.append(str(start_date.year))
         
         start_time = start_date.time()
-        if start_time.hour > 0 or start_time.minute > 0: components.append(dateformat.time_format(start_time,r',&\n\b\s\p;G:i'))
+        if start_time.hour > 0 or start_time.minute > 0:
+            components.append(dateformat.time_format(start_time,r',&\n\b\s\p;G:i'))
 
     if end_date:
         components.append(' &ndash; ')
         if (not start_date) or end_date.date() != start_date.date():
             components.append(dateformat.format(end_date, date_format))
             if end_date.year != now.year: components.append(str(end_date.year))
-            components.append(',')
 
         end_time = end_date.time()
-        if end_time.hour > 0 or end_time.minute > 0: components.append(dateformat.time_format(end_time,r'&\n\b\s\p;G:i'))
+        if end_time.hour > 0 or end_time.minute > 0:
+            components.append(dateformat.time_format(end_time,r',&\n\b\s\p;G:i'))
     
     return ''.join(components)
     
