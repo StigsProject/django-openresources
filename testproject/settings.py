@@ -53,7 +53,7 @@ TEMPLATE_DIRS = (
     os.path.join(ROOT_PATH, 'templates'),
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'openresources',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,4 +61,11 @@ INSTALLED_APPS = (
 #    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
-)
+]
+
+try:
+    import south
+    INSTALLED_APPS.append('south')
+except ImportError:
+    # south not installed
+    pass
