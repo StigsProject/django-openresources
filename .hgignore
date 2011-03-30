@@ -1,2 +1,3 @@
 glob:*.pyc
 glob:testproject/testproject.db
+glob:testproject/env
