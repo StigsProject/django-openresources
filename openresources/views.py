@@ -100,6 +100,9 @@ def edit_with_template(request, resource=None, template=None):
     if template and not isinstance(template, ResourceTemplate):
         template = get_object_or_404(ResourceTemplate, shortname=template)
 
+    key_choices = Tag.objects.values('key').annotate(key_count=Count('key')).filter(key_count__gt=2).order_by('key')
+    key_choices = [(val['key'], val['key']) for val in key_choices]
+
     if request.method == "POST":
         form = ResourceForm(request.user, request.POST, request.FILES, instance=resource)
         if form.is_valid():
@@ -112,7 +115,9 @@ def edit_with_template(request, resource=None, template=None):
             else:
                 form.save()
                 
-            formset = TemplateFormSet(template, request.POST, request.FILES, instance=resource, can_delete=request.user.has_perm('openresources.delete_tag'))
+            formset = TemplateFormSet(template, request.POST, request.FILES, instance=resource,
+                                        can_delete=request.user.has_perm('openresources.delete_tag'),
+                                        key_choices=key_choices)
             if formset.is_valid():
                 formset.saved_forms = []
                 formset.save_existing_objects()
@@ -133,7 +138,7 @@ def edit_with_template(request, resource=None, template=None):
             form = ResourceForm(request.user, initial={'template':template})
         else:
             form = ResourceForm(request.user, instance=resource)
-        formset = TemplateFormSet(template, instance=resource, can_delete=request.user.has_perm('openresources.delete_tag'))
+        formset = TemplateFormSet(template, instance=resource, can_delete=request.user.has_perm('openresources.delete_tag'), key_choices=key_choices)
     
     return render_to_response('openresources/edit_with_template.html', RequestContext(request, locals()))
 
@@ -197,6 +202,7 @@ def view(request, name, mode=None):
     context_form = ContextForm(instance=context)
 
     map_attribution = settings.MAP_ATTRIBUTION
+    default_resource_icon = settings.DEFAULT_RESOURCE_ICON
     
     return render_to_response(template, RequestContext(request, locals()))
     

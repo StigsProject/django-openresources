@@ -1,3 +1,4 @@
 glob:*.pyc
 glob:testproject/testproject.db
 glob:testproject/env
+glob:openresources.egg-info

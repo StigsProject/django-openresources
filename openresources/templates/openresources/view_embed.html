@@ -17,7 +17,8 @@ var MEDIA_URL = "{{ MEDIA_URL }}",
     VIEW = "{{ view.shortname }}",
     CONTEXT = {},
     JSON_URL = "{% url geojson name=view.shortname %}",
-    MAP_ATTRIBUTION = '{{ map_attribution|safe }}';
+    MAP_ATTRIBUTION = '{{ map_attribution|safe }}',
+    DEFAULT_ICON = '{{ default_resource_icon }}';
 
 var icon_mappings = [
 {% for mapping in icon_mappings %}

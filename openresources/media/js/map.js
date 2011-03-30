@@ -48,7 +48,7 @@ function get_icons(feature) {
 	    }
 	}
 	if (first_is_subicon || icons.length == 0) {
-		icons.splice(0, 0, {icon: 'openresources/icons/bulb_16x16.png'});
+		icons.splice(0, 0, {icon: DEFAULT_ICON});
 	}
 	return icons;
 }

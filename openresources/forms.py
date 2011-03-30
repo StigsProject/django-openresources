@@ -1,5 +1,4 @@
 
-
 # Copyright 2011 Florian Ledermann <ledermann@ims.tuwien.ac.at>
 # 
 # This file is part of OpenResources
@@ -23,16 +22,15 @@ from django import forms
 from django.forms import Form, ModelForm
 from django.forms.fields import IntegerField, BooleanField
 from django.forms.models import inlineformset_factory, BaseInlineFormSet, BaseModelFormSet, ModelChoiceField, InlineForeignKeyField
-from django.forms.widgets import Widget, HiddenInput
+from django.forms.widgets import HiddenInput
 from django.forms.formsets import BaseFormSet, TOTAL_FORM_COUNT, DELETION_FIELD_NAME, ORDERING_FIELD_NAME
 from django.utils.translation import string_concat, ugettext_lazy as _
-from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 from django.utils.text import capfirst
-from django.forms.util import flatatt
 from django.db import connections
 
 from openresources.models import *
+from openresources.widgets import *
 
 # commenting out AutoCompleteWidget usage for now, probably needs custom widget to do what we need
 #from autocomplete.widgets import AutoCompleteWidget
@@ -137,37 +135,17 @@ TagTemplateFormSet = inlineformset_factory(TagTemplateGroup, TagTemplate,
                                    extra=1)
 
 
-class ConstWidget(Widget):
-    """
-    Non-editable Widget that only displays its value.
-    """
-    def __init__(self, label=None, *args, **kwargs):
-        self.label=label
-        super(ConstWidget, self).__init__(*args, **kwargs)
-
-    def _format_value(self, value):
-        if self.is_localized:
-            return formats.localize_input(value)
-        return value
-
-    def render(self, name, value, attrs=None):
-        if value is None:
-            value = ''
-        final_attrs = self.build_attrs(attrs, name=name)
-        final_attrs['value'] = force_unicode(self._format_value(value))
-        final_attrs['type'] = 'hidden'
-        return mark_safe(u'%s <code>[%s]</code><input%s />' % (self.label, value, flatatt(final_attrs)))
-
-
 class TemplateTagForm(ModelForm):
 
     value = forms.CharField(required=False, widget=forms.Textarea())
 
-    def __init__(self, template=None, *args, **kwargs):
+    def __init__(self, template=None, key_choices=(), *args, **kwargs):
         self.template = template
         super(TemplateTagForm, self).__init__(*args, **kwargs)
         if self.template:
             self.fields['key'] = forms.CharField(widget=ConstWidget(label=template.name), initial=template.key)
+        else:
+            self.fields['key'] = forms.CharField(widget=ComboBox(choices=key_choices, empty_label='Popular Tags:'))
             #self.fields['value'].widget=forms.Textarea()
 
     class Meta:
@@ -198,7 +176,9 @@ class BaseTemplateFormSet(BaseInlineFormSet):
 
         self.template = template
         self.templates = template.tags.all()
+
         self.can_delete = kwargs.pop('can_delete', False)
+        self.key_choices = kwargs.pop('key_choices', ())
 
         super(BaseTemplateFormSet, self).__init__(*args, **kwargs)
 
@@ -239,7 +219,7 @@ class BaseTemplateFormSet(BaseInlineFormSet):
                 i += 1
 
         for i in xrange(i, i+self.extra):
-            self.forms.append(self._construct_form(i))
+            self.forms.append(self._construct_form(i, key_choices=self.key_choices))
 
 
     def _construct_form(self, i, **kwargs):
