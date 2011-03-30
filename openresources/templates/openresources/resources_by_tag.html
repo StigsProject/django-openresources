@@ -1,0 +1,27 @@
+{% extends "openresources/base.html" %}
+{% load texttools i18n %}
+
+{% block title %}{% trans "Resources with tag:" %} {{key}} = {% if value %}{{ value }}{% else %}*{% endif %}{% endblock %}
+
+{% block openresources_content %}
+
+<h1>{% trans "Resources with tag:" %}<a href="{% url openresources_tag_key key=key %}">{{key}}</a> = {% if value %}{{ value }}{% else %}*{% endif %}</h1>
+
+<div class="actions">
+<a href="{% url wiki_article title=key|prefix:"Key:" %}">{% trans "Wiki Page for Key:" %} {{key}}</a>
+</div>
+
+{% regroup tags by resource as resources %}
+
+<ul class="resourceslist">
+{% for resource_tags in resources %}
+<li class="resource"><h3><a href="{% url openresources_resource key=resource_tags.grouper.shortname%}">{{ resource_tags.grouper.name }}</a></h3>
+<ul class="tags help">
+{% for tag in resource_tags.list %}
+<li>{{ tag.key }}: {{ tag.value }} <a class="action" href="{% url openresources_with_tag key=tag.key value=tag.value|urlencode %}" title="{% trans "Resources with tag:" %} {{ tag.key }} = {{ tag.value }}">:</a></li>
+{% endfor %}
+</ul>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

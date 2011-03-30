@@ -1,0 +1,28 @@
+{% extends "openresources/base.html" %}
+{% load i18n %}
+
+{% block openresources_content %}
+
+<p>
+{% if form.errors %}
+{% trans "Your username and password didn't match. Please try again." %}
+{% endif %}
+</p>
+
+<form method="post" action="{% url auth_login %}">
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+{% csrf_token %}
+<button type="submit">{% trans "Log in" %}</button>
+<input type="hidden" name="next" value="/" />
+</form>
+
+{% endblock %}

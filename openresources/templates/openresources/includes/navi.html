@@ -1,0 +1,25 @@
+{% load i18n %}
+<div class="resources-header">
+<ul class="navi">
+<li><a href="{% url openresources_index %}">{% trans "Main" %}</a></li>
+<li><a href="{% url openresources_views %}">{% trans "Views" %}</a></li>
+<li><a href="{% url openresources_tags %}">{% trans "Tags" %}</a></li>
+</ul>
+
+<form class="search-form" action="{% url openresources_search %}" method="get">
+<input name="q" type="text" size="15"/>
+<button type="submit">{% trans "Search" %}</button>
+</form>
+
+{% if context_form %}
+<form class="context-form autosubmit" action="{% url openresources_set_context %}" method="post">
+<div class="field-wrapper{% if context_form.instance.area %} active{% endif %}">
+{{ context_form }}
+<button type="submit">{% trans "Set" %}</button>
+</div>
+
+</form>
+{% endif %}
+<div class="clear"></div>
+</div>
+

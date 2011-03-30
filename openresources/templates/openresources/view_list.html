@@ -1,0 +1,71 @@
+{% extends "openresources/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "View" %}: {{ view.name }}{% endblock %}
+
+{% block extra_head %}
+{{ block.super }}
+<script type="text/javascript">
+var MEDIA_URL = "{{ MEDIA_URL }}",
+    VIEW = "{{ view.shortname }}",
+    AREA = "{{ user.get_profile.context.area.bounds|default:""}}";
+
+var icon_mappings = [
+{% for mapping in icon_mappings %}
+{key:"{{ mapping.key}}"{% if mapping.value %},value:"{{ mapping.value }}"{% endif %},icon:"{{ mapping.icon.image }}"}{% if not forloop.last %},
+{% endif %}
+{% endfor %}
+];
+
+</script>
+{% endblock %}
+
+{% block body_class %}{{ block.super }} view-page{% endblock %}
+
+{% block openresources_content %}
+
+<h1>{{ view.name }}</h1>
+<p class="help">
+{% trans "This view shows resources with tags:" %}<br />
+{{ view.get_description|safe }}
+</p>
+
+{% include "openresources/includes/view_actions.html" %}
+
+{% include "openresources/includes/view_modes.html" %}
+
+{% if groups %}
+<div class="column">
+{% for group in groups %}
+<h2>{{ group.title }}
+{% if group.text %}
+<div class="help">{{ group.text|safe }}</div>
+{% endif %}
+</h2>
+<ul class="resourceslist">
+{% for resource in group.resources %}
+<li class="resource"><a href="{% url openresources_resource key=resource.shortname%}">{{ resource.name }}</a></li>
+{% endfor %}
+</ul>
+{% if forloop.counter|divisibleby:3 %}
+</div>
+<div class="column">
+{% endif %}
+{% endfor %}
+</div>
+
+{% else %}
+<ul class="resourceslist">
+{% for resource in resources %}
+<li class="resource"><a href="{% url openresources_resource key=resource.shortname%}">{{ resource.name }}</a>
+<div class="help">
+{% regroup resource.view_tags by key as tag_list %}
+{% for group in tag_list %}
+{{ group.grouper }}: {% for tag in group.list %}{{ tag.value}}{% if not forloop.last %}, {% endif %}{% endfor %}<br />
+{% endfor %}
+</div>
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

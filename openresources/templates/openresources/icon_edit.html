@@ -1,0 +1,30 @@
+{% extends "openresources/base.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+
+{{ form.media }}
+
+{% endblock %}
+
+{% block openresources_content %}
+
+{% if icon %}
+<h1>{{ icon.name }}</h1>
+{% else %}
+<h1>{% trans "New Icon" %}</h1>
+{% endif %}
+
+<form method="post" action="{% url openresources_new_icon %}" autocomplete="off" enctype="multipart/form-data">
+<table>
+{{ form.as_table }}
+</table>
+
+<button type="submit">{% trans "Save" %}</button>
+
+<a class="action" href="{% url openresources_icons %}">{% trans "Cancel" %}</a>
+
+</form>
+
+
+{% endblock %}

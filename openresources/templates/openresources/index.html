@@ -1,0 +1,49 @@
+{% extends "openresources/base.html" %}
+{% load i18n texttools %}
+
+{% block openresources_content %}
+
+{% if request.user.is_authenticated %}
+<div class="actions">
+<a class="action add" href="{% url openresources_templates %}">{% trans "Add resource" %}</a>
+</div>
+{% endif %}
+
+<div class="navbox">
+<h2><a href="{% url openresources_views %}">{% trans "Views" %}</a></h2>
+<ul class="views-list">
+{% for view in featured_views %}
+<li class="view"><a href="{% url openresources_view name=view.shortname %}">{{ view.name }}</a></li>
+{% endfor %}
+</ul>
+<div class="clear"></div>
+<a class="more" href="{% url openresources_views %}">{% trans "all views..." %}</a>
+<div class="clear"></div>
+</div>
+
+<div class="listbox">
+<h2>{% trans "Newest Resources" %}</h2>
+<ul class="resources-list">
+{% for resource in latest_resources %}
+<li class="resource"><a href="{% url openresources_resource key=resource.shortname%}">{{ resource.name }}</a></li>
+{% endfor %}
+</ul>
+<a class="more" href="{% url openresources_view name="all" %}">{% trans "all resources..." %}</a>
+</div>
+
+<div class="listbox">
+<h2>{% trans "Upcoming" %}</h2>
+<ul class="resources-list upcoming-list">
+{% for resource in upcoming_resources %}
+<li><div class="upcoming">
+{# <div class="date">{% smart_date resource.start_date resource.end_date "l,&\n\b\s\p;j.n." %}</div>#}
+<a href="{% url openresources_resource key=resource.shortname%}">{{ resource.name }}</a>
+</div>
+{% endfor %}
+</table>
+<!--
+<a class="more" href="{% url openresources_view name="all" %}">{% trans "all upcoming events..." %}</a>
+-->
+</div>
+
+{% endblock %}

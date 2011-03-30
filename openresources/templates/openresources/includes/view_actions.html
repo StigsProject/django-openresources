@@ -1,0 +1,8 @@
+{% load texttools i18n %}
+<div class="actions">
+{% if request.user.is_authenticated %}
+{# {% if perms.openresources.edit_view %} #}
+<a class="action edit" href="{% url openresources_edit_view name=view.shortname %}">{% trans "Edit view" %}</a>
+{# {% endif %} #}
+{% endif %}
+</div>
