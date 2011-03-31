@@ -128,9 +128,11 @@ class View(models.Model):
     name = models.CharField(max_length=200)
     shortname = models.SlugField(max_length=100, db_index=True, unique=True, help_text=_('(Will be part of the views\' URL)'))
 
+    show_map = models.BooleanField(default=True)
     featured = models.BooleanField(default=False)
     protected = models.BooleanField(default=False, help_text=_('(Hidden from anonymous users)'))
 
+    default_resource_template = models.ForeignKey('ResourceTemplate', null=True)    
     order_by = models.CharField(max_length=200, null=True, blank=True)
     
     sub_views = models.ManyToManyField('self', related_name='parent_views', null=True, blank=True)
@@ -141,8 +143,7 @@ class View(models.Model):
     include_past = models.BooleanField(default=False)
     include_current  = models.BooleanField(default=True)
     include_upcoming = models.BooleanField(default=False)
-    
-    show_map = models.BooleanField(default=True)
+
 
     class Meta:
         ordering = ['shortname']

@@ -103,7 +103,7 @@ class ViewForm(ModelForm):
     
     class Meta:
         model = View
-        exclude = ('creator','sub_views','order_by')
+        exclude = ('creator','sub_views')
 
 
 QueryFormSet = inlineformset_factory(View, TagQuery,
