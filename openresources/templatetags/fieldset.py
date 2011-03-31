@@ -17,6 +17,7 @@ def fieldset(parser, token):
 fieldset = register.tag(fieldset)
 
 
+
 class FieldSetNode(template.Node):
     """
     Usage:
@@ -33,8 +34,24 @@ class FieldSetNode(template.Node):
     def render(self, context):
         
         form = template.Variable(self.form_variable).resolve(context)
-        new_form = copy.copy(form)        
-        new_form.fields = SortedDict([(key, value) for key, value in form.fields.items() if key in self.fields])
+        fields = self.fields
+
+        # if it is a modelform, get real fieldnames of translated fields from transmeta
+        if hasattr(form, '_meta') and hasattr(form._meta, 'model'):
+            try:
+                from transmeta import get_all_translatable_fields, get_real_fieldname_in_each_language
+                trans_fields = get_all_translatable_fields(form._meta.model)
+                for field in trans_fields:
+                    if field in fields:
+                        fields.remove(field)
+                        fields.extend(get_real_fieldname_in_each_language(field))
+                print fields
+            except ImportError:
+                pass       
+
+        new_form = copy.copy(form)
+                    
+        new_form.fields = SortedDict([(key, value) for key, value in form.fields.items() if key in fields])
 
         context[self.variable_name] = new_form
 
