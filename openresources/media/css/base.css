@@ -206,6 +206,16 @@ ul#messages {
     margin-right: 20px;
 }
 
+.listbox,
+.navbox,
+.formbox {
+    border: 1px solid #aaaaaa;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;   
+}
+
+
 .listbox {
     float: left;
     position: relative;
@@ -218,7 +228,7 @@ html .lastcol {
     margin-right: 0px;
 }
 
-.navbox {
+.navbox, .formbox {
     clear: both;
     position: relative;
     xwidth: 790px;
@@ -418,14 +428,6 @@ em {
     padding: 1px 4px 0px 4px;
 }
 
-.listbox,
-.navbox {
-    border: 1px solid #aaaaaa;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;   
-}
-
 /* TODO: remove this when autocomplete widget has settled */
 .yui-skin-sam td .yui-ac-input {
     position: static;
@@ -433,7 +435,7 @@ em {
 
 fieldset.advanced {
     border: 1px solid #ccc;
-    margin: -9px 0 0 7px;
+    margin: -9px 7px 7px;
     padding: 15px 12px 0px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;

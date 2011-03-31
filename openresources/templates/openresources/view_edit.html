@@ -1,5 +1,5 @@
 {% extends "openresources/base.html" %}
-{% load i18n %}
+{% load i18n fieldset %}
 
 {% block extra_head %}
 {{ block.super }}
@@ -32,13 +32,34 @@ var MEDIA_URL = "{{ MEDIA_URL}}";
 
 <form method="post" action="{% url openresources_edit_view name=view.shortname %}" autocomplete="off">
 {% csrf_token %}
-<table>
-{{ form.as_table }}
-</table>
+<div class="formbox">
+<h2>{% trans "Basic Info" %}</h2>
+{% fieldset name as fset from form %}
+{{ fset.as_p }}
+<h4 class="toggle off">{% trans "advanced" %}</h4>
+<fieldset class="advanced">
+{% fieldset shortname as fset from form %}
+{{ fset.as_p }}
+</fieldset>
+</div>
 
-{% if queryformset %}
+<div class="formbox">
+<h2 class="toggle off">{% trans "Settings" %}</h2>
+<fieldset>
+{% fieldset show_map,featured,protected,default_resource_template as fset from form %}
+{{ fset.as_p }}
+</fieldset>
+</div>
+
+<div class="formbox">
 <h2>{% trans "Filters" %}</h2>
 <div class="help">{% trans "Resources which meet these criteria will be listed in the view." %}</div>
+{% fieldset include_past,include_current,include_upcoming as fset from form %}
+<fieldset class="compact">
+{{ fset.as_p }}
+</fieldset>
+
+{% if queryformset %}
 {{ queryformset.management_form }}
 <table class="edit-table queries-edit-table">
 {% for form in queryformset.forms %}
@@ -75,8 +96,10 @@ var MEDIA_URL = "{{ MEDIA_URL}}";
 {% endfor %}
 </table>
 {% endif %}
+</div><!-- formbox -->
 
 {% if mappingformset %}
+<div class="formbox">
 <h2>{% trans "Mappings" %}</h2>
 <div class="help">{% trans "Mappings determine the appearance of the resource." %}</div>
 {{ mappingformset.management_form }}
@@ -114,6 +137,7 @@ var MEDIA_URL = "{{ MEDIA_URL}}";
 </tr>
 {% endfor %}
 </table>
+</div>
 {% endif %}
 
 {% if tag_help %}
@@ -125,8 +149,8 @@ var MEDIA_URL = "{{ MEDIA_URL}}";
 {% endfor %}
 </div>
 {% endif %}
-<button class="save" type="submit">{% trans "Save" %}</button>
-<button class="reload" name="action" value="add_row" type="submit">{% trans "Save and continue" %}</button>
+<button class="action save" type="submit">{% trans "Save" %}</button>
+<button class="action reload" name="action" value="add_row" type="submit">{% trans "Save and continue" %}</button>
 
 <a class="action cancel" href="{% if view %}{% url openresources_view name=view.shortname %}{% else %}{% url openresources_index %}{% endif %}">{% trans "Cancel" %}</a>
 

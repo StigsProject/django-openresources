@@ -1,7 +1,5 @@
-{% extends "openresources/base.html" %}
+{% extends "openresources/view_base.html" %}
 {% load i18n %}
-
-{% block title %}{% trans "View" %}: {{ view.name }}{% endblock %}
 
 {% block extra_head %}
 {{ block.super }}
@@ -27,19 +25,7 @@ var icon_mappings = [
 </script>
 {% endblock %}
 
-{% block body_class %}{{ block.super }} view-map{% endblock %}
-
-{% block openresources_content %}
-
-<h1>{{ view.name }}</h1>
-<p class="help">
-{% trans "This view shows resources with tags:" %}<br />
-{{ view.get_description|safe }}
-</p>
-
-{% include "openresources/includes/view_actions.html" %}
-
-{% include "openresources/includes/view_modes.html" %}
+{% block view_content %}
 
 <div id="map" class="map"></div>
 <div class="map-loading">{% trans "Map Data Loading..." %}</div>

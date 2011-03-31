@@ -248,6 +248,7 @@ h4.toggle {
     background-color: #eeeeee;
 }
 
+/*
 .view-page .map {
     display: none;
     float: right;
@@ -260,6 +261,7 @@ h4.toggle {
     width: 600px;
     text-align: right;
 }
+*/
 
 .map .olControlAttribution {
     bottom: 1px;
@@ -283,5 +285,14 @@ h4.toggle {
 
 form td code {
     font-size: 10px;
+}
+
+fieldset.compact p {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+fieldset.border {
+    
 }
 
