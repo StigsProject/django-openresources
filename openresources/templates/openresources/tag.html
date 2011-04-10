@@ -18,6 +18,7 @@ Key: <input type="text" name="new_key" value="{{ key }}" />
 {% if value %}
 Value: <input type="text" name="new_value" value="{{ value }}" />
 {% endif %}
+{% csrf_token %}
 <button type="submit">Submit</button>
 </form>
 {% endif %}
