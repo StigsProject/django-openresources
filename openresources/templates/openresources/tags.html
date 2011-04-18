@@ -1,0 +1,17 @@
+{% extends "openresources/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "List of tags" %}{% endblock %}
+
+{% block openresources_content %}
+
+<h1>{% trans "All Tags" %}</h1>
+
+<ul class="tags-list">
+{% for tag in tags %}
+<li><a href="{% url openresources_tag_key key=tag.key %}">{{ tag.key }}</a> <span class="help">({{tag.key_count}})</span>
+<a class="action" href="{% url openresources_with_key key=tag.key %}">:</a>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

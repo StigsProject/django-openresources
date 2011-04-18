@@ -1,0 +1,4 @@
+include LICENSE.txt
+recursive-include openresources/locale *
+recursive-include openresources/media *
+recursive-include openresources/templates *

@@ -1,0 +1,42 @@
+{% load i18n %}
+<div class="user-actions">
+
+<span class="username">
+{% if user.is_active %}
+{% trans "Welcome," %} {{ user.username }}
+{% else %}
+{% trans "Not logged in" %}
+{% endif %}
+
+{% url auth_login as login_url %}
+{% url auth_logout as logout_url %}
+{% if login_url and logout_url %}
+{% if user.is_active %}
+| <a href="{{ logout_url }}">{% trans "Log out" %}</a>
+{% else %}
+| <a href="{{ login_url }}">{% trans "Log in" %}</a>
+{% endif %}
+{% endif %}
+</span>
+
+{% url admin:index as admin_url%}
+{% if user.is_staff and admin_url %}
+| <a href="{{ admin_url }}">Admin</a>
+{% endif %}
+
+{% url django.views.i18n.set_language as lang_url %}
+{% if lang_url %}
+| <form class="language-switcher autosubmit" action="{{ lang_url }}" method="post">
+{% trans "language:" %}
+<select name="language">
+{% for lang in LANGUAGES %}
+<option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE%} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
+{% endfor %}
+</select>
+{% csrf_token %}
+<button type="submit">Set</button>
+</form>
+{% endif %}
+
+</div>
+<div class="clear"></div>

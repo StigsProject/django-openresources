@@ -1,0 +1,175 @@
+{% extends "openresources/base.html" %}
+{% load i18n fieldset %}
+
+{% block extra_head %}
+{{ block.super }}
+<script src="{{MEDIA_URL}}openresources/js/urlify.js" type="text/javascript"></script>
+<style type="text/css">
+.widget {
+    display: none;
+}
+.widget .map {
+    height: 340px;
+}
+</style>
+<script type="text/javascript">
+var MEDIA_URL = "{{ MEDIA_URL}}";
+</script>
+
+{{ form.media }}
+{{ formset.media }}
+
+<script type="text/javascript" src="{{MEDIA_URL}}openresources/js/edit.js"></script>
+{% endblock %}
+
+{% block openresources_content %}
+
+{% if view %}
+<h1>{{ view.name }}</h1>
+{% else %}
+<h1>{% trans "New view" %}</h1>
+{% endif %}
+
+<form method="post" action="{% url openresources_edit_view name=view.shortname %}" autocomplete="off">
+{% csrf_token %}
+{% if form.non_field_errors %}
+<div class="error">
+{{ form.non_field_errors }}
+</div>
+{% endif %}
+<div class="formbox">
+<h2>{% trans "Basic Info" %}</h2>
+{% fieldset name as fset from form %}
+{{ fset.as_p }}
+<h4 class="toggle off">{% trans "advanced" %}</h4>
+<fieldset class="advanced">
+{% fieldset shortname as fset from form %}
+{{ fset.as_p }}
+</fieldset>
+</div>
+
+<div class="formbox">
+<h2 class="toggle off">{% trans "Settings" %}</h2>
+<fieldset>
+{% fieldset show_map,featured,protected,default_resource_template as fset from form %}
+{{ fset.as_p }}
+</fieldset>
+</div>
+
+<div class="formbox">
+<h2>{% trans "Filters" %}</h2>
+<div class="help">{% trans "Resources which meet these criteria will be listed in the view." %}</div>
+{% fieldset include_past,include_current,include_upcoming as fset from form %}
+<fieldset class="compact">
+{{ fset.as_p }}
+</fieldset>
+
+{% if queryformset %}
+{{ queryformset.management_form }}
+<table class="edit-table queries-edit-table">
+{% for form in queryformset.forms %}
+{% if forloop.first %}
+<tr>
+{% for field in form.visible_fields %}
+        <th>{{ field.label }}</th>
+{% endfor %}
+</tr>
+{% endif %}
+{% if form.non_field_errors %}
+<tr class="error"><td colspan="3">
+{{ form.non_field_errors }}
+</td></tr>
+{% endif %}
+<tr class="{% if forloop.first %}first{% endif %}{% if forloop.last %} extra{% endif %}">
+    {% for field in form.visible_fields %}
+        <td class="edit-{{field.name}}">{{field.errors}}{{ field }}
+        {% if forloop.parentloop.last %}
+        {% ifequal field.name "key" %}
+        <br /><select class="popular-tags">
+<option value="">{% trans "Common Tags:" %}</option>
+<option value="">--------------</option>
+{% for tag in popular_tags %}
+<option value="{{ tag.key }}">{{ tag.key }}</option>
+{#{% include "openresources/includes/tag_actions.html" %}#}
+{% endfor %}
+</select>
+{% endifequal %}
+        {% endif %}
+        </td>
+    {% endfor %}
+    <td class="hidden">
+    {% for field in form.hidden_fields %}
+        {% if field.is_hidden %} {{ field }} {% endif %}
+    {% endfor %}
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+</div><!-- formbox -->
+
+{% if mappingformset %}
+<div class="formbox">
+<h2>{% trans "Mappings" %}</h2>
+<div class="help">{% trans "Mappings determine the appearance of the resource." %}</div>
+{{ mappingformset.management_form }}
+<table class="edit-table mappings-edit-table">
+{% for form in mappingformset.forms %}
+{% if forloop.first %}
+<tr>
+{% for field in form.visible_fields %}
+        <th>{{ field.label }}</th>
+{% endfor %}
+</tr>
+{% endif %}
+{% if form.non_field_errors %}
+<tr class="error"><td colspan="3">
+{{ form.non_field_errors }}
+</td></tr>
+{% endif %}
+<tr class="{% if forloop.first %}first{% endif %}{% if forloop.last %} extra{% endif %}">
+    {% for field in form.visible_fields %}
+        <td class="edit-{{field.name}}">{{field.errors}}{{ field }}
+        {% if forloop.parentloop.last %}
+        {% ifequal field.name "key" %}
+        <br /><select class="popular-tags">
+<option value="">{% trans "Common Tags:" %}</option>
+<option value="">--------------</option>
+{% for tag in popular_tags %}
+<option value="{{ tag.key }}">{{ tag.key }}</option>
+{#{% include "openresources/includes/tag_actions.html" %}#}
+{% endfor %}
+</select>
+{% endifequal %}
+        {% endif %}
+        </td>
+    {% endfor %}
+    <td class="hidden">
+    {% for field in form.hidden_fields %}
+        {% if field.is_hidden %} {{ field }} {% endif %}
+    {% endfor %}
+    </td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endif %}
+
+{% if tag_help %}
+<div class="actions">
+{% trans "Help:" %}
+<a href="{% url openresources_icons %}">{% trans "Icons" %}</a>
+{% for link in tag_help %}
+| <a href="{{link.1}}">{{link.0}}</a>
+{% endfor %}
+</div>
+{% endif %}
+<button class="action save" type="submit">{% trans "Save" %}</button>
+<button class="action reload" name="action" value="add_row" type="submit">{% trans "Save and continue" %}</button>
+
+<a class="action cancel" href="{% if view %}{% url openresources_view name=view.shortname %}{% else %}{% url openresources_index %}{% endif %}">{% trans "Cancel" %}</a>
+
+</form>
+
+
+{% endblock %}

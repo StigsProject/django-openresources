@@ -1,0 +1,18 @@
+{% extends "openresources/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "List of views" %}{% endblock %}
+
+{% block openresources_content %}
+
+<h1>{% trans "Views" %}</h1>
+<div class="actions">
+<a class="action add" href="{% url openresources_new_view %}">{% trans "Add view" %}</a>
+</div>
+
+<ul class="views-list">
+{% for view in views %}
+<li><a href="{% url openresources_view name=view.shortname %}">{{ view.name }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "openresources/view_base.html" %}
+{% load i18n %}
+
+{% block view_content %}
+{% if groups %}
+<div class="column">
+{% for group in groups %}
+<h2>{{ group.title }}
+{% if group.text %}
+<div class="help">{{ group.text|safe }}</div>
+{% endif %}
+</h2>
+<ul class="resourceslist">
+{% for resource in group.resources %}
+<li class="resource"><a href="{% url openresources_resource key=resource.shortname%}">{{ resource.name }}</a></li>
+{% endfor %}
+</ul>
+{% if forloop.counter|divisibleby:3 %}
+</div>
+<div class="column">
+{% endif %}
+{% endfor %}
+</div>
+
+{% else %}
+<ul class="resourceslist">
+{% for resource in resources %}
+<li class="resource"><a href="{% url openresources_resource key=resource.shortname%}">{{ resource.name }}</a>
+<div class="help">
+{% regroup resource.view_tags by key as tag_list %}
+{% for group in tag_list %}
+{{ group.grouper }}: {% for tag in group.list %}{{ tag.value}}{% if not forloop.last %}, {% endif %}{% endfor %}<br />
+{% endfor %}
+</div>
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

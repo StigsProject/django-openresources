@@ -1,0 +1,3 @@
+{% load texttools i18n %}
+<a class="help" href="{% url wiki_article title=tag.key|prefix:"Key:" %}" title="{% trans "Documentation for key:" %} {{ tag.key }}">?</a>
+<a class="help list" href="{% url openresources_with_key key=tag.key %}" title="{% trans "Resources with key:" %} {{ tag.key }}">:</a></li>

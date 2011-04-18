@@ -1,0 +1,20 @@
+{% extends "openresources/base.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block title %}{% trans "Icons" %}{% endblock %}
+
+{% block openresources_content %}
+
+<h1>{% trans "Icons" %}</h1>
+
+<a class="action add" href="{% url openresources_new_icon %}">{% trans "Add Icon" %}</a>
+
+<ul class="iconlist">
+{% for icon in icons %}
+{% thumbnail icon.image "20x20" as thumb %}
+<li><img src="{{ thumb }}" width="20" height="20"/> {{ icon.name }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
