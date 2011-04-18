@@ -394,11 +394,16 @@ def rename_tag(request):
         if 'new_key' in request.POST:
             tag.key = request.POST['new_key']
         tag.save()
-        
+    
+    if 'new_key' in request.POST:
+        if 'new_value' in request.POST:    
+            return redirect_to(request, reverse('openresources_tag', kwargs={'key':urlquote(request.POST['new_key']), 'value': urlquote(request.POST['new_value'])}))
+        return redirect_to(request, reverse('openresources_tag_key', kwargs={'key':urlquote(request.POST['new_key'])}))
+
     if value:
         return redirect_to(request, reverse('openresources_tag', kwargs={'key':urlquote(key), 'value': urlquote(value)}))
-    else:
-        return redirect_to(request, reverse('openresources_tag_key', kwargs={'key':urlquote(key)}))
+    
+    return redirect_to(request, reverse('openresources_tag_key', kwargs={'key':urlquote(key)}))
 
 
 @login_required

@@ -18,7 +18,8 @@ Key: <input type="text" name="new_key" value="{{ key }}" />
 {% if value %}
 Value: <input type="text" name="new_value" value="{{ value }}" />
 {% endif %}
-<button type="submit">Submit</button>
+{% csrf_token %}
+<button type="submit">{% trans "Rename" %}</button>
 </form>
 {% endif %}
 
@@ -28,11 +29,7 @@ Value: <input type="text" name="new_value" value="{{ value }}" />
 {% for value_tags in value_groups %}
 <li>
 <h3>
-{% if value_tags.list|length|add:"-1" %}
-    <a href="{% url openresources_tag key=key value=value_tags.grouper|urlencode %}">{{ value_tags.grouper }}</a>
-{% else %}
-    {{ value_tags.grouper }}
-{% endif %}
+<a href="{% url openresources_tag key=key value=value_tags.grouper|urlencode %}">{{ value_tags.grouper }}</a>
 </h3>
 <div class="help">
 {% for tag in value_tags.list %}
