@@ -1,0 +1,276 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Vivir Bien\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-01-04 11:17:29 UTC\n"
+"PO-Revision-Date: 2011-01-04 12:36:22 UTC\n"
+"Last-Translator: Web Translate It <support@webtranslateit.com>\n"
+"Language-Team: Spanish; Castilian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Web Translate It\n"
+
+#: models.py
+#: models.py
+msgid "(Hidden from anonymous users)"
+msgstr ""
+
+#: models.py
+msgid "(Will be part of the resources' URL)"
+msgstr ""
+
+#: models.py
+msgid "(Will be part of the views' URL)"
+msgstr ""
+
+msgid "Add Icon"
+msgstr "Añadir símbolo"
+
+#: templates/resources/edit.html
+msgid "Add location tag for this address"
+msgstr ""
+
+msgid "Add resource"
+msgstr "Añadir Recurso"
+
+msgid "Add view"
+msgstr "Añadir Vista"
+
+msgid "all resources..."
+msgstr "Todos los recursos..."
+
+#: models.py
+msgid "All tags"
+msgstr ""
+
+#: templates/resources/tags.html
+msgid "All Tags"
+msgstr ""
+
+#: templates/resources/index.html
+msgid "all upcoming events..."
+msgstr ""
+
+msgid "all views..."
+msgstr "Todas las vistas..."
+
+msgid "and"
+msgstr "y"
+
+msgid "Area"
+msgstr "Región"
+
+#: models.py
+msgid "begins with"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/resources/resource.html
+msgid "Comment by"
+msgstr ""
+
+#: templates/resources/resource.html
+msgid "Comments for"
+msgstr ""
+
+#: templates/resources/view_edit.html
+#: templates/resources/view_edit.html
+#: templates/resources/edit.html
+msgid "Common Tags:"
+msgstr ""
+
+#: models.py
+msgid "Default Icon"
+msgstr ""
+
+#: templates/resources/includes/tag_actions.html
+msgid "Documentation for key:"
+msgstr ""
+
+#: templates/resources/resource.html
+msgid "Edit"
+msgstr ""
+
+#: templates/resources/includes/view_actions.html
+msgid "Edit view"
+msgstr ""
+
+msgid "Everywhere"
+msgstr "Todo el mundo"
+
+#: templates/resources/includes/view_modes.html
+msgid "Export"
+msgstr ""
+
+msgid "Featured Views"
+msgstr "Vistas recomendadas"
+
+#: templates/resources/view_edit.html
+msgid "Filters"
+msgstr ""
+
+#: models.py
+#: models.py
+msgid "Format: yyyy-mm-dd hh:mm (time is optional)"
+msgstr ""
+
+msgid "Help:"
+msgstr "Ayuda:"
+
+msgid "Icons"
+msgstr "Símbolos"
+
+#: models.py
+msgid "is present"
+msgstr ""
+
+#: templates/resources/includes/view_modes.html
+msgid "List"
+msgstr ""
+
+#: templates/resources/tags.html
+msgid "List of tags"
+msgstr ""
+
+msgid "List of views"
+msgstr "Lista de vistas"
+
+#: templates/resources/edit.html
+msgid "Look up from address"
+msgstr ""
+
+msgid "Main"
+msgstr "Inicio"
+
+#: templates/resources/includes/view_modes.html
+msgid "Map"
+msgstr ""
+
+#: templates/resources/view_overview.html
+#: templates/resources/view_map.html
+#: templates/resources/view_embed.html
+msgid "Map Data Loading..."
+msgstr ""
+
+#: templates/resources/view_edit.html
+msgid "Mappings"
+msgstr ""
+
+#: templates/resources/view_edit.html
+msgid "Mappings determine the appearance of the resource."
+msgstr ""
+
+#: templates/resources/resource.html
+msgid "New Comment"
+msgstr ""
+
+msgid "New Icon"
+msgstr "Nuevo símbolo"
+
+msgid "New resource"
+msgstr "Nuevo recurso"
+
+#: templates/resources/view_edit.html
+msgid "New view"
+msgstr ""
+
+msgid "Newest Resources"
+msgstr "Recursos más nuevos"
+
+msgid "News"
+msgstr "Noticias"
+
+#: templates/resources/includes/view_modes.html
+msgid "Not on Map"
+msgstr ""
+
+msgid "or"
+msgstr "o"
+
+#: templates/resources/includes/view_modes.html
+msgid "Overview"
+msgstr ""
+
+msgid "Read more..."
+msgstr "Leer más..."
+
+msgid "Red"
+msgstr "Rojo"
+
+msgid "Reply"
+msgstr "Contestar"
+
+msgid "Resources"
+msgstr "Recursos"
+
+#: templates/resources/view_edit.html
+msgid "Resources which meet these criteria will be listed in the view."
+msgstr ""
+
+#: templates/resources/includes/tag_actions.html
+msgid "Resources with key:"
+msgstr ""
+
+#: templates/resources/resources_by_tag.html
+#: templates/resources/resources_by_tag.html
+#: templates/resources/resources_by_tag.html
+#: templates/resources/resource.html
+msgid "Resources with tag:"
+msgstr ""
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Save and continue"
+msgstr "Guardar y continuar"
+
+msgid "Search"
+msgstr "Búsqueda"
+
+#: templates/resources/search_results.html
+#: templates/resources/search_results.html
+msgid "Search results for:"
+msgstr ""
+
+#: templates/resources/includes/actions.html
+msgid "Set"
+msgstr ""
+
+#: models.py
+msgid "Subicon only"
+msgstr ""
+
+#: templates/resources/tag.html.py
+#: templates/resources/tag.html
+msgid "Tag:"
+msgstr ""
+
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: templates/resources/view_overview.html
+#: templates/resources/view_map.html
+#: templates/resources/view_list.html
+#: templates/resources/view_export.html
+msgid "This view shows resources with tags:"
+msgstr ""
+
+msgid "Upcoming"
+msgstr "Próximamente"
+
+#: templates/resources/view_export.html
+msgid "Use the following code to embed this view in other websites:"
+msgstr ""
+
+msgid "View"
+msgstr "Vista"
+
+msgid "Views"
+msgstr "Vistas"
+
+#: templates/resources/resources_by_tag.html
+msgid "Wiki Page for Key:"
+msgstr ""
