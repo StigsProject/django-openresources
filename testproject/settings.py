@@ -1,3 +1,5 @@
+# coding: utf-8
+
 # Django settings for openresources test project.
 # Requires Django >= 1.2
 
@@ -23,6 +25,7 @@ USE_L10N = True
 LANGUAGES = (
     ('en', 'English'),
     ('de', 'Deutsch'),
+    ('fr', 'Français'),
 )
 
 MEDIA_ROOT = ''
@@ -42,6 +45,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
