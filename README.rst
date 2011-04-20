@@ -3,7 +3,7 @@
 OpenResources
 =============
 
-OpenResources is a flexible, tag-based database application for Django. It follows a similar approach to `OpenStreetMap`_ for creating a collaborative schema-less database based on tags (key-value pairs). OpenResources has been originally developed for `Vivir Bien`_, a mapping platform for solidarity economy resources.
+OpenResources is a flexible, tag-based database application for Django_. It follows a similar approach to OpenStreetMap_ for creating a collaborative schema-less database based on tags (key-value pairs). OpenResources has been originally developed for `Vivir Bien`_, a mapping platform for solidarity economy resources.
 
 OpenResources comes with "batteries included", which means that you don't only get a Django app but also a set of templates and media files that should give you a starting point and are designed with easy customization in mind.
 
@@ -16,6 +16,7 @@ Dependencies
 All dependencies on other (non-standard) Django applications are optional. At the moment OpenResources is prepared to work with the following 3rd party Djago applications:
 
 * `Python Imaging Library`_ for the Icon.image field
+* South_ for schema migrations
 * Transmeta_ for multilingual installations
 * django-threadedcomments_ for comments inside resources and views
 
@@ -46,6 +47,21 @@ Adding OpenResources to a Django setup should be pretty straightforward. The onl
 The included templates are expecting the OpenResources media files to be served at ``{{MEDIA_URL}}openresources/`` , so if you want to use (or customize) these you should copy or symlink them accordingly.
 
 
+Internationalization
+--------------------
+
+OpenResources uses Transifex_ for translating user interface elements. If you want to contribute a translation, you are more than welcome!
+
+.. image:: https://www.transifex.net/projects/p/openresources/resource/django/chart/image_png
+   :target: https://www.transifex.net/projects/p/openresources/
+
+For translating model fields, Transmeta_ is used. While in the medium term, this should be replaced with something that does not interfer with the database schema of the application (see `Issue #1`_), for now we provide an alternative set of migrations when South_ is used in combination with Transmeta. To use these migrations, add the following to your ``settings.py`` file::
+
+  SOUTH_MIGRATION_MODULES = {
+      'openresources': 'openresources.migrations_transmeta',
+  }
+
+
 Credits / Contributors
 ----------------------
 
@@ -60,14 +76,16 @@ OpenResources incorporates parts of other open source projects:
 
 
 .. _`Vivir Bien`: http://vivirbien.mediavirus.org/
-.. _`OpenStreetMap`: http://www.openstreetmap.org/
+.. _OpenStreetMap: http://www.openstreetmap.org/
 .. _Transmeta: http://code.google.com/p/django-transmeta/
+.. _South: http://south.aeracode.org/
 .. _django-threadedcomments: https://github.com/ericflo/django-threadedcomments
 .. _`GNU Affero General Public License (AGPL)`: http://www.gnu.org/licenses/agpl.html
 .. _`Florian Ledermann`: http://floledermann.com/
 .. _CC-by: http://creativecommons.org/licenses/by/3.0/
 .. _`Yusuke Kamiyamane`: http://p.yusukekamiyamane.com/
 .. _Django: http://www.djangoproject.com/
+.. _Transifex: https://www.transifex.net/projects/p/openresources/
 .. _`Python Imaging Library`: http://www.pythonware.com/products/pil/
-
+.. _`Issue #1`: https://bitbucket.org/floledermann/openresources/issue/1/more-loosely-coupled-model-translations
 
