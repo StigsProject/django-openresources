@@ -1,0 +1,387 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-02-08 21:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:101
+msgid "Everywhere"
+msgstr ""
+
+#: forms.py:101 models.py:273
+msgid "Area"
+msgstr ""
+
+#: forms.py:293
+msgid "Delete"
+msgstr ""
+
+#: forms.py:337
+msgid "More Tags"
+msgstr ""
+
+#: models.py:17
+msgid "(Will be part of the resources' URL)"
+msgstr ""
+
+#: models.py:17
+msgid "Shortname"
+msgstr ""
+
+#: models.py:19
+msgid "Template"
+msgstr ""
+
+#: models.py:22 models.py:100
+msgid "(Hidden from anonymous users)"
+msgstr ""
+
+#: models.py:22
+msgid "protected"
+msgstr ""
+
+#: models.py:27 models.py:28
+msgid "Format: yyyy-mm-dd hh:mm (time is optional)"
+msgstr ""
+
+#: models.py:54
+msgid "Value field parsed as date."
+msgstr ""
+
+#: models.py:55
+msgid "Value field parsed as relation to other resource."
+msgstr ""
+
+#: models.py:97
+msgid "(Will be part of the views' URL)"
+msgstr ""
+
+#: models.py:162
+msgid "All tags"
+msgstr ""
+
+#: models.py:165
+msgid "is present"
+msgstr ""
+
+#: models.py:167
+msgid "begins with"
+msgstr ""
+
+#: models.py:171
+msgid "and"
+msgstr ""
+
+#: models.py:172
+msgid "or"
+msgstr ""
+
+#: models.py:213
+msgid "Default Icon"
+msgstr ""
+
+#: models.py:214
+msgid "Red"
+msgstr ""
+
+#: models.py:239
+msgid "Subicon only"
+msgstr ""
+
+#: models.py:288 models.py:306 models.py:323
+msgid "Name"
+msgstr ""
+
+#: models.py:289
+msgid "(Will be part of the template's URL)"
+msgstr ""
+
+#: templates/resources/credits.html:4 templates/resources/credits.html.py:8
+msgid "Credits"
+msgstr ""
+
+#: templates/resources/edit.html:32
+#: templates/resources/edit_with_template.html:32
+#: templates/resources/templates.html:13
+msgid "New resource"
+msgstr ""
+
+#: templates/resources/edit.html:62 templates/resources/view_edit.html:59
+#: templates/resources/view_edit.html:99
+msgid "Common Tags:"
+msgstr ""
+
+#: templates/resources/edit.html:87
+#: templates/resources/edit_with_template.html:57
+#: templates/resources/view_edit.html:122
+msgid "Help:"
+msgstr ""
+
+#: templates/resources/edit.html:95
+#: templates/resources/edit_with_template.html:65
+#: templates/resources/icon_edit.html:23
+#: templates/resources/template_edit.html:40
+#: templates/resources/view_edit.html:129
+msgid "Save"
+msgstr ""
+
+#: templates/resources/edit.html:96
+#: templates/resources/edit_with_template.html:66
+#: templates/resources/template_edit.html:41
+#: templates/resources/view_edit.html:130
+msgid "Save and continue"
+msgstr ""
+
+#: templates/resources/edit.html:97
+#: templates/resources/edit_with_template.html:67
+#: templates/resources/icon_edit.html:25
+#: templates/resources/template_edit.html:43
+#: templates/resources/view_edit.html:132
+msgid "Cancel"
+msgstr ""
+
+#: templates/resources/edit.html:106
+#: templates/resources/edit_with_template.html:79
+msgid "Add location tag for this address"
+msgstr ""
+
+#: templates/resources/edit_with_template.html:32
+msgid "Template:"
+msgstr ""
+
+#: templates/resources/edit_with_template.html:43
+msgid "advanced"
+msgstr ""
+
+#: templates/resources/edit_with_template.html:73
+msgid "Look up from address"
+msgstr ""
+
+#: templates/resources/icon_edit.html:15
+msgid "New Icon"
+msgstr ""
+
+#: templates/resources/icons.html:5 templates/resources/icons.html.py:9
+#: templates/resources/view_edit.html:123
+msgid "Icons"
+msgstr ""
+
+#: templates/resources/icons.html:11
+msgid "Add Icon"
+msgstr ""
+
+#: templates/resources/index.html:8
+msgid "Add resource"
+msgstr ""
+
+#: templates/resources/index.html:20 templates/resources/index.html.py:69
+msgid "Read more..."
+msgstr ""
+
+#: templates/resources/index.html:26 templates/resources/views.html:8
+#: templates/resources/includes/navi.html:5
+msgid "Views"
+msgstr ""
+
+#: templates/resources/index.html:33
+msgid "all views..."
+msgstr ""
+
+#: templates/resources/index.html:38
+msgid "Newest Resources"
+msgstr ""
+
+#: templates/resources/index.html:44
+msgid "all resources..."
+msgstr ""
+
+#: templates/resources/index.html:48
+#: templates/resources/includes/view_modes.html:9
+msgid "Upcoming"
+msgstr ""
+
+#: templates/resources/index.html:58
+msgid "all upcoming events..."
+msgstr ""
+
+#: templates/resources/index.html:63
+msgid "News"
+msgstr ""
+
+#: templates/resources/resource.html:68
+msgid "Edit"
+msgstr ""
+
+#: templates/resources/resource.html:74
+msgid "Comments for"
+msgstr ""
+
+#: templates/resources/resource.html:79
+msgid "Comment by"
+msgstr ""
+
+#: templates/resources/resource.html:81
+msgid "Reply"
+msgstr ""
+
+#: templates/resources/resource.html:87
+msgid "New Comment"
+msgstr ""
+
+#: templates/resources/resources_by_tag.html:4
+#: templates/resources/resources_by_tag.html:8
+#: templates/resources/resources_by_tag.html:21
+msgid "Resources with tag:"
+msgstr ""
+
+#: templates/resources/resources_by_tag.html:11
+msgid "Wiki Page for Key:"
+msgstr ""
+
+#: templates/resources/search_results.html:4
+#: templates/resources/search_results.html:8
+msgid "Search results for:"
+msgstr ""
+
+#: templates/resources/tag.html:4 templates/resources/tag.html.py:8
+msgid "Tag:"
+msgstr ""
+
+#: templates/resources/tags.html:4
+msgid "List of tags"
+msgstr ""
+
+#: templates/resources/tags.html:8
+msgid "All Tags"
+msgstr ""
+
+#: templates/resources/template_edit.html:30
+msgid "New template"
+msgstr ""
+
+#: templates/resources/templates.html:4
+msgid "List of templates"
+msgstr ""
+
+#: templates/resources/templates.html:8
+msgid "Templates"
+msgstr ""
+
+#: templates/resources/templates.html:13
+msgid "edit"
+msgstr ""
+
+#: templates/resources/templates.html:18
+msgid "Add Template"
+msgstr ""
+
+#: templates/resources/templates.html:19
+msgid "Create resource without template"
+msgstr ""
+
+#: templates/resources/view_edit.html:32
+msgid "New view"
+msgstr ""
+
+#: templates/resources/view_edit.html:41
+msgid "Filters"
+msgstr ""
+
+#: templates/resources/view_edit.html:42
+msgid "Resources which meet these criteria will be listed in the view."
+msgstr ""
+
+#: templates/resources/view_edit.html:81
+msgid "Mappings"
+msgstr ""
+
+#: templates/resources/view_edit.html:82
+msgid "Mappings determine the appearance of the resource."
+msgstr ""
+
+#: templates/resources/view_embed.html:35 templates/resources/view_map.html:44
+#: templates/resources/view_overview.html:53
+msgid "Map Data Loading..."
+msgstr ""
+
+#: templates/resources/view_export.html:12
+#: templates/resources/view_list.html:30 templates/resources/view_map.html:35
+#: templates/resources/view_overview.html:35
+msgid "This view shows resources with tags:"
+msgstr ""
+
+#: templates/resources/view_export.html:20
+msgid "Use the following code to embed this view in other websites:"
+msgstr ""
+
+#: templates/resources/view_export.html:23
+msgid "View"
+msgstr ""
+
+#: templates/resources/views.html:4
+msgid "List of views"
+msgstr ""
+
+#: templates/resources/views.html:10
+msgid "Add view"
+msgstr ""
+
+#: templates/resources/includes/navi.html:4
+msgid "Main"
+msgstr ""
+
+#: templates/resources/includes/navi.html:6
+msgid "Tags"
+msgstr ""
+
+#: templates/resources/includes/navi.html:11
+msgid "Search"
+msgstr ""
+
+#: templates/resources/includes/navi.html:19
+msgid "Set"
+msgstr ""
+
+#: templates/resources/includes/tag_actions.html:2
+msgid "Documentation for key:"
+msgstr ""
+
+#: templates/resources/includes/tag_actions.html:3
+msgid "Resources with key:"
+msgstr ""
+
+#: templates/resources/includes/view_actions.html:5
+msgid "Edit view"
+msgstr ""
+
+#: templates/resources/includes/view_modes.html:5
+msgid "Overview"
+msgstr ""
+
+#: templates/resources/includes/view_modes.html:6
+msgid "Map"
+msgstr ""
+
+#: templates/resources/includes/view_modes.html:7
+msgid "Not on Map"
+msgstr ""
+
+#: templates/resources/includes/view_modes.html:8
+msgid "List"
+msgstr ""
+
+#: templates/resources/includes/view_modes.html:10
+msgid "Export"
+msgstr ""

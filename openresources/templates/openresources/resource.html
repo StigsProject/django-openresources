@@ -1,0 +1,106 @@
+{% extends "openresources/base.html" %}
+{% load i18n %}
+{% load texttools %}
+
+{% block extra_head %}
+{{ block.super }}
+<script type="text/javascript">
+function show_reply_form(comment_id, url, person_name) {
+
+    var comment_reply = $('#' + comment_id);
+    
+    var pname = '';
+    if (person_name) {
+        pname = '<p>Reply to ' + person_name + ':</p>'
+    }
+    
+    var to_add = $( new Array(
+    '<div class="">' + pname,
+    '<form method="POST" action="' + url + "\">",
+    '<ul>',  '<label for="id_comment">Kommentar:</label><textarea id="id_comment" name="comment" cols="40" rows="10"></textarea>',
+    '<li><input type="submit" value="Submit Comment" /></li>',
+    '</ul>', '</form>', '</div>').join(''));
+    
+    to_add.css("display", "none");
+    comment_reply.after(to_add);
+    
+    to_add.slideDown(function() {
+        comment_reply.replaceWith(new Array('<a id="',
+        comment_id,'" href="javascript:hide_reply_form(\'',
+        comment_id, '\',\'', url, '\',\'', person_name,
+        '\')">Cancel</a>').join(''));
+    });
+}
+function hide_reply_form(comment_id, url, person_name) {
+
+    var comment_reply = $('#' + comment_id);
+    
+    comment_reply.next().slideUp(function (){
+        comment_reply.next('.response').remove();
+        comment_reply.replaceWith(new Array('<a id="',
+        comment_id,'" href="javascript:show_reply_form(\'',
+        comment_id, '\',\'', url, '\',\'', person_name,
+        '\')">Reply</a>').join(''));
+    });
+}
+</script>
+{% endblock %}
+
+{% block title %}{{ resource.name }}{% endblock %}
+
+{% block openresources_content %}
+
+<div class="resource-details">
+<h1>{{ resource.name }}</h1>
+<table class="tags-table">
+{% for tag in resource.tags.all %}
+<tr><td><a class="tag" href="{% url openresources_tag_key key=tag.key %}">{{ tag.key }}</a>
+</td><td>{% if tag.value_relation %}<a href="{% url openresources_resource key=tag.value_relation.shortname %}">{% endif %}{{ tag.value|linebreaksbr|urlize }}{% if tag.value_relation %}</a>{% endif %}
+{% if tag.value_date %}<img src="{{ MEDIA_URL }}openresources/icons/calendar_10x10.png" />{% endif %}
+{% if tag.value_relation %}<img src="{{ MEDIA_URL }}openresources/icons/chain_10x10.png" />{% endif %}
+{% if tag.value_geo %}<img src="{{ MEDIA_URL }}openresources/icons/globe_10x10.png" />{% endif %}
+</td></li>
+{% endfor %}
+</table>
+</div>
+
+{% if related_tags %}
+<h2>{% trans "Related resources" %}</h2>
+<table class="related-resources">
+{% for t in related_tags %}
+<tr><td><a href="{% url openresources_resource key=t.resource.shortname %}">{{ t.resource.name }}</a></td><td><a class="tag" href="{% url openresources_tag_key key=t.key %}">{{ t.key }}</a></td></tr>
+{% endfor %}
+</table>
+{% endif %}
+
+
+<div class="actions">
+{% if request.user.is_authenticated %}
+{# {% if perms.openresources.edit_resource or perms.resources.add_tag %} #}
+<a class="action edit" href="{% url openresources_edit key=resource.shortname %}">{% trans "Edit" %}</a>
+{# {% endif %} #}
+{% endif %}
+</div>
+
+{% comment %}
+{# remove comment tags if you want to use comments in resources #}
+{% load threadedcommentstags %}
+{% get_threaded_comment_tree for resource as tree %}
+<h2>{% trans "Comments for" %} {{ resource.name }}</h2>
+{% if tree %}
+<div class="comments">
+{% for comment in tree %}
+    <div style="margin-left: {{ comment.depth }}em;" class="comment">
+        <h3>{% trans "Comment by" %} {{ comment.user.username }}:</h3>
+        {{ comment.comment|linebreaks }}
+        <a class="action say" id="c{{ comment.id }}" href="javascript:show_reply_form('c{{ comment.id }}','{% get_comment_url resource comment %}','{{ comment.user.username }}')">{% trans "Reply" %}</a>
+    </div>
+{% endfor %}
+</div>
+{% endif %}
+<div class="actions">
+<a class="action say" id="newcomment" href="javascript:show_reply_form('newcomment','{% get_comment_url resource %}')">{% trans "New Comment" %}</a>
+</div>
+{% endcomment %}
+
+{% endblock %}

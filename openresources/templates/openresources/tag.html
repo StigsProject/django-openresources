@@ -1,0 +1,43 @@
+{% extends "openresources/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Tag:" %} {{key}} = {% if value %}{{ value }}{% else %}*{% endif %}{% endblock %}
+
+{% block openresources_content %}
+
+<h1>{% trans "Tag:" %}<a href="{% url openresources_tag_key key=key %}">{{key}}</a> = {% if value %}{{ value }}{% else %}*{% endif %}</h1>
+
+{% if perms.openresources.batch_rename_tags %}
+<form class="action" method="post" action="{% url openresources_rename_tag %}">
+Rename <em>all</em> such tags to:<br />
+<input type="hidden" name="key" value="{{ key }}" />
+{% if value %}
+<input type="hidden" name="value" value="{{ value }}" />
+{% endif %}
+Key: <input type="text" name="new_key" value="{{ key }}" />
+{% if value %}
+Value: <input type="text" name="new_value" value="{{ value }}" />
+{% endif %}
+{% csrf_token %}
+<button type="submit">{% trans "Rename" %}</button>
+</form>
+{% endif %}
+
+{% regroup tags by value as value_groups %}
+
+<ul class="resourceslist">
+{% for value_tags in value_groups %}
+<li>
+<h3>
+<a href="{% url openresources_tag key=key value=value_tags.grouper|urlencode %}">{{ value_tags.grouper }}</a>
+</h3>
+<div class="help">
+{% for tag in value_tags.list %}
+<a href="{% url openresources_resource key=tag.resource.shortname %}">{{ tag.resource.name }}</a>{% if not forloop.last %}, {% endif %}
+{% endfor %}
+</div>
+</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

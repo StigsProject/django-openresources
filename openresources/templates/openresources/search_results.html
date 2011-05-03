@@ -1,0 +1,45 @@
+{% extends "openresources/base.html" %}
+{% load texttools i18n %}
+
+{% block title %}{% trans "Search results for:" %} {{q}}{% endblock %}
+
+{% block openresources_content %}
+
+<h1>{% trans "Search results for:" %} {{q}}</h1>
+
+<h2>Resources</h2>
+
+<ul class="results-list">
+{% for resource in results.resources %}
+<li class="resource"><a href="{% url openresources_resource key=resource.shortname %}">{{ resource.name }}</a></li>
+{% empty %}
+<li class="empty">No Results Found</li>
+{% endfor %}
+</ul>
+
+<h2>Tag Values</h2>
+
+<ul class="results-list">
+{% for tag in results.tags %}
+<li class="tag">
+<a href="{% url openresources_resource key=tag.resource.shortname %}">{{ tag.resource.name }}</a>
+<p>{{ tag.key }}={{ tag.value }}</p>
+</li>
+{% empty %}
+<li class="empty">No Results Found</li>
+{% endfor %}
+</ul>
+
+<h2>Wiki Pages</h2>
+
+<ul class="results-list">
+{% for page in results.pages %}
+<li class="page">
+<a href="{% url wiki_article title=page.title %}">{{ page.title }}</a>
+</li>
+{% empty %}
+<li class="empty">No Results Found</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

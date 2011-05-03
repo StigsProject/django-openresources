@@ -1,0 +1,22 @@
+{% extends "openresources/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "List of templates" %}{% endblock %}
+
+{% block openresources_content %}
+
+<h1>{% trans "Templates" %}</h1>
+
+
+<ul class="templates-list">
+{% for template in templates %}
+<li>{{ template.name }} <a class="action add" href="{% url openresources_edit_with_template template=template.shortname %}">{% trans "New resource" %}</a><!--<a class="action edit" href="{% url openresources_template_edit name=template.shortname %}">{% trans "edit" %}</a>--></li>
+{% endfor %}
+</ul>
+
+<div class="actions">
+<!--<a class="action add" href="{% url openresources_template_edit %}">{% trans "Add Template" %}</a>-->
+<a class="action add" href="{% url openresources_new %}">{% trans "Create resource without template" %}</a>
+</div>
+
+{% endblock %}
