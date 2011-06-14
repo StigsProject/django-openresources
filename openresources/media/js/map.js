@@ -53,6 +53,59 @@ function get_icons(feature) {
 	return icons;
 }
 
+OpenLayers.Layer.MapsWithoutBorders = OpenLayers.Class(OpenLayers.Layer.OSM, {
+    /**
+     * Constructor: OpenLayers.Layer.MapsWithoutBorders
+     *
+     * Parameters:
+     * name - {String}
+     * options - {Object} Hashtable of extra options to tag onto the layer
+     */
+    initialize: function(name, options) {
+        this.noborders_urls = [
+            MEDIA_URL + "/tiles/default/${z}/${x}/${y}.png"
+        ];
+        this.osm_urls = [
+            "http://a.tile.openstreetmap.org/${z}/${x}/${y}.png",
+            "http://b.tile.openstreetmap.org/${z}/${x}/${y}.png",
+            "http://c.tile.openstreetmap.org/${z}/${x}/${y}.png"
+        ];
+        var noborders_max_zoom = 7;
+        options = OpenLayers.Util.extend({
+            numZoomLevels: 19,
+            buffer: 0,
+            transitionEffect: "resize"
+        }, options);
+        var newArguments = [name, this.osm_urls, options];
+        OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
+    },
+
+    getURL: function (bounds) {
+        var res = this.map.getResolution();
+        var xyz = {};
+        xyz.x = Math.round((bounds.left - this.maxExtent.left) / (res * this.tileSize.w));
+        xyz.y = Math.round((this.maxExtent.top - bounds.top) / (res * this.tileSize.h));
+        xyz.z = this.map.getZoom() + this.zoomOffset;
+
+        // trunk
+        //var xyz = this.getXYZ(bounds);
+
+        var url = this.noborders_urls[0];
+        if (xyz.z >= 7) {
+            url = this.osm_urls;
+            if (url instanceof Array) {
+                var s = '' + xyz.x + xyz.y + xyz.z;
+                url = this.selectUrl(s, url);
+            }
+        }
+        
+        return OpenLayers.String.format(url, xyz);
+    },
+
+    CLASS_NAME: "OpenLayers.Layer.MapsWithoutBorders"
+});
+
+
 function init_map() {
 	
     map = new OpenLayers.Map ("map", {
@@ -70,9 +123,13 @@ function init_map() {
         displayProjection: new OpenLayers.Projection("EPSG:4326")
     } );
 
-    layer_osm = new OpenLayers.Layer.OSM.Mapnik("OpenStreetMap");
-    layer_osm.attribution = 'Map ' + layer_osm.attribution;
-    map.addLayer(layer_osm);
+    //layer_osm = new OpenLayers.Layer.OSM.Mapnik("OpenStreetMap");
+    //layer_osm.attribution = 'Map ' + layer_osm.attribution;
+    //map.addLayer(layer_osm);
+    
+    layer_noborders = new OpenLayers.Layer.MapsWithoutBorders("Maps Without Borders");
+    //layer_noborders.attribution = 'Map ' + layer_osm.attribution;
+    map.addLayer(layer_noborders);
     
     var style = new OpenLayers.Style({
     	
@@ -229,6 +286,7 @@ function add_content(features, adjust_viewport) {
 	    if (features.length < 2) {
 	    	// single feature would cause full zoom-in
             map.zoomTo(13);
+
 	    }
     }
 }
