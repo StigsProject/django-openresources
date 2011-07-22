@@ -21,8 +21,7 @@ var MEDIA_URL = "{{ MEDIA_URL }}",
 
 var icon_mappings = [
 {% for mapping in icon_mappings %}
-{key:"{{ mapping.key}}"{% if mapping.value %},value:"{{ mapping.value }}"{% endif %},icon:"{{ mapping.icon.image }}"}{% if not forloop.last %},
-{% endif %}
+{key:"{{ mapping.key}}"{% if mapping.value %},value:"{{ mapping.value }}"{% endif %},icon:"{{ mapping.icon.image }}"}{% if not forloop.last %},{% endif %}
 {% endfor %}
 ];
 
