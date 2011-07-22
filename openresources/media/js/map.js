@@ -62,22 +62,26 @@ OpenLayers.Layer.MapsWithoutBorders = OpenLayers.Class(OpenLayers.Layer.OSM, {
      * options - {Object} Hashtable of extra options to tag onto the layer
      */
     initialize: function(name, options) {
+        options = OpenLayers.Util.extend({
+            numZoomLevels: 19,
+            buffer: 0,
+            transitionEffect: "resize",
+            base_url: 'http://tiles.mapswithoutborders.eu/',
+            style: 'default'
+        }, options);
         this.noborders_urls = [
-            MEDIA_URL + "/tiles/default/${z}/${x}/${y}.png"
+            options.base_url + options.style + "/${z}/${x}/${y}.png"
         ];
         this.osm_urls = [
             "http://a.tile.openstreetmap.org/${z}/${x}/${y}.png",
             "http://b.tile.openstreetmap.org/${z}/${x}/${y}.png",
             "http://c.tile.openstreetmap.org/${z}/${x}/${y}.png"
         ];
-        var noborders_max_zoom = 7;
-        options = OpenLayers.Util.extend({
-            numZoomLevels: 19,
-            buffer: 0,
-            transitionEffect: "resize"
-        }, options);
+        this.noborders_max_zoom = 6;
         var newArguments = [name, this.osm_urls, options];
         OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
+
+        this.attribution = 'Maps &amp; Data by <a href="http://www.naturalearthdata.com/" target="_blank">Natural Earth</a>, CC-by-SA <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>, <a href="http://www.mapswithoutborders.eu/" target="_blank">Mapswithoutborders.eu</a>';
     },
 
     getURL: function (bounds) {
@@ -91,7 +95,7 @@ OpenLayers.Layer.MapsWithoutBorders = OpenLayers.Class(OpenLayers.Layer.OSM, {
         //var xyz = this.getXYZ(bounds);
 
         var url = this.noborders_urls[0];
-        if (xyz.z >= 7) {
+        if (xyz.z > this.noborders_max_zoom) {
             url = this.osm_urls;
             if (url instanceof Array) {
                 var s = '' + xyz.x + xyz.y + xyz.z;
