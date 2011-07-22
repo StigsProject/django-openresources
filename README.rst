@@ -55,7 +55,7 @@ OpenResources uses Transifex_ for translating user interface elements. If you wa
 .. image:: https://www.transifex.net/projects/p/openresources/resource/django/chart/image_png
    :target: https://www.transifex.net/projects/p/openresources/
 
-For translating model fields, Transmeta_ is used. While in the medium term, this should be replaced with something that does not interfer with the database schema of the application (see `Issue #1`_), for now we provide an alternative set of migrations when South_ is used in combination with Transmeta. To use these migrations, add the following to your ``settings.py`` file::
+For translating model fields, Transmeta_ is used. While in the medium term, this should be replaced with something that does not interfer with the database schema of the application (see `Issue #1`_), for now we provide an alternative set of migrations to be used when South_ is used in combination with Transmeta. To use these migrations, add the following to your ``settings.py`` file::
 
   SOUTH_MIGRATION_MODULES = {
       'openresources': 'openresources.migrations_transmeta',
