@@ -81,7 +81,23 @@ OpenLayers.Layer.MapsWithoutBorders = OpenLayers.Class(OpenLayers.Layer.OSM, {
         var newArguments = [name, this.osm_urls, options];
         OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
 
-        this.attribution = 'Maps &amp; Data by <a href="http://www.naturalearthdata.com/" target="_blank">Natural Earth</a>, CC-by-SA <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>, <a href="http://www.mapswithoutborders.eu/" target="_blank">Mapswithoutborders.eu</a>';
+        this.mwob_attribution = 'Map CC-by-SA <a href="http://www.mapswithoutborders.eu/" target="_blank">Mapswithoutborders.eu</a>, Data by <a href="http://www.naturalearthdata.com/" target="_blank">Natural Earth</a> &amp; CC-by-SA <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>';
+        this.osm_attribution = 'Map Data CC-by-SA <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>';
+        this.attribution = this.mwob_attribution;
+    
+        this.events.register("moveend",this,function(event){
+            if (event.zoomChanged && this.map) {
+                //alert("zoom changed");
+                if (this.map.getZoom() > this.noborders_max_zoom) {
+                    this.attribution = this.osm_attribution;
+                }
+                else {
+                    this.attribution = this.mwob_attribution;
+                }
+                this.map.events.triggerEvent('changelayer',{property:'attribution'});
+            }
+        });
+
     },
 
     getURL: function (bounds) {
