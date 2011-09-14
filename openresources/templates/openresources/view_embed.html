@@ -14,7 +14,7 @@
 <script type="text/javascript">
 var MEDIA_URL = "{{ MEDIA_URL }}",
     VIEW = "{{ view.shortname }}",
-    CONTEXT = {},
+    CONTEXT = { {% if bounds %}area:[{{ bounds }}]{% endif %} },
     JSON_URL = "{% url geojson name=view.shortname %}",
     MAP_ATTRIBUTION = '{{ map_attribution|safe }}',
     DEFAULT_ICON = '{{ default_resource_icon }}';

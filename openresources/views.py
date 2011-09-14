@@ -201,6 +201,17 @@ def view(request, name, mode=None):
 
     map_attribution = settings.MAP_ATTRIBUTION
     default_resource_icon = settings.DEFAULT_RESOURCE_ICON
+
+    def is_valid_bounds(bounds):
+        bounds = bounds.split(',')
+        if len(bounds) != 4: return False
+        import re
+        for coord in bounds:
+            if not re.match('-?\d+\.?\d*',coord): return False
+        return True
+
+    if is_valid_bounds(request.GET.get('bounds','')):
+        bounds = request.GET['bounds']
     
     return render_to_response(template, RequestContext(request, locals()))
     
