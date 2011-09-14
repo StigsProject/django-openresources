@@ -160,6 +160,7 @@ function init_map() {
         subicontitles: '${subicontitles}',
         iconBaseURL: MEDIA_URL,
         subiconmask: 'openresources/map_marker/subicon_mask.png',
+        zoomBox: '${zoomBox}',
         
         iconText: '${iconText}',
         
@@ -211,6 +212,9 @@ function init_map() {
                 	titles += icons[i].tag + '|';
                 }
                 return titles;
+            },
+            zoomBox: function(feature) {
+                return feature.cluster ? true : '';
             },
             iconXOffset: function(f) { return f.cluster ? 2 : 3 },
             iconYOffset: function(f) { return f.cluster ? 1 : 3 },

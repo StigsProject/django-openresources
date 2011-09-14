@@ -54,6 +54,16 @@ OpenLayers.Renderer.OpenResourcesRenderer = OpenLayers.Class(OpenLayers.Renderer
         	while (node.firstChild) {
 			     node.removeChild(node.firstChild);
 			}
+
+            if (style.zoomBox) {
+                var zoombox = document.createElementNS(this.xmlns, "rect");
+		        zoombox.setAttributeNS(null, "width", 32);
+                zoombox.setAttributeNS(null, "height", 22);
+                zoombox.setAttributeNS(null, "x", -3);
+                zoombox.setAttributeNS(null, "y", 16);
+                zoombox.setAttributeNS(null, "style", "fill: white; fill-opacity: 0.6; stroke: black; stroke-width: 1px; stroke-opacity: 0.7; stroke-dasharray: 2,2;"); //  shape-rendering:optimizeSpeed;
+                node.appendChild(zoombox);
+            }
         	
             var icon = document.createElementNS(this.xmlns, "image");
             icon.setAttributeNS(null, "width", 20);
@@ -116,8 +126,7 @@ OpenLayers.Renderer.OpenResourcesRenderer = OpenLayers.Class(OpenLayers.Renderer
 		                node.appendChild(smask);	            	
 		            }
             	}
-            }
-            
+            }            
             
             if (style.graphicTitle) {
                 node.setAttributeNS(null, "title", style.graphicTitle);
