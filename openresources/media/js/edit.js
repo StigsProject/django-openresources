@@ -176,6 +176,9 @@ var editor_lookup = {
 }
 
 jQuery(function($) {
+    if ($('.advanced .errorlist li').size() > 0) {
+        $('.advanced').show();
+    }
     $('#id_shortname, #id_view-shortname').change(function() {
         this._dirty = true;
     });

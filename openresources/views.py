@@ -106,7 +106,10 @@ def edit_with_template(request, resource=None, template=None):
 
     if request.method == "POST":
         form = ResourceForm(request.user, request.POST, request.FILES, instance=resource)
-        if form.is_valid():
+        formset = TemplateFormSet(template, request.POST, request.FILES, instance=resource,
+                                    can_delete=request.user.has_perm('openresources.delete_tag'),
+                                    key_choices=key_choices)
+        if form.is_valid() and formset.is_valid():
             
             if not resource:
                 # new resource
@@ -116,23 +119,17 @@ def edit_with_template(request, resource=None, template=None):
             else:
                 form.save()
                 
-            formset = TemplateFormSet(template, request.POST, request.FILES, instance=resource,
-                                        can_delete=request.user.has_perm('openresources.delete_tag'),
-                                        key_choices=key_choices)
-            if formset.is_valid():
-                formset.saved_forms = []
-                formset.save_existing_objects()
-                tags = formset.save_new_objects(commit=False)
-                for tag in tags:
-                    tag.creator = request.user
-                    tag.save()
-                if 'action' in request.POST and request.POST['action'] == 'add_tag':
-                    return redirect_to(request, reverse('openresources_edit_with_template', kwargs={'resource':resource.shortname, 'template':template.shortname}))               
-                else:
+            formset.saved_forms = []
+            formset.save_existing_objects()
+            tags = formset.save_new_objects(commit=False)
+            for tag in tags:
+                tag.creator = request.user
+                tag.save()
+            if 'action' in request.POST and request.POST['action'] == 'add_tag':
+                return redirect_to(request, reverse('openresources_edit_with_template', kwargs={'resource':resource.shortname, 'template':template.shortname}))               
+            else:
 
-                    return redirect_to(request, reverse('openresources_resource', kwargs={'key':resource.shortname}))               
-        else:
-            formset = TagFormSet(request.user, instance=resource)
+                return redirect_to(request, reverse('openresources_resource', kwargs={'key':resource.shortname}))               
     else:
         if template and not resource:
             # pre-initialize template field for new resources
