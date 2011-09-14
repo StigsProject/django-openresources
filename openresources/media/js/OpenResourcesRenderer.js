@@ -57,10 +57,10 @@ OpenLayers.Renderer.OpenResourcesRenderer = OpenLayers.Class(OpenLayers.Renderer
 
             if (style.zoomBox) {
                 var zoombox = document.createElementNS(this.xmlns, "rect");
-		        zoombox.setAttributeNS(null, "width", 32);
-                zoombox.setAttributeNS(null, "height", 22);
-                zoombox.setAttributeNS(null, "x", -3);
-                zoombox.setAttributeNS(null, "y", 16);
+		        zoombox.setAttributeNS(null, "width", 30);
+                zoombox.setAttributeNS(null, "height", 20);
+                zoombox.setAttributeNS(null, "x", -2);
+                zoombox.setAttributeNS(null, "y", 17);
                 zoombox.setAttributeNS(null, "style", "fill: white; fill-opacity: 0.6; stroke: black; stroke-width: 1px; stroke-opacity: 0.7; stroke-dasharray: 2,2;"); //  shape-rendering:optimizeSpeed;
                 node.appendChild(zoombox);
             }
