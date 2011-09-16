@@ -118,6 +118,7 @@ def edit_with_template(request, resource=None, template=None):
             else:
                 form.save()
 
+            # we have to wait until here to create the formset to be able to assign the instance
             formset = TemplateFormSet(template, request.POST, request.FILES, instance=resource,
                                         can_delete=request.user.has_perm('openresources.delete_tag'),
                                         key_choices=key_choices)
