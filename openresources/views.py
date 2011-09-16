@@ -64,6 +64,7 @@ def edit_resource(request, key=None):
                 resource = form.save(commit=False)
                 resource.creator = request.user
                 resource.save()
+                form.save_m2m()
             else:
                 form.save()
                 
@@ -116,6 +117,7 @@ def edit_with_template(request, resource=None, template=None):
                 resource = form.save(commit=False)
                 resource.creator = request.user
                 resource.save()
+                form.save_m2m()
             else:
                 form.save()
                 
@@ -240,6 +242,7 @@ def edit_view(request, name=None):
                 view = form.save(commit=False)
                 view.creator = request.user
                 view.save()
+                form.save_m2m()
             else:
                 form.save()
             
@@ -431,6 +434,7 @@ def add_icon(request):
             icon = form.save(commit=False)
             icon.creator = request.user
             icon.save()
+            form.save_m2m()
             return redirect_to(request, reverse('openresources_icons'))               
     else:
         form = IconForm()
@@ -468,6 +472,7 @@ def edit_template(request, name):
                 template = form.save(commit=False)
                 template.creator = request.user
                 template.save()
+                form.save_m2m()
             else:
                 form.save()
                 
@@ -523,6 +528,7 @@ def set_context(request):
         else:
             form = ContextForm(request.POST)
             if form.is_valid():
+                # anonymous users cannot save context, so just create a dummy object and leave
                 request.session['context'] = form.save(commit=False)
 
     return redirect_to(request, request.POST.get('next') or request.META.get('HTTP_REFERER') or reverse('resources_index'))
