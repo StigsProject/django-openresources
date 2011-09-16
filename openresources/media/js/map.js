@@ -255,7 +255,7 @@ function init_map() {
             	var bounds = new OpenLayers.Bounds();
                 for (var i=0; i < feature.cluster.length; i++) {
                 	bounds.extend(feature.cluster[i].geometry.getBounds());
-                    list += "<a href='" + feature.cluster[i].data.url + "'>"+feature.cluster[i].data.title + "</a><br />";
+                    list += "<a target='_top' href='" + feature.cluster[i].data.url + "'>"+feature.cluster[i].data.title + "</a><br />";
                 }
                 content += '<h4>' + feature.cluster.length + ' Resources ';
                 content += '[<a href="#" onclick="select.unselectAll(); map.zoomToExtent(OpenLayers.Bounds.fromString(\'' + bounds.toBBOX() + '\'));">zoom</a>]</h4>';
