@@ -262,7 +262,7 @@ function init_map() {
                 content += list;
             }
             else {
-                content = "<a href='" + feature.data.url + "'>"+feature.data.title + "</a>";
+                content = "<a target='_top' href='" + feature.data.url + "'>"+feature.data.title + "</a>";
             }
             popup = new OpenLayers.Popup.FramedCloud("infoWindow", 
                                      feature.geometry.getBounds().getCenterLonLat(),
