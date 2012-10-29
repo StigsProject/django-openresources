@@ -21,6 +21,7 @@
 
 
 from django.db import models
+from django.db.utils import DatabaseError
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import string_concat
@@ -373,9 +374,14 @@ class UserProfile(models.Model):
 
 
 def user_post_save(sender, instance, created, **kwargs):
-    if created:    
-        UserProfile.objects.get_or_create(user=instance)
-  
+    if created:
+        try: 
+            UserProfile.objects.get_or_create(user=instance)
+        except DatabaseError:
+            # this can happen during initial syncdb when superuser is created but openresources tables have not been created yet
+            import warnings
+            warnings.warn("UserProfile for user %s could not be created - happen during initial syncdb when superuser is created but openresources tables have not been created yet" % instance.username)
+
 models.signals.post_save.connect(user_post_save, sender=User)
 
 
