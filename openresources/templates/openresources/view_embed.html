@@ -18,7 +18,7 @@ var MEDIA_URL = "{{ MEDIA_URL }}",
     CONTEXT = { {% if bounds %}area:[{{ bounds }}]{% endif %} },
     JSON_URL = "{% url geojson name=view.shortname %}",
     MAP_ATTRIBUTION = '{{ map_attribution|safe }}',
-    DEFAULT_ICON = '{{ default_resource_icon }}';
+    DEFAULT_ICON = '{{ STATIC_URL }}{{ default_resource_icon }}';
 
 var icon_mappings = [
 {% for mapping in icon_mappings %}
