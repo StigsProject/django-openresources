@@ -158,7 +158,7 @@ function init_map() {
         mask: '${mask}',
         subicons: '${subicons}',
         subicontitles: '${subicontitles}',
-        iconBaseURL: MEDIA_URL,
+        maskBaseURL: STATIC_URL,
         subiconmask: 'openresources/map_marker/subicon_mask.png',
         zoomBox: '${zoomBox}',
         
@@ -184,7 +184,7 @@ function init_map() {
                 return (feature.cluster) ? feature.cluster.length + ' resources' : feature.data.title;
             },
             externalGraphic: function(feature) {
-                return MEDIA_URL + get_icons(feature)[0].icon;
+                return get_icons(feature)[0].icon;
             },
             icon: function(feature) {
                 return get_icons(feature)[0].icon;

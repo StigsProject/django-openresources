@@ -69,15 +69,22 @@ OpenLayers.Renderer.OpenResourcesRenderer = OpenLayers.Class(OpenLayers.Renderer
             icon.setAttributeNS(null, "width", 20);
             icon.setAttributeNS(null, "height", 20);
             icon.setAttributeNS(null, "x", style.iconXOffset || 0);
-            icon.setAttributeNS(null, "y", style.iconYOffset || 0);            
-            icon.setAttributeNS(this.xlinkns, "href", style.iconBaseURL + style.icon);
+            icon.setAttributeNS(null, "y", style.iconYOffset || 0);
+            var icon_url = style.icon;
+            /*
+            // check if absolute url
+            if (!(icon_url.lastIndexOf('http://', 0) === 0 || icon_url.lastIndexOf('https://', 0) === 0)) {
+                icon_url = style.iconBaseURL + icon_url
+            }
+            */
+            icon.setAttributeNS(this.xlinkns, "href", icon_url);
             node.appendChild(icon);
 
             if (style.mask) {
 	            var mask = document.createElementNS(this.xmlns, "image");
 	            mask.setAttributeNS(null, "width", 26);
 	            mask.setAttributeNS(null, "height", 28);
-	            mask.setAttributeNS(this.xlinkns, "href", style.iconBaseURL + style.mask);
+	            mask.setAttributeNS(this.xlinkns, "href", style.maskBaseURL + style.mask);
 	            node.appendChild(mask);
             }
             
@@ -107,8 +114,8 @@ OpenLayers.Renderer.OpenResourcesRenderer = OpenLayers.Class(OpenLayers.Renderer
 		            sicon.setAttributeNS(null, "width", 8);
 		            sicon.setAttributeNS(null, "height", 8);
 		            sicon.setAttributeNS(null, "x", 20 + (i - i%3) / 3 * 10);
-		            sicon.setAttributeNS(null, "y", -1 + i%3 * 10);            
-		            sicon.setAttributeNS(this.xlinkns, "href", style.iconBaseURL + img);
+		            sicon.setAttributeNS(null, "y", -1 + i%3 * 10);
+		            sicon.setAttributeNS(this.xlinkns, "href", img);
                     if (style.subicontitles && style.subicontitles[i]) {
                         sicon.setAttributeNS(null, "title", style.subicontitles[i]);    
                     }
@@ -119,7 +126,7 @@ OpenLayers.Renderer.OpenResourcesRenderer = OpenLayers.Class(OpenLayers.Renderer
 		                smask.setAttributeNS(null, "height", 10);
 	                    smask.setAttributeNS(null, "x", 19 + (i - i%3) / 3 * 10);
 	                    smask.setAttributeNS(null, "y", -2 + i%3 * 10);            
-		                smask.setAttributeNS(this.xlinkns, "href", style.iconBaseURL + style.subiconmask);
+		                smask.setAttributeNS(this.xlinkns, "href", style.maskBaseURL + style.subiconmask);
 	                    if (style.subicontitles && style.subicontitles[i]) {
 	                        smask.setAttributeNS(null, "title", style.subicontitles[i]);    
 	                    }

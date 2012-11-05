@@ -56,9 +56,9 @@ function hide_reply_form(comment_id, url, person_name) {
 {% for tag in resource.tags.all %}
 <tr><td><a class="tag" href="{% url openresources_tag_key key=tag.key %}">{{ tag.key }}</a>
 </td><td>{% if tag.value_relation %}<a href="{% url openresources_resource key=tag.value_relation.shortname %}">{% endif %}{{ tag.value|linebreaksbr|urlize }}{% if tag.value_relation %}</a>{% endif %}
-{% if tag.value_date %}<img src="{{ MEDIA_URL }}openresources/icons/calendar_10x10.png" />{% endif %}
-{% if tag.value_relation %}<img src="{{ MEDIA_URL }}openresources/icons/chain_10x10.png" />{% endif %}
-{% if tag.value_geo %}<img src="{{ MEDIA_URL }}openresources/icons/globe_10x10.png" />{% endif %}
+{% if tag.value_date %}<img src="{{ STATIC_URL }}openresources/icons/calendar_10x10.png" />{% endif %}
+{% if tag.value_relation %}<img src="{{ STATIC_URL }}openresources/icons/chain_10x10.png" />{% endif %}
+{% if tag.value_geo %}<img src="{{ STATIC_URL }}openresources/icons/globe_10x10.png" />{% endif %}
 </td></li>
 {% endfor %}
 </table>

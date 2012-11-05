@@ -3,8 +3,8 @@
 
 {% block extra_head %}
 {{ block.super }}
-<link rel="stylesheet" href="{{MEDIA_URL}}openresources/css/edit.css">
-<script src="{{MEDIA_URL}}openresources/js/urlify.js" type="text/javascript"></script>
+<link rel="stylesheet" href="{{STATIC_URL}}openresources/css/edit.css">
+<script src="{{STATIC_URL}}openresources/js/urlify.js" type="text/javascript"></script>
 <script type="text/javascript" src="http://dev.openlayers.org/releases/OpenLayers-2.8/OpenLayers.js"></script>
 <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
 <style type="text/css">
@@ -16,13 +16,14 @@
 }
 </style>
 <script type="text/javascript">
-var MEDIA_URL = "{{ MEDIA_URL}}";
+var MEDIA_URL = "{{ MEDIA_URL}}",
+    STATIC_URL = "{{ STATIC_URL}}";
 </script>
 
 {{ form.media }}
 {{ formset.media }}
 
-<script type="text/javascript" src="{{MEDIA_URL}}openresources/js/edit.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}openresources/js/edit.js"></script>
 {% endblock %}
 
 {% block openresources_content %}

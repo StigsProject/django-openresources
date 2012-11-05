@@ -31,7 +31,7 @@ function location_widget(el) {
         map.addLayer(layer_vector);
         
         var style = {
-            externalGraphic: MEDIA_URL + "images/marker.png",
+            externalGraphic: STATIC_URL + "openresources/images/marker.png",
             graphicWidth: 21,
             graphicHeight: 25,
             graphicXOffset: -10,
@@ -200,6 +200,7 @@ jQuery(function($) {
         var widget = editor_lookup[key];
         if (widget) {
             var value_field_id = this.id.substring(0, this.id.indexOf('-key')) + '-value';
+
             var value_field = $('#' + value_field_id);
             
             value_field.after('<div class="value-widget">' + widget + '</div>');           

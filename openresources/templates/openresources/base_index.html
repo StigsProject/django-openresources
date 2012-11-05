@@ -6,19 +6,20 @@
 <script type="text/javascript" src="http://dev.openlayers.org/releases/OpenLayers-2.10/OpenLayers.js"></script>
 <!--<script type="text/javascript" src="http://dev.openlayers.org/nightly/OpenLayers.js"></script>-->
 <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
-<script type="text/javascript" src="{{ MEDIA_URL }}openresources/js/OpenResourcesRenderer.js"></script>
-<script type="text/javascript" src="{{ MEDIA_URL }}openresources/js/map.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}openresources/js/OpenResourcesRenderer.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}openresources/js/map.js"></script>
 <script type="text/javascript">
 var MEDIA_URL = "{{ MEDIA_URL }}",
+    STATIC_URL = "{{ STATIC_URL }}"
     VIEW = "{{ view.shortname }}",
     CONTEXT = {{ context.to_json }},
     JSON_URL = "{% url geojson_all %}",
     MAP_ATTRIBUTION = '{{ map_attribution|safe }}',
-    DEFAULT_ICON = '{{ default_resource_icon }}';
+    DEFAULT_ICON = '{{ STATIC_URL }}{{ default_resource_icon }}';
 
 var icon_mappings = [
 {% for mapping in icon_mappings %}
-{key:"{{ mapping.key}}"{% if mapping.value %},value:"{{ mapping.value }}"{% endif %},icon:"{{ mapping.icon.image }}"}{% if not forloop.last %},
+{key:"{{ mapping.key}}"{% if mapping.value %},value:"{{ mapping.value }}"{% endif %},icon:"{{MEDIA_URL}}{{ mapping.icon.image }}"}{% if not forloop.last %},
 {% endif %}
 {% endfor %}
 ];
