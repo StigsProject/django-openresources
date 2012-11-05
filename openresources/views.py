@@ -321,7 +321,17 @@ def index(request):
         })\
         .order_by('tags__value_date')[:15]
 
-    context_form = ContextForm(instance=_get_context(request))
+    try:
+        view_all = View.objects.get(shortname='all')
+        icon_mappings = view_all.mappings.exclude(icon=None)
+    except View.DoesNotExist:
+        # no "all" view - we cannot provide icon mappings
+        pass
+    context = _get_context(request)
+    context_form = ContextForm(instance=context)
+
+    map_attribution = settings.MAP_ATTRIBUTION
+    default_resource_icon = settings.DEFAULT_RESOURCE_ICON
 
     return render_to_response('openresources/index.html', RequestContext(request, locals()))
 
@@ -538,12 +548,51 @@ def set_context(request):
 
     return redirect_to(request, request.POST.get('next') or request.META.get('HTTP_REFERER') or reverse('resources_index'))
 
+from django.core.serializers.json import DateTimeAwareJSONEncoder
+from django.core import serializers
+from django.db.models.query import QuerySet
+from django.utils import simplejson as json
+
+class GeoJSONEncoder(DateTimeAwareJSONEncoder):
+    """ simplejson.JSONEncoder extension: handle querysets """
+    def default(self, obj):
+        if isinstance(obj, QuerySet):
+            return {
+                    'type': 'FeatureCollection',
+                    'features': list(obj)
+            }
+        if isinstance(obj, Resource):
+            location = obj.tags.filter(key='location').values_list('value', flat=True)
+            if len(location) > 0:
+                lonlat = location[0].partition(':')[2].split(',')
+                json = {
+                        'type':'Feature',
+                        'properties': {
+                            'title': obj.name,
+                            'url': reverse('openresources_resource', kwargs={'key':obj.shortname}),
+                            'tags': {}
+                        }
+                }
+                
+                for tag in obj.tags.all():
+                    if tag.key in json['properties']['tags']:
+                        json['properties']['tags'][tag.key].append(tag.value)
+                    else:
+                        json['properties']['tags'][tag.key] = [tag.value]
+                    
+                try:
+                    json['geometry'] = {
+                            'type': 'Point', 
+                            'coordinates': [float(lonlat[0]),float(lonlat[1])]
+                        }
+                except:
+                    # fail silently if something geos wrong with extracting coords
+                    pass
+                return json
+            return None
+        return super(GeoJSONEncoder, self).default(obj)
                
 def view_json(request, name=None):
-    from django.utils import simplejson as json
-    from django.core import serializers
-    from django.db.models.query import QuerySet
-    from django.core.serializers.json import DateTimeAwareJSONEncoder
 
     view = get_object_or_404(View, shortname=name)    
     if view.protected and not request.user.is_authenticated():
@@ -552,49 +601,24 @@ def view_json(request, name=None):
     resources = view.get_resources().filter(tags__key='location')
     if not request.user.is_authenticated():
         resources = resources.filter(protected=False)
-    
-    class GeoJSONEncoder(DateTimeAwareJSONEncoder):
-        """ simplejson.JSONEncoder extension: handle querysets """
-        def default(self, obj):
-            if isinstance(obj, QuerySet):
-                return {
-                        'type': 'FeatureCollection',
-                        'features': list(obj)
-                }
-            if isinstance(obj, Resource):
-                location = obj.tags.filter(key='location').values_list('value', flat=True)
-                if len(location) > 0:
-                    lonlat = location[0].partition(':')[2].split(',')
-                    json = {
-                            'type':'Feature',
-                            'properties': {
-                                'title': obj.name,
-                                'url': reverse('openresources_resource', kwargs={'key':obj.shortname}),
-                                'tags': {}
-                            }
-                    }
-                    
-                    for tag in obj.tags.all():
-                        if tag.key in json['properties']['tags']:
-                            json['properties']['tags'][tag.key].append(tag.value)
-                        else:
-                            json['properties']['tags'][tag.key] = [tag.value]
-                        
-                    try:
-                        json['geometry'] = {
-                                'type': 'Point', 
-                                'coordinates': [float(lonlat[0]),float(lonlat[1])]
-                            }
-                    except:
-                        # fail silently if something geos wrong with extracting coords
-                        pass
-                    return json
-                return None
-            return super(GeoJSONEncoder, self).default(obj)
 
-    
     str = json.dumps(resources, cls=GeoJSONEncoder, indent=2)
     
     return HttpResponse(str, mimetype='application/json')
 
+def all_json(request):
+
+    try:    
+        return view_json(request, 'all')
+    except Http404:
+        # view with name "all" not found, return all resources without mapping
+        pass
+
+    resources = Resource.objects.filter(tags__key='location')
+    if not request.user.is_authenticated():
+        resources = resources.filter(protected=False)
+       
+    str = json.dumps(resources, cls=GeoJSONEncoder, indent=2)
+    
+    return HttpResponse(str, mimetype='application/json')
 

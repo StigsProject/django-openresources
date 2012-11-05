@@ -70,6 +70,7 @@ urlpatterns = patterns('',
     url(r'^choices.json$', views.resource_choices),
     url(r'^tag/(?P<key>.*)/choices.json$', views.tag_choices),
     
+    url(r'^json/all/$', views.all_json, name='geojson_all'),
     url(r'^json/view/(?P<name>.*)/$', views.view_json, name='geojson'),
     
     # *? matches key non-greedy, matching only as few as possible characters if value has '=' sign in it

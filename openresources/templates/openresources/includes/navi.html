@@ -17,7 +17,7 @@
 {{ context_form }}
 <button type="submit">{% trans "Set" %}</button>
 </div>
-
+{% csrf_token %}
 </form>
 {% endif %}
 <div class="clear"></div>
