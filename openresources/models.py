@@ -373,8 +373,9 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-def user_post_save(sender, instance, created, **kwargs):
-    if created:
+def user_post_save(sender, instance, created, raw, **kwargs):     
+    # if raw==True, we are loading a fixture   
+    if created and not raw:
         try: 
             UserProfile.objects.get_or_create(user=instance)
         except DatabaseError:
