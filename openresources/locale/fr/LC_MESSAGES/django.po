@@ -2,388 +2,438 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: openresources\n"
-"Report-Msgid-Bugs-To: http://bitbucket.org/floledermann/openresources/issues\n"
-"POT-Creation-Date: 2011-02-08 21:39+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-08 21:34+0100\n"
 "PO-Revision-Date: 2011-04-18 13:03+0000\n"
 "Last-Translator: floledermann <ledermann@ims.tuwien.ac.at>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: forms.py:101
+#: forms.py:121
 msgid "Everywhere"
 msgstr ""
 
-#: forms.py:101 models.py:273
+#: forms.py:121 models.py:300
 msgid "Area"
 msgstr "Région"
 
-#: forms.py:293
+#: forms.py:294
 msgid "Delete"
 msgstr "Supprimer"
 
-#: forms.py:337
+#: forms.py:338
 msgid "More Tags"
 msgstr "Plus de Tags"
 
-#: models.py:17
+#: models.py:50
 msgid "(Will be part of the resources' URL)"
 msgstr ""
 
-#: models.py:17
+#: models.py:50
 msgid "Shortname"
 msgstr ""
 
-#: models.py:19
+#: models.py:52
 msgid "Template"
 msgstr "Modèle"
 
-#: models.py:22 models.py:100
+#: models.py:55 models.py:134
 msgid "(Hidden from anonymous users)"
 msgstr "(Caché des utilisateurs anonymes)"
 
-#: models.py:22
+#: models.py:55
 msgid "protected"
 msgstr "protégées"
 
-#: models.py:27 models.py:28
+#: models.py:60 models.py:61
 msgid "Format: yyyy-mm-dd hh:mm (time is optional)"
 msgstr ""
 
-#: models.py:54
+#: models.py:87
 msgid "Value field parsed as date."
 msgstr "Valeur analysée en tant que date."
 
-#: models.py:55
+#: models.py:88
 msgid "Value field parsed as relation to other resource."
 msgstr "Valeur analysée en tant que rapport à d'autres ressources."
 
-#: models.py:97
+#: models.py:130
 msgid "(Will be part of the views' URL)"
 msgstr ""
 
-#: models.py:162
+#: models.py:189
 msgid "All tags"
 msgstr "Tous les tags"
 
-#: models.py:165
+#: models.py:192
 msgid "is present"
 msgstr "est présent"
 
-#: models.py:167
+#: models.py:194
 msgid "begins with"
 msgstr "commence par"
 
-#: models.py:171
+#: models.py:198
 msgid "and"
 msgstr "et"
 
-#: models.py:172
+#: models.py:199
 msgid "or"
 msgstr "ou"
 
-#: models.py:213
+#: models.py:240
 msgid "Default Icon"
 msgstr "Icône par défaut"
 
-#: models.py:214
+#: models.py:241
 msgid "Red"
 msgstr "Rouge"
 
-#: models.py:239
+#: models.py:266
 msgid "Subicon only"
 msgstr "Subicon seulement"
 
-#: models.py:288 models.py:306 models.py:323
+#: models.py:315 models.py:333 models.py:350
 msgid "Name"
 msgstr "Nom"
 
-#: models.py:289
+#: models.py:316
 msgid "(Will be part of the template's URL)"
 msgstr ""
 
-#: templates/resources/credits.html:4 templates/resources/credits.html.py:8
+#: templates/openresources/base.html:6 templates/openresources/base.html:22
+msgid "Test setup"
+msgstr ""
+
+#: templates/openresources/base.html:36 templates/openresources/credits.html:4
+#: templates/openresources/credits.html:8
 msgid "Credits"
 msgstr "Crédits"
 
-#: templates/resources/edit.html:32
-#: templates/resources/edit_with_template.html:32
-#: templates/resources/templates.html:13
-msgid "New resource"
-msgstr "Nouvelle ressource"
+#: templates/openresources/base_index.html:36
+msgid "Where?"
+msgstr "Ou?"
 
-#: templates/resources/edit.html:62 templates/resources/view_edit.html:59
-#: templates/resources/view_edit.html:99
-msgid "Common Tags:"
-msgstr "Tags commune:"
+#: templates/openresources/base_index.html:40
+#: templates/openresources/includes/navi.html:15
+msgid "Set"
+msgstr "Set"
 
-#: templates/resources/edit.html:87
-#: templates/resources/edit_with_template.html:57
-#: templates/resources/view_edit.html:122
-msgid "Help:"
-msgstr "Aide:"
+#: templates/openresources/base_index.html:50
+msgid "What?"
+msgstr "Quoi?"
 
-#: templates/resources/edit.html:95
-#: templates/resources/edit_with_template.html:65
-#: templates/resources/icon_edit.html:23
-#: templates/resources/template_edit.html:40
-#: templates/resources/view_edit.html:129
-msgid "Save"
-msgstr "Enregistrer"
+#: templates/openresources/base_index.html:53
+msgid "Search"
+msgstr "Chercher"
 
-#: templates/resources/edit.html:96
-#: templates/resources/edit_with_template.html:66
-#: templates/resources/template_edit.html:41
-#: templates/resources/view_edit.html:130
-msgid "Save and continue"
-msgstr "Enregistrer et continuer"
-
-#: templates/resources/edit.html:97
-#: templates/resources/edit_with_template.html:67
-#: templates/resources/icon_edit.html:25
-#: templates/resources/template_edit.html:43
-#: templates/resources/view_edit.html:132
-msgid "Cancel"
-msgstr "Annuler"
-
-#: templates/resources/edit.html:106
-#: templates/resources/edit_with_template.html:79
-msgid "Add location tag for this address"
-msgstr ""
-
-#: templates/resources/edit_with_template.html:32
-msgid "Template:"
-msgstr "Modèle:"
-
-#: templates/resources/edit_with_template.html:43
-msgid "advanced"
-msgstr "avancée"
-
-#: templates/resources/edit_with_template.html:73
-msgid "Look up from address"
-msgstr ""
-
-#: templates/resources/icon_edit.html:15
-msgid "New Icon"
-msgstr "Ajouter une icône"
-
-#: templates/resources/icons.html:5 templates/resources/icons.html.py:9
-#: templates/resources/view_edit.html:123
-msgid "Icons"
-msgstr "Icônes"
-
-#: templates/resources/icons.html:11
-msgid "Add Icon"
-msgstr "Ajouter une icône"
-
-#: templates/resources/index.html:8
-msgid "Add resource"
-msgstr "Ajouter ressource"
-
-#: templates/resources/index.html:20 templates/resources/index.html.py:69
-msgid "Read more..."
-msgstr "Lire plus"
-
-#: templates/resources/index.html:26 templates/resources/views.html:8
-#: templates/resources/includes/navi.html:5
-msgid "Views"
-msgstr "Vues"
-
-#: templates/resources/index.html:33
+#: templates/openresources/base_index.html:60
 msgid "all views..."
 msgstr "tous les vues ..."
 
-#: templates/resources/index.html:38
-msgid "Newest Resources"
-msgstr "Ressources récent"
+#: templates/openresources/base_index.html:67
+#: templates/openresources/includes/view_actions.html:8
+#: templates/openresources/includes/view_actions.html:10
+msgid "Add resource"
+msgstr "Ajouter ressource"
 
-#: templates/resources/index.html:44
-msgid "all resources..."
-msgstr "toutes les ressources ..."
-
-#: templates/resources/index.html:48
-#: templates/resources/includes/view_modes.html:9
-msgid "Upcoming"
-msgstr "À venir"
-
-#: templates/resources/index.html:58
-msgid "all upcoming events..."
-msgstr "tous les événements à venir ..."
-
-#: templates/resources/index.html:63
-msgid "News"
-msgstr "Nouvelles"
-
-#: templates/resources/resource.html:68
-msgid "Edit"
-msgstr "Editer"
-
-#: templates/resources/resource.html:74
-msgid "Comments for"
-msgstr "Commentaires pour"
-
-#: templates/resources/resource.html:79
-msgid "Comment by"
-msgstr "Commentaire à"
-
-#: templates/resources/resource.html:81
-msgid "Reply"
-msgstr "Repondre"
-
-#: templates/resources/resource.html:87
-msgid "New Comment"
-msgstr "Nouveau commentaire"
-
-#: templates/resources/resources_by_tag.html:4
-#: templates/resources/resources_by_tag.html:8
-#: templates/resources/resources_by_tag.html:21
-msgid "Resources with tag:"
-msgstr "Ressources avec le tag:"
-
-#: templates/resources/resources_by_tag.html:11
-msgid "Wiki Page for Key:"
-msgstr "Page Wiki pour les clés:"
-
-#: templates/resources/search_results.html:4
-#: templates/resources/search_results.html:8
-msgid "Search results for:"
-msgstr "Résultats pour:"
-
-#: templates/resources/tag.html:4 templates/resources/tag.html.py:8
-msgid "Tag:"
-msgstr "Tag:"
-
-#: templates/resources/tags.html:4
-msgid "List of tags"
-msgstr "Liste des tags"
-
-#: templates/resources/tags.html:8
-msgid "All Tags"
-msgstr "Tous les Tags"
-
-#: templates/resources/template_edit.html:30
-msgid "New template"
-msgstr "Nouveau modèle"
-
-#: templates/resources/templates.html:4
-msgid "List of templates"
-msgstr "Liste des modèles"
-
-#: templates/resources/templates.html:8
-msgid "Templates"
-msgstr "Modèles"
-
-#: templates/resources/templates.html:13
-msgid "edit"
-msgstr "modifier"
-
-#: templates/resources/templates.html:18
-msgid "Add Template"
-msgstr "Ajouter un modèle"
-
-#: templates/resources/templates.html:19
-msgid "Create resource without template"
-msgstr "Créer une ressource sans modèle"
-
-#: templates/resources/view_edit.html:32
-msgid "New view"
-msgstr "Nouvelle vue"
-
-#: templates/resources/view_edit.html:41
-msgid "Filters"
-msgstr "Filtres"
-
-#: templates/resources/view_edit.html:42
-msgid "Resources which meet these criteria will be listed in the view."
-msgstr "Ressources qui répondent à ces critères seront listés dans la vue."
-
-#: templates/resources/view_edit.html:81
-msgid "Mappings"
-msgstr ""
-
-#: templates/resources/view_edit.html:82
-msgid "Mappings determine the appearance of the resource."
-msgstr ""
-
-#: templates/resources/view_embed.html:35 templates/resources/view_map.html:44
-#: templates/resources/view_overview.html:53
+#: templates/openresources/base_index.html:74
+#: templates/openresources/view_embed.html:36
+#: templates/openresources/view_map.html:33
 msgid "Map Data Loading..."
 msgstr "Carte chargement des données ..."
 
-#: templates/resources/view_export.html:12
-#: templates/resources/view_list.html:30 templates/resources/view_map.html:35
-#: templates/resources/view_overview.html:35
+#: templates/openresources/base_index.html:80
+msgid "Newest Resources"
+msgstr "Ressources récent"
+
+#: templates/openresources/base_index.html:86
+msgid "all resources..."
+msgstr "toutes les ressources ..."
+
+#: templates/openresources/base_index.html:90
+#: templates/openresources/includes/view_modes.html:9
+msgid "Upcoming"
+msgstr "À venir"
+
+#: templates/openresources/base_index.html:100
+msgid "all upcoming events..."
+msgstr "tous les événements à venir ..."
+
+#: templates/openresources/edit.html:34
+#: templates/openresources/edit_with_template.html:34
+#: templates/openresources/templates.html:13
+msgid "New resource"
+msgstr "Nouvelle ressource"
+
+#: templates/openresources/edit.html:64
+#: templates/openresources/view_edit.html:90
+#: templates/openresources/view_edit.html:137
+msgid "Common Tags:"
+msgstr "Tags commune:"
+
+#: templates/openresources/edit.html:89
+#: templates/openresources/edit_with_template.html:59
+#: templates/openresources/view_edit.html:161
+msgid "Help:"
+msgstr "Aide:"
+
+#: templates/openresources/edit.html:97
+#: templates/openresources/edit_with_template.html:67
+#: templates/openresources/icon_edit.html:23
+#: templates/openresources/template_edit.html:41
+#: templates/openresources/view_edit.html:168
+msgid "Save"
+msgstr "Enregistrer"
+
+#: templates/openresources/edit.html:98
+#: templates/openresources/edit_with_template.html:68
+#: templates/openresources/template_edit.html:42
+#: templates/openresources/view_edit.html:169
+msgid "Save and continue"
+msgstr "Enregistrer et continuer"
+
+#: templates/openresources/edit.html:99
+#: templates/openresources/edit_with_template.html:69
+#: templates/openresources/icon_edit.html:25
+#: templates/openresources/template_edit.html:44
+#: templates/openresources/view_edit.html:171
+msgid "Cancel"
+msgstr "Annuler"
+
+#: templates/openresources/edit.html:108
+#: templates/openresources/edit_with_template.html:81
+msgid "Add location tag for this address"
+msgstr ""
+
+#: templates/openresources/edit_with_template.html:34
+msgid "Template:"
+msgstr "Modèle:"
+
+#: templates/openresources/edit_with_template.html:45
+#: templates/openresources/view_edit.html:45
+msgid "advanced"
+msgstr "avancée"
+
+#: templates/openresources/edit_with_template.html:75
+msgid "Look up from address"
+msgstr ""
+
+#: templates/openresources/icon_edit.html:15
+msgid "New Icon"
+msgstr "Ajouter une icône"
+
+#: templates/openresources/icons.html:5 templates/openresources/icons.html:9
+#: templates/openresources/view_edit.html:162
+msgid "Icons"
+msgstr "Icônes"
+
+#: templates/openresources/icons.html:11
+msgid "Add Icon"
+msgstr "Ajouter une icône"
+
+#: templates/openresources/resource.html:68
+#, fuzzy
+msgid "Related resources"
+msgstr "Ajouter ressource"
+
+#: templates/openresources/resource.html:80
+msgid "Edit"
+msgstr "Editer"
+
+#: templates/openresources/resources_by_tag.html:4
+#: templates/openresources/resources_by_tag.html:8
+#: templates/openresources/resources_by_tag.html:21
+msgid "Resources with tag:"
+msgstr "Ressources avec le tag:"
+
+#: templates/openresources/resources_by_tag.html:11
+msgid "Wiki Page for Key:"
+msgstr "Page Wiki pour les clés:"
+
+#: templates/openresources/search_results.html:4
+#: templates/openresources/search_results.html:8
+msgid "Search results for:"
+msgstr "Résultats pour:"
+
+#: templates/openresources/tag.html:4 templates/openresources/tag.html.py:8
+msgid "Tag:"
+msgstr "Tag:"
+
+#: templates/openresources/tag.html:22
+msgid "Rename"
+msgstr ""
+
+#: templates/openresources/tags.html:4
+msgid "List of tags"
+msgstr "Liste des tags"
+
+#: templates/openresources/tags.html:8
+msgid "All Tags"
+msgstr "Tous les Tags"
+
+#: templates/openresources/template_edit.html:31
+msgid "New template"
+msgstr "Nouveau modèle"
+
+#: templates/openresources/templates.html:4
+msgid "List of templates"
+msgstr "Liste des modèles"
+
+#: templates/openresources/templates.html:8
+msgid "Templates"
+msgstr "Modèles"
+
+#: templates/openresources/templates.html:13
+msgid "edit"
+msgstr "modifier"
+
+#: templates/openresources/templates.html:18
+msgid "Add Template"
+msgstr "Ajouter un modèle"
+
+#: templates/openresources/templates.html:19
+msgid "Create resource without template"
+msgstr "Créer une ressource sans modèle"
+
+#: templates/openresources/view_base.html:4
+#: templates/openresources/view_embed.html:4
+#: templates/openresources/view_export.html:7
+msgid "View"
+msgstr "Vue"
+
+#: templates/openresources/view_base.html:12
 msgid "This view shows resources with tags:"
 msgstr "Cette vue montre les ressources avec tags:"
 
-#: templates/resources/view_export.html:20
+#: templates/openresources/view_edit.html:31
+msgid "New view"
+msgstr "Nouvelle vue"
+
+#: templates/openresources/view_edit.html:42
+msgid "Basic Info"
+msgstr ""
+
+#: templates/openresources/view_edit.html:53
+msgid "Settings"
+msgstr ""
+
+#: templates/openresources/view_edit.html:61
+msgid "Filters"
+msgstr "Filtres"
+
+#: templates/openresources/view_edit.html:62
+msgid "Resources which meet these criteria will be listed in the view."
+msgstr "Ressources qui répondent à ces critères seront listés dans la vue."
+
+#: templates/openresources/view_edit.html:114
+msgid "Mappings"
+msgstr ""
+
+#: templates/openresources/view_edit.html:115
+msgid "Mappings determine the appearance of the resource."
+msgstr ""
+
+#: templates/openresources/view_export.html:5
 msgid "Use the following code to embed this view in other websites:"
 msgstr ""
 "Utilisez le code ci-dessous pour intégrer cette vue sur d'autres sites:"
 
-#: templates/resources/view_export.html:23
-msgid "View"
-msgstr "Vue"
-
-#: templates/resources/views.html:4
+#: templates/openresources/views.html:4
 msgid "List of views"
 msgstr "Liste des vues"
 
-#: templates/resources/views.html:10
+#: templates/openresources/views.html:8
+#: templates/openresources/includes/navi.html:6
+msgid "Views"
+msgstr "Vues"
+
+#: templates/openresources/views.html:10
 msgid "Add view"
 msgstr "Ajouter vue"
 
-#: templates/resources/includes/navi.html:4
+#: templates/openresources/includes/navi.html:5
 msgid "Main"
 msgstr "Principal"
 
-#: templates/resources/includes/navi.html:6
+#: templates/openresources/includes/navi.html:7
 msgid "Tags"
 msgstr "Tags"
 
-#: templates/resources/includes/navi.html:11
-msgid "Search"
-msgstr "Chercher"
-
-#: templates/resources/includes/navi.html:19
-msgid "Set"
-msgstr "Set"
-
-#: templates/resources/includes/tag_actions.html:2
+#: templates/openresources/includes/tag_actions.html:2
 msgid "Documentation for key:"
 msgstr ""
 
-#: templates/resources/includes/tag_actions.html:3
+#: templates/openresources/includes/tag_actions.html:3
 msgid "Resources with key:"
 msgstr ""
 
-#: templates/resources/includes/view_actions.html:5
+#: templates/openresources/includes/user_actions.html:6
+msgid "Welcome,"
+msgstr ""
+
+#: templates/openresources/includes/user_actions.html:8
+msgid "Not logged in"
+msgstr ""
+
+#: templates/openresources/includes/user_actions.html:15
+msgid "Log out"
+msgstr ""
+
+#: templates/openresources/includes/user_actions.html:17
+msgid "Log in"
+msgstr ""
+
+#: templates/openresources/includes/user_actions.html:30
+msgid "language:"
+msgstr ""
+
+#: templates/openresources/includes/view_actions.html:5
 msgid "Edit view"
 msgstr "Modifier vue"
 
-#: templates/resources/includes/view_modes.html:5
+#: templates/openresources/includes/view_modes.html:5
 msgid "Overview"
 msgstr "Ensemble"
 
-#: templates/resources/includes/view_modes.html:6
+#: templates/openresources/includes/view_modes.html:6
 msgid "Map"
 msgstr "Carte"
 
-#: templates/resources/includes/view_modes.html:7
+#: templates/openresources/includes/view_modes.html:7
 msgid "Not on Map"
 msgstr "Pas sur la carte"
 
-#: templates/resources/includes/view_modes.html:8
+#: templates/openresources/includes/view_modes.html:8
 msgid "List"
 msgstr "Liste"
 
-#: templates/resources/includes/view_modes.html:10
+#: templates/openresources/includes/view_modes.html:10
 msgid "Export"
 msgstr "Exporter"
+
+#~ msgid "Read more..."
+#~ msgstr "Lire plus"
+
+#~ msgid "News"
+#~ msgstr "Nouvelles"
+
+#~ msgid "Comments for"
+#~ msgstr "Commentaires pour"
+
+#~ msgid "Comment by"
+#~ msgstr "Commentaire à"
+
+#~ msgid "Reply"
+#~ msgstr "Repondre"
+
+#~ msgid "New Comment"
+#~ msgstr "Nouveau commentaire"
