@@ -26,7 +26,7 @@
 }
 
 .context-form .field-wrapper {
-    padding: 3px 5px;
+    padding: 3px 5px 3px 0;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;

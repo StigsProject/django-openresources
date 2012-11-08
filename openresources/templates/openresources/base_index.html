@@ -29,17 +29,29 @@ var icon_mappings = [
 
 {% block openresources_content %}
 
-{% block top_actions %}
-<div class="actions">
-<a class="action add" href="{% url openresources_templates %}">{% trans "Add resource" %}</a>
-</div>
-{% endblock %}
-
 {% block top_content %}{% endblock %}
+
+{% if context_form %}
+<div class="navbox">
+<h2 class="inline">{% trans "Where?" %}</h2>
+<form class="context-form autosubmit" action="{% url openresources_set_context %}" method="post">
+<div class="field-wrapper{% if context_form.instance.area %} active{% endif %}">
+{{ context_form.area }}
+<button type="submit">{% trans "Set" %}</button>
+</div>
+{% csrf_token %}
+</form>
+<button class="uselocationbutton">Use my current location</button>
+</div>
+{% endif %}
 
 {% block views %}
 <div class="navbox">
-<h2><a href="{% url openresources_views %}">{% trans "Views" %}</a></h2>
+<h2 class="inline">{% trans "What?" %}</h2>
+<form class="search-form" action="{% url openresources_search %}" method="get">
+<input name="q" type="text" size="15"/>
+<button type="submit">{% trans "Search" %}</button>
+</form>
 <ul class="views-list">
 {% for view in featured_views %}
 <li class="view"><a href="{% url openresources_view name=view.shortname %}">{{ view.name }}</a></li>
@@ -47,6 +59,12 @@ var icon_mappings = [
 </ul>
 <a class="more" href="{% url openresources_views %}">{% trans "all views..." %}</a>
 <div class="clear"></div>
+</div>
+{% endblock %}
+
+{% block top_actions %}
+<div class="actions">
+<a class="action add" href="{% url openresources_templates %}">{% trans "Add resource" %}</a>
 </div>
 {% endblock %}
 

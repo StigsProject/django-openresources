@@ -207,9 +207,15 @@ ul#messages {
 }
 
 .listbox,
-.navbox,
 .formbox {
     border: 1px solid #aaaaaa;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;   
+}
+
+.navbox {
+    background-color: #eee;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;   
@@ -311,6 +317,19 @@ code {
 
 em {
     font-style: italic;
+}
+
+h2.inline {
+    float: left;
+    min-width: 100px;
+}
+
+h2.inline:after {
+    content: " >> ";
+    font-weight: bold;
+    color: #999;
+    margin: 0 5px;
+    letter-spacing: -3px;
 }
 
 .username,
@@ -455,5 +474,9 @@ fieldset.advanced {
 
 html .toggle.on {
     background-image: url('../icons/toggle-minus_16x16.png');
+}
+
+.context-form {
+    float: left;
 }
 
