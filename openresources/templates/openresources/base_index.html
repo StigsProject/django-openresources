@@ -42,6 +42,7 @@ var icon_mappings = [
 {% csrf_token %}
 </form>
 <button class="uselocationbutton">Use my current location</button>
+<div class="clear"></div>
 </div>
 {% endif %}
 
@@ -94,6 +95,8 @@ var icon_mappings = [
 <div class="date">{% smart_date resource.start_date resource.end_date "l,&\n\b\s\p;j.n." %}</div>
 <a href="{% url openresources_resource key=resource.shortname%}">{{ resource.name }}</a>
 </div>
+{% empty %}
+<li class="empty">{% trans "No upcoming resources at the moment..." %}</li>
 {% endfor %}
 </table>
 <!--

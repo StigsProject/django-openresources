@@ -7,7 +7,7 @@ var map;
 var select;
 
 function get_icon(feature, mapping){
-	if (feature.data.tags[mapping['key']]) {
+	if (feature.data.tags && feature.data.tags[mapping['key']]) {
 		if (mapping['value']) {
 			for (var i=0; i<feature.data.tags[mapping['key']].length; i++) {
 				if (feature.data.tags[mapping['key']][i] == mapping['value']) {
