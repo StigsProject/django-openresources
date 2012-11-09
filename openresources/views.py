@@ -403,6 +403,7 @@ def resources_by_tag(request, key, value=None):
     return render_to_response('openresources/resources_by_tag.html', RequestContext(request, locals()))
 
 
+
 @permission_required('openresources.batch_rename_tags')
 def rename_tag(request):
     from django.utils.http import urlquote
@@ -520,6 +521,10 @@ def search(request):
 
     results['resources'] = Resource.objects.filter(name__icontains=q)
     results['tags'] = Tag.objects.filter(value__icontains=q)
+
+    from transmeta import get_real_fieldname
+    fname = get_real_fieldname('name')
+    results['views'] = View.objects.filter(**{'%s__icontains' % fname : q})
 
     import wiki
     results['pages'] = wiki.models.Article.objects.filter(content__icontains=q)

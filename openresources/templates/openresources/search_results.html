@@ -7,6 +7,16 @@
 
 <h1>{% trans "Search results for:" %} {{q}}</h1>
 
+<h2>Views</h2>
+
+<ul class="results-list">
+{% for view in results.views %}
+<li class="view"><a href="{% url openresources_view name=view.shortname %}">{{ view.name }}</a></li>
+{% empty %}
+<li class="empty">No Results Found</li>
+{% endfor %}
+</ul>
+
 <h2>Resources</h2>
 
 <ul class="results-list">
