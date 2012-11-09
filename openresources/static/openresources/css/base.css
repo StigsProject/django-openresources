@@ -227,7 +227,7 @@ ul#messages {
     float: left;
     position: relative;
     width: 30%;
-    min-width: 280px;
+    min-width: 258px;
     padding: 1%;
     margin: 0 1% 10px 0;
 }
