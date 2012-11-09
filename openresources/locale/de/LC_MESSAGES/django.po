@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-08 21:34+0100\n"
+"POT-Creation-Date: 2012-11-08 21:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -241,9 +241,8 @@ msgid "Add Icon"
 msgstr "Neues Icon"
 
 #: templates/openresources/resource.html:68
-#, fuzzy
 msgid "Related resources"
-msgstr "Neue Ressource"
+msgstr "Verknüpfte Ressourcen"
 
 #: templates/openresources/resource.html:80
 msgid "Edit"
