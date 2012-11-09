@@ -126,7 +126,7 @@ body {
     position: relative;
     max-width: 850px;
     margin: 0 auto;
-    padding: 10px 0 0;
+    padding: 3px 0 0;
 }
 
 .header-wrapper {
@@ -283,7 +283,7 @@ h1 {
 }
 
 .header h1 {
-    margin: 5px 0 10px;
+    margin: 5px 0 7px;
 }
 
 h1 a {
@@ -292,7 +292,7 @@ h1 a {
 
 h2 {
     font-size: 18px;
-    line-height: 20px;
+    line-height: 24px;
     margin: 12px 0 6px;
 }
 
@@ -304,11 +304,6 @@ h2 a {
     text-decoration: none;
 }
 
-h3 {
-    font-size: 16px;
-    line-height: 18px;
-    margin: 10px 0 5px;
-}
 
 h4 {
 }
@@ -328,6 +323,7 @@ em {
 h2.inline {
     float: left;
     min-width: 100px;
+    margin: 0;
 }
 
 h2.inline:after {
@@ -482,7 +478,9 @@ html .toggle.on {
     background-image: url('../icons/toggle-minus_16x16.png');
 }
 
-.context-form {
+.content .context-form {
     float: left;
+    margin: 0;
 }
+
 
