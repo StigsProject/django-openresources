@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-08 21:59+0100\n"
+"POT-Creation-Date: 2012-11-09 20:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,44 +127,48 @@ msgstr ""
 msgid "Set"
 msgstr ""
 
-#: templates/openresources/base_index.html:50
+#: templates/openresources/base_index.html:51
 msgid "What?"
 msgstr ""
 
-#: templates/openresources/base_index.html:53
+#: templates/openresources/base_index.html:54
 msgid "Search"
 msgstr ""
 
-#: templates/openresources/base_index.html:60
+#: templates/openresources/base_index.html:61
 msgid "all views..."
 msgstr ""
 
-#: templates/openresources/base_index.html:67
+#: templates/openresources/base_index.html:68
 #: templates/openresources/includes/view_actions.html:8
 #: templates/openresources/includes/view_actions.html:10
 msgid "Add resource"
 msgstr ""
 
-#: templates/openresources/base_index.html:74
+#: templates/openresources/base_index.html:75
 #: templates/openresources/view_embed.html:36
 #: templates/openresources/view_map.html:33
 msgid "Map Data Loading..."
 msgstr ""
 
-#: templates/openresources/base_index.html:80
+#: templates/openresources/base_index.html:81
 msgid "Newest Resources"
 msgstr ""
 
-#: templates/openresources/base_index.html:86
+#: templates/openresources/base_index.html:87
 msgid "all resources..."
 msgstr ""
 
-#: templates/openresources/base_index.html:90
+#: templates/openresources/base_index.html:91
 #: templates/openresources/includes/view_modes.html:9
 msgid "Upcoming"
 msgstr ""
 
-#: templates/openresources/base_index.html:100
+#: templates/openresources/base_index.html:99
+msgid "No upcoming resources at the moment..."
+msgstr ""
+
+#: templates/openresources/base_index.html:103
 msgid "all upcoming events..."
 msgstr ""
 
