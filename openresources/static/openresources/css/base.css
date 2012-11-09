@@ -483,4 +483,24 @@ html .toggle.on {
     margin: 0;
 }
 
+.navbox .next-arrow {
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    left: 50%;
+    bottom: -31px;
+    margin-left: -100px;
+    background-image: url('../images/arrow_down_200x30.png'); 
+}
+
+.navbox .next-join {
+    position: absolute;
+    width: 160px;
+    height: 8px;
+    left: 50%;
+    bottom: -9px;
+    margin-left: -80px;
+    background: #eee;
+}
+
 
