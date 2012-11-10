@@ -56,7 +56,7 @@ urlpatterns = patterns('',
     url(r'^template-resource/(?P<template>.*)/(?P<resource>.*)/$', views.edit_with_template, name='openresources_edit_with_template'),
     url(r'^template-resource/(?P<template>.*)/$', views.edit_with_template, name='openresources_edit_with_template'),
 
-    url(r'^all/$', views.all_resources, name='openresources_all'),
+    #url(r'^all/$', views.all_resources, name='openresources_all'),
    
     url(r'^tags/$', views.tags, name='openresources_tags'),
     # *? matches key non-greedy, matching only as few as possible characters if value has = sign in it

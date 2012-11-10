@@ -148,16 +148,6 @@ def edit_with_template(request, resource=None, template=None):
     return render_to_response('openresources/edit_with_template.html', RequestContext(request, locals()))
 
 
-def all_resources(request):
-    resources = Resource.objects.all()
-    
-    if not request.user.is_authenticated():
-        resources = resources.filter(protected=False)
-        
-    view = {'name': 'All Resources'}
-    return render_to_response('openresources/view.html', RequestContext(request, locals()))
-    
-
 def view(request, name, mode=None):
 
     view = get_object_or_404(View, shortname=name)
@@ -174,8 +164,15 @@ def view(request, name, mode=None):
     
     if view.protected and not request.user.is_authenticated():
         return HttpResponse(status=403) # forbidden
-    
-    resources = view.get_resources()
+
+    order_field = 'name' 
+#    try:
+#        from transmeta import get_real_fieldname
+#        order_field = get_real_fieldname(order_field)
+#    except ImportError:
+#        pass
+
+    resources = view.get_resources().extra(select={'%s_lower' % order_field: 'lower(%s)' % order_field}, order_by=['%s_lower' % order_field])
     if not request.user.is_authenticated():
         resources = resources.filter(protected=False)
     
@@ -224,7 +221,19 @@ def view(request, name, mode=None):
     
 
 def views(request):
-    views = View.objects.all()
+    order_field = 'name' 
+    try:
+        from transmeta import get_real_fieldname, get_fallback_fieldname
+        order_fallback_field = get_fallback_fieldname(order_field)
+        order_field = get_real_fieldname(order_field)
+        if order_field == order_fallback_field:
+            select_extra = {'%s_lower' % order_field: 'lower(%s)' % order_field}
+        else:
+            select_extra = {'%s_lower' % order_field: "lower(coalesce(%s,'')) || lower(coalesce(%s,''))" % (order_field, order_fallback_field)}
+    except ImportError:
+        select_extra = {'%s_lower' % order_field: 'lower(%s)' % order_field}
+    order_by = ['%s_lower' % order_field]
+    views = View.objects.extra(select=select_extra, order_by=order_by)
     if not request.user.is_authenticated():
         views = views.filter(protected=False)
 
@@ -309,8 +318,20 @@ def index(request):
         True: {},
         False: {'protected':False}
     }[request.user.is_authenticated()]
-    
-    featured_views = View.objects.filter(featured=True, **protect_attrs)
+
+    order_field = 'name'
+    try:
+        from transmeta import get_real_fieldname, get_fallback_fieldname
+        order_fallback_field = get_fallback_fieldname(order_field)
+        order_field = get_real_fieldname(order_field)
+        if order_field == order_fallback_field:
+            select_extra = {'view_order': 'lower(%s)' % order_field}
+        else:
+            select_extra = {'view_order': "lower(coalesce(%s,'')) || lower(coalesce(%s,''))" % (order_field, order_fallback_field)}
+    except ImportError:
+        select_extra = {'view_order': 'lower(%s)' % order_field}
+
+    featured_views = View.objects.filter(featured=True, **protect_attrs).extra(select=select_extra).order_by('view_order')
     featured_resources = Resource.objects.filter(featured=True, **protect_attrs)
     latest_resources = Resource.objects.filter(**protect_attrs).order_by('-creation_date')[:15]
     upcoming_resources = Resource.objects\
