@@ -49,7 +49,6 @@ view_patterns = patterns('',
 )
 
 urlpatterns = patterns('',
-    #url(r'^$', views.index, name='openresources_index'),
 
     url(r'^views/$', views.views, name='openresources_views'),
     url(r'^views/new/$', views.edit_view, name='openresources_new_view'),
@@ -92,5 +91,9 @@ urlpatterns = patterns('',
 
     url(r'^in/(?P<area>[0-9A-Za-z-_]+)/', include(view_patterns)),
     url(r'^', include(view_patterns)),
+
+    # this cannot be reached, as we show the default view as an index page
+    # however this is used for reversing the index page url in templates
+    url(r'^$', views.index, name='openresources_index'),
 
 )
