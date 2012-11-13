@@ -1,5 +1,5 @@
 {% extends "openresources/plain.html" %}
-{% load i18n %}
+{% load i18n url_optional %}
 
 {% block title %}{% trans "View" %}: {{ view.name }}{% endblock %}
 
@@ -32,6 +32,14 @@ var icon_mappings = [
 {% block body_class %}view-embed{% endblock %}
 
 {% block body %}
+<div class="actions">
+{% if view.default_resource_template %}
+<a class="action add" target="_blank" href="{% url openresources_edit_with_template template=view.default_resource_template.shortname %}">{% blocktrans with type=view.default_resource_template.name %}Add {{type}}{% endblocktrans %}</a>
+{% else %}
+<a class="action add" target="_blank" href="{% url openresources_templates %}">{% trans "Add resource" %}</a>
+{% endif %}
+<a class="action backlink" target="_blank" href="{% url_optional openresources_view area=area.shortname name=view.shortname %}">{% trans "View on Vivir Bien" %}</a>
+</div>
 <div id="map" class="map"></div>
 <div class="map-loading">{% trans "Map Data Loading..." %}</div>
 {% endblock %}
