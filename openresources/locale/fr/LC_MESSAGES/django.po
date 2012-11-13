@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openresources\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-13 12:15+0100\n"
+"POT-Creation-Date: 2012-11-13 17:03+0100\n"
 "PO-Revision-Date: 2011-04-18 13:03+0000\n"
 "Last-Translator: floledermann <ledermann@ims.tuwien.ac.at>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,29 +130,29 @@ msgid "Use my current location"
 msgstr ""
 
 #: templates/openresources/base_index.html:44
-#: templates/openresources/view_base.html:27
+#: templates/openresources/view_base.html:33
 msgid "What?"
 msgstr "Quoi?"
 
 #: templates/openresources/base_index.html:47
-#: templates/openresources/view_base.html:30
+#: templates/openresources/view_base.html:31
 msgid "Search"
 msgstr "Chercher"
 
 #: templates/openresources/base_index.html:54
-#: templates/openresources/view_base.html:42
 msgid "all views..."
 msgstr "tous les vues ..."
 
 #: templates/openresources/base_index.html:62
-#: templates/openresources/includes/view_actions.html:8
-#: templates/openresources/includes/view_actions.html:10
+#: templates/openresources/view_list.html:6
+#: templates/openresources/view_list.html:8
+#: templates/openresources/view_map.html:37
 msgid "Add resource"
 msgstr "Ajouter ressource"
 
 #: templates/openresources/base_index.html:69
 #: templates/openresources/view_embed.html:36
-#: templates/openresources/view_map.html:33
+#: templates/openresources/view_map.html:43
 msgid "Map Data Loading..."
 msgstr "Carte chargement des données ..."
 
@@ -324,14 +324,28 @@ msgstr "Créer une ressource sans modèle"
 msgid "View"
 msgstr "Vue"
 
-#: templates/openresources/view_base.html:33
-msgid "This view shows resources with tags:"
-msgstr "Cette vue montre les ressources avec tags:"
+#: templates/openresources/view_base.html:14
+msgid "change"
+msgstr ""
 
-#: templates/openresources/view_base.html:37
+#: templates/openresources/view_base.html:36
 #, fuzzy
 msgid "All Resources"
 msgstr "toutes les ressources ..."
+
+#: templates/openresources/view_base.html:40
+#, fuzzy
+msgid "more..."
+msgstr "Lire plus"
+
+#: templates/openresources/view_base.html:44
+#, fuzzy
+msgid "Resources tagged:"
+msgstr "Ressources avec le tag:"
+
+#: templates/openresources/view_base.html:58
+msgid "Edit view"
+msgstr "Modifier vue"
 
 #: templates/openresources/view_edit.html:31
 msgid "New view"
@@ -365,6 +379,20 @@ msgstr ""
 msgid "Use the following code to embed this view in other websites:"
 msgstr ""
 "Utilisez le code ci-dessous pour intégrer cette vue sur d'autres sites:"
+
+#: templates/openresources/view_export.html:7
+#, fuzzy
+msgid "in"
+msgstr "Principal"
+
+#: templates/openresources/view_map.html:35
+#, python-format
+msgid "Add %(type)s"
+msgstr ""
+
+#: templates/openresources/view_map.html:39
+msgid "Fullscreen"
+msgstr ""
 
 #: templates/openresources/views.html:4
 msgid "List of views"
@@ -419,10 +447,6 @@ msgstr ""
 msgid "language:"
 msgstr ""
 
-#: templates/openresources/includes/view_actions.html:5
-msgid "Edit view"
-msgstr "Modifier vue"
-
 #: templates/openresources/includes/view_modes.html:5
 msgid "Overview"
 msgstr "Ensemble"
@@ -443,8 +467,8 @@ msgstr "Liste"
 msgid "Export"
 msgstr "Exporter"
 
-#~ msgid "Read more..."
-#~ msgstr "Lire plus"
+#~ msgid "This view shows resources with tags:"
+#~ msgstr "Cette vue montre les ressources avec tags:"
 
 #~ msgid "News"
 #~ msgstr "Nouvelles"
