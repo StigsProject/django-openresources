@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-09 20:55+0100\n"
+"POT-Creation-Date: 2012-11-13 12:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:121
+#: forms.py:121 templates/openresources/base_index.html:37
+#: templates/openresources/view_base.html:12
+#: templates/openresources/view_base.html:17
 msgid "Everywhere"
 msgstr "Weltweit"
 
-#: forms.py:121 models.py:300
+#: forms.py:121 models.py:314
 msgid "Area"
 msgstr "Region"
 
@@ -45,7 +47,7 @@ msgstr "Kürzel"
 msgid "Template"
 msgstr "Vorlage:"
 
-#: models.py:55 models.py:134
+#: models.py:55 models.py:144
 msgid "(Hidden from anonymous users)"
 msgstr "(Nur für registrierte Nutzerinnen sichtbar)"
 
@@ -65,47 +67,47 @@ msgstr "Wert-Feld als Datum."
 msgid "Value field parsed as relation to other resource."
 msgstr "Wert-Feld als Relation auf andere Ressource."
 
-#: models.py:130
+#: models.py:140
 msgid "(Will be part of the views' URL)"
 msgstr "(Wird Teil der URL)"
 
-#: models.py:189
+#: models.py:199
 msgid "All tags"
 msgstr "Alle Tags"
 
-#: models.py:192
+#: models.py:202
 msgid "is present"
 msgstr "ist gesetzt."
 
-#: models.py:194
+#: models.py:204
 msgid "begins with"
 msgstr "beginnt mit"
 
-#: models.py:198
+#: models.py:208
 msgid "and"
 msgstr "und"
 
-#: models.py:199
+#: models.py:209
 msgid "or"
 msgstr "oder"
 
-#: models.py:240
+#: models.py:250
 msgid "Default Icon"
 msgstr "Standard-Icon"
 
-#: models.py:241
+#: models.py:251
 msgid "Red"
 msgstr "Rot"
 
-#: models.py:266
+#: models.py:276
 msgid "Subicon only"
 msgstr "Nur Subicon"
 
-#: models.py:315 models.py:333 models.py:350
+#: models.py:329 models.py:347 models.py:364
 msgid "Name"
 msgstr "Name"
 
-#: models.py:316
+#: models.py:330
 msgid "(Will be part of the template's URL)"
 msgstr "(Wird Teil der URL)"
 
@@ -119,56 +121,59 @@ msgid "Credits"
 msgstr "Credits"
 
 #: templates/openresources/base_index.html:36
+#: templates/openresources/view_base.html:12
 msgid "Where?"
 msgstr "Wo?"
 
-#: templates/openresources/base_index.html:40
-#: templates/openresources/includes/navi.html:15
-msgid "Set"
-msgstr "OK"
+#: templates/openresources/base_index.html:38
+msgid "Use my current location"
+msgstr "Meinen Standort ermittlen"
 
-#: templates/openresources/base_index.html:51
+#: templates/openresources/base_index.html:44
+#: templates/openresources/view_base.html:27
 msgid "What?"
 msgstr "Was?"
 
-#: templates/openresources/base_index.html:54
+#: templates/openresources/base_index.html:47
+#: templates/openresources/view_base.html:30
 msgid "Search"
 msgstr "Suche"
 
-#: templates/openresources/base_index.html:61
+#: templates/openresources/base_index.html:54
+#: templates/openresources/view_base.html:42
 msgid "all views..."
 msgstr "Alle Ansichten..."
 
-#: templates/openresources/base_index.html:68
+#: templates/openresources/base_index.html:62
 #: templates/openresources/includes/view_actions.html:8
 #: templates/openresources/includes/view_actions.html:10
 msgid "Add resource"
 msgstr "Neue Ressource"
 
-#: templates/openresources/base_index.html:75
+#: templates/openresources/base_index.html:69
 #: templates/openresources/view_embed.html:36
 #: templates/openresources/view_map.html:33
 msgid "Map Data Loading..."
 msgstr "Kartendaten werden geladen..."
 
-#: templates/openresources/base_index.html:81
+#: templates/openresources/base_index.html:75
 msgid "Newest Resources"
 msgstr "Neueste Ressourcen"
 
-#: templates/openresources/base_index.html:87
+#: templates/openresources/base_index.html:81
 msgid "all resources..."
 msgstr "Alle Ressourcen..."
 
-#: templates/openresources/base_index.html:91
+#: templates/openresources/base_index.html:85
 #: templates/openresources/includes/view_modes.html:9
 msgid "Upcoming"
 msgstr "Termine"
 
-#: templates/openresources/base_index.html:99
+#: templates/openresources/base_index.html:93
 msgid "No upcoming resources at the moment..."
 msgstr "Keine aktuellen Termine..."
 
-#: templates/openresources/base_index.html:103
+#: templates/openresources/base_index.html:97
 msgid "all upcoming events..."
 msgstr "Alle Termine..."
 
@@ -244,11 +249,15 @@ msgstr "Icons"
 msgid "Add Icon"
 msgstr "Neues Icon"
 
+#: templates/openresources/resource.html:61
+msgid "List all resources with tag:"
+msgstr "Zeige alle Ressourcen mit Tag:"
+
 #: templates/openresources/resource.html:68
 msgid "Related resources"
 msgstr "Verknüpfte Ressourcen"
 
-#: templates/openresources/resource.html:80
+#: templates/openresources/resource.html:79
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -313,9 +322,13 @@ msgstr "Neue Ressource ohne Vorlage"
 msgid "View"
 msgstr "Ansicht"
 
-#: templates/openresources/view_base.html:12
+#: templates/openresources/view_base.html:33
 msgid "This view shows resources with tags:"
 msgstr "Diese Ansicht zeigt Ressourcen mit den Tags:"
+
+#: templates/openresources/view_base.html:37
+msgid "All Resources"
+msgstr "Alle Ressourcen"
 
 #: templates/openresources/view_edit.html:31
 msgid "New view"
@@ -373,6 +386,10 @@ msgstr "Start"
 #: templates/openresources/includes/navi.html:7
 msgid "Tags"
 msgstr "Tags"
+
+#: templates/openresources/includes/navi.html:15
+msgid "Set"
+msgstr "OK"
 
 #: templates/openresources/includes/tag_actions.html:2
 msgid "Documentation for key:"
