@@ -247,11 +247,11 @@ html .lastcol {
 .navbox li {
     display: inline-block;
     vertical-align: top;
-    width: 98px;
+    width: 88px;
     overflow: hidden;
     min-height: 26px;
     line-height: 0.9;
-    xpadding: 3px 0 0 22px;
+    padding: 0 5px;
 }
 
 .listbox a.more,
