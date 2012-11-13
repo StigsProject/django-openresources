@@ -40,21 +40,27 @@ from openresources.models import Tag
 #    label = 'key',
 #)
 
+
+view_patterns = patterns('',
+    url(r'^$', views.view, name='openresources_view'),
+    url(r'^view/(?P<name>[0-9A-Za-z-_]+)/json/$', views.view_json, name='geojson'),
+    url(r'^view/(?P<name>[0-9A-Za-z-_]+)/(?P<mode>.*)/$', views.view, name='openresources_view'),
+    url(r'^view/(?P<name>[0-9A-Za-z-_]+)/$', views.view, name='openresources_view'),
+)
+
 urlpatterns = patterns('',
-    url(r'^$', views.index, name='openresources_index'),
+    #url(r'^$', views.index, name='openresources_index'),
 
     url(r'^views/$', views.views, name='openresources_views'),
-    url(r'^view/(?P<name>.*)/(?P<mode>.*)/$', views.view, name='openresources_view'),
-    url(r'^view/(?P<name>.*)/$', views.view, name='openresources_view'),
     url(r'^views/new/$', views.edit_view, name='openresources_new_view'),
-    url(r'^views/edit/(?P<name>.*)/$', views.edit_view, name='openresources_edit_view'),
+    url(r'^views/edit/(?P<name>[0-9A-Za-z-_]+)/$', views.edit_view, name='openresources_edit_view'),
 
     url(r'^templates/$', views.templates, name='openresources_templates'),
     url(r'^templates/new/$', views.edit_template, name='openresources_template_edit'),
-    url(r'^template/(?P<name>.*)/$', views.edit_template, name='openresources_template_edit'),
+    url(r'^template/(?P<name>[0-9A-Za-z-_]+)/$', views.edit_template, name='openresources_template_edit'),
     # temporary, until resource view support assigned template
-    url(r'^template-resource/(?P<template>.*)/(?P<resource>.*)/$', views.edit_with_template, name='openresources_edit_with_template'),
-    url(r'^template-resource/(?P<template>.*)/$', views.edit_with_template, name='openresources_edit_with_template'),
+    url(r'^template-resource/(?P<template>[0-9A-Za-z-_]+)/(?P<resource>[0-9A-Za-z-_]+)/$', views.edit_with_template, name='openresources_edit_with_template'),
+    url(r'^template-resource/(?P<template>[0-9A-Za-z-_]+)/$', views.edit_with_template, name='openresources_edit_with_template'),
 
     #url(r'^all/$', views.all_resources, name='openresources_all'),
    
@@ -69,10 +75,7 @@ urlpatterns = patterns('',
 
     url(r'^choices.json$', views.resource_choices),
     url(r'^tag/(?P<key>.*)/choices.json$', views.tag_choices),
-    
-    url(r'^json/all/$', views.all_json, name='geojson_all'),
-    url(r'^json/view/(?P<name>.*)/$', views.view_json, name='geojson'),
-    
+        
     # *? matches key non-greedy, matching only as few as possible characters if value has '=' sign in it
     url(r'^with/tag/(?P<key>.*?)=(?P<value>.*)/$', views.resources_by_tag, name='openresources_with_tag'),
     url(r'^with/tag/(?P<key>.*)/$', views.resources_by_tag, name='openresources_with_key'),
@@ -84,5 +87,10 @@ urlpatterns = patterns('',
     url(r'^context/set/$', views.set_context, name='openresources_set_context'),
     url(r'^search/$', views.search, name='openresources_search'),
     url(r'^credits/$', direct_to_template, {'template': 'openresources/credits.html'}, name='openresources_credits'),
+
+    url(r'^json/all/$', views.all_json, name='geojson_all'),
+
+    url(r'^in/(?P<area>[0-9A-Za-z-_]+)/', include(view_patterns)),
+    url(r'^', include(view_patterns)),
 
 )

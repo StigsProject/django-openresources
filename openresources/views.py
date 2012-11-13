@@ -25,7 +25,7 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
 from django.views.generic.simple import redirect_to
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 
 from django.db.models import Q
 
@@ -148,9 +148,19 @@ def edit_with_template(request, resource=None, template=None):
     return render_to_response('openresources/edit_with_template.html', RequestContext(request, locals()))
 
 
-def view(request, name, mode=None):
+def view(request, name=None, area=None, mode=None):
 
-    view = get_object_or_404(View, shortname=name)
+    # normalize default view url
+    if name == 'all' and not mode:
+        kwargs = {}
+        if area: kwargs['area'] = area
+        return HttpResponseRedirect(reverse('openresources_view', kwargs=kwargs))
+
+    view_name = name
+    if mode == 'json': return view_json(request, name)
+
+    if area: area = get_object_or_404(Area, shortname=area)
+    view = get_object_or_404(View, shortname=name or 'all')
 
     if not mode:
         # TODO: auto-discover appropriate mode?
@@ -200,11 +210,14 @@ def view(request, name, mode=None):
         
     icon_mappings = view.mappings.exclude(icon=None)
 
-    context = _get_context(request)
-    context_form = ContextForm(instance=context)
+    #context = _get_context(request)
+    #context_form = ContextForm(instance=context)
 
     map_attribution = settings.MAP_ATTRIBUTION
     default_resource_icon = settings.DEFAULT_RESOURCE_ICON
+
+    featured_areas = Area.objects.filter(featured=True)
+    featured_views = View.objects.filter(featured=True, protected=False)
 
     def is_valid_bounds(bounds):
         bounds = bounds.split(',')

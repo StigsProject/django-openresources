@@ -128,7 +128,10 @@ class Tag(models.Model):
         Return True if the key,value pairing is considered to be a category, i.e. if there is a high probability
         of finding other resources with the same tag.
         """
-        return (len(self.value) <= 200 and self.value.find('\n') == -1)
+        return  not self.value_relation and \
+                not self.value_date and \
+                len(self.value) <= 200 and \
+                self.value.find('\n') == -1
 
 class View(models.Model):
     __metaclass__ = TransMeta
@@ -287,6 +290,10 @@ class Area(models.Model):
     __metaclass__ = TransMeta
 
     name = models.CharField(max_length=100)
+    shortname = models.SlugField(unique=True, blank=False, max_length=100)
+
+    featured = models.BooleanField(default=False, db_index=True)
+
     # for now just store a string with the bounds
     # TODO: look into geodjango    
     bounds = models.CharField(max_length=255)

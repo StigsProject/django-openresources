@@ -101,14 +101,14 @@ body {
 
 .content form {
     margin-bottom: 10px;
-    max-width: 600px;
+    xmax-width: 600px;
 }
 
 .footer {
     clear: both;
-    height: 25px;
-    margin: -30px 0 0 0;
-    padding-top: 5px;
+    min-height: 20px;
+    margin: -50px 0 0 0;
+    padding: 5px 0;
     text-align: center;
     width: 100%;
 }
@@ -247,10 +247,10 @@ html .lastcol {
 .navbox li {
     display: inline-block;
     vertical-align: top;
-    width: 122px;
+    width: 98px;
     min-height: 26px;
-    line-height: 1;
-    padding: 3px 0 0 22px;
+    line-height: 0.9;
+    xpadding: 3px 0 0 22px;
 }
 
 .listbox a.more,
@@ -322,11 +322,16 @@ em {
 
 h2.inline {
     float: left;
+    margin: 0;
+}
+
+h2 .prefix {
+    float: left;
     min-width: 100px;
     margin: 0;
 }
 
-h2.inline:after {
+h2 .prefix:after {
     content: " >> ";
     font-weight: bold;
     color: #999;

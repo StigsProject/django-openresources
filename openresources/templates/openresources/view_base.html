@@ -1,5 +1,5 @@
 {% extends "openresources/base.html" %}
-{% load i18n %}
+{% load i18n url_optional %}
 
 {% block title %}{% trans "View" %}: {{ view.name }}{% endblock %}
 
@@ -7,11 +7,44 @@
 
 {% block openresources_content %}
 
-<h1>{{ view.name }}</h1>
+{% block filter %}
+<div class="navbox">
+<h2 class="inline"><span class="prefix">{% trans "Where?" %}</span>{% if area %}{{ area.name }}{% else %}{% trans "Everywhere" %}{% endif %}</h2>
+
+{#<button class="uselocationbutton">{% trans "Use my current location" %}</button>#}
+<div class="clear"></div>
+<ul class="areas-list">
+<li class="area"><a href="{% url_optional openresources_view name=view_name %}">{% trans "Everywhere" %}</a></li>
+{% for area in featured_areas %}
+<li class="area"><a href="{% url_optional openresources_view area=area.shortname name=view_name %}">{{ area.name }}</a></li>
+{% endfor %}
+</ul>
+
+<div class="next-join"></div>
+</div>
+
+<div class="navbox">
+<h2 class="inline"><span class="prefix">{% trans "What?" %}</span>{{ view.name }}</h2>
+<form class="search-form" action="{% url openresources_search %}" method="get">
+<input name="q" type="text" size="15"/>
+<button type="submit">{% trans "Search" %}</button>
+</form>
 <p class="help">
 {% trans "This view shows resources with tags:" %}<br />
 {{ view.get_description|safe }}
 </p>
+<ul class="views-list">
+<li><a href="{% url_optional openresources_view area=area.shortname %}">{% trans "All Resources" %}</a></li>
+{% for view in featured_views %}
+<li><a href="{% url_optional openresources_view name=view.shortname area=area.shortname %}">{{ view.name }}</a></li>
+{% endfor %}
+</ul>
+<a class="more" href="{% url openresources_views %}">{% trans "all views..." %}</a>
+<div class="clear"></div>
+<div class="next-arrow"></div>
+</div>
+{% endblock %}
+
 
 {% include "openresources/includes/view_actions.html" %}
 
