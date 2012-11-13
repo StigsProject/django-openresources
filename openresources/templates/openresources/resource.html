@@ -1,6 +1,5 @@
 {% extends "openresources/base.html" %}
-{% load i18n %}
-{% load texttools %}
+{% load i18n texttools %}
 
 {% block extra_head %}
 {{ block.super }}
@@ -59,6 +58,7 @@ function hide_reply_form(comment_id, url, person_name) {
 {% if tag.value_date %}<img src="{{ STATIC_URL }}openresources/icons/calendar_10x10.png" />{% endif %}
 {% if tag.value_relation %}<img src="{{ STATIC_URL }}openresources/icons/chain_10x10.png" />{% endif %}
 {% if tag.value_geo %}<img src="{{ STATIC_URL }}openresources/icons/globe_10x10.png" />{% endif %}
+{% if tag.is_category %}<a href="{% url openresources_tag key=tag.key|urlencode value=tag.value|urlencode %}" title="{% trans "List all resources with tag:" %} {{tag.key}}={{tag.value}}"><img src="{{ STATIC_URL }}openresources/icons/chain_10x10.png" /></a>{% endif %}
 </td></li>
 {% endfor %}
 </table>
@@ -73,7 +73,6 @@ function hide_reply_form(comment_id, url, person_name) {
 </table>
 {% endif %}
 
-
 <div class="actions">
 {% if request.user.is_authenticated %}
 {# {% if perms.openresources.edit_resource or perms.resources.add_tag %} #}
@@ -82,25 +81,6 @@ function hide_reply_form(comment_id, url, person_name) {
 {% endif %}
 </div>
 
-{% comment %}
-{# remove comment tags if you want to use comments in resources #}
-{% load threadedcommentstags %}
-{% get_threaded_comment_tree for resource as tree %}
-<h2>{% trans "Comments for" %} {{ resource.name }}</h2>
-{% if tree %}
-<div class="comments">
-{% for comment in tree %}
-    <div style="margin-left: {{ comment.depth }}em;" class="comment">
-        <h3>{% trans "Comment by" %} {{ comment.user.username }}:</h3>
-        {{ comment.comment|linebreaks }}
-        <a class="action say" id="c{{ comment.id }}" href="javascript:show_reply_form('c{{ comment.id }}','{% get_comment_url resource comment %}','{{ comment.user.username }}')">{% trans "Reply" %}</a>
-    </div>
-{% endfor %}
-</div>
-{% endif %}
-<div class="actions">
-<a class="action say" id="newcomment" href="javascript:show_reply_form('newcomment','{% get_comment_url resource %}')">{% trans "New Comment" %}</a>
-</div>
-{% endcomment %}
+{% include "openresources/includes/resource_bottom.html" %}
 
 {% endblock %}

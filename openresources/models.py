@@ -123,6 +123,13 @@ class Tag(models.Model):
     def __unicode__(self):
         return '%s: %s' % (self.key, self.value)
 
+    def is_category(self):
+        """
+        Return True if the key,value pairing is considered to be a category, i.e. if there is a high probability
+        of finding other resources with the same tag.
+        """
+        return (len(self.value) <= 200 and self.value.find('\n') == -1)
+
 class View(models.Model):
     __metaclass__ = TransMeta
     
@@ -381,7 +388,7 @@ def user_post_save(sender, instance, created, raw, **kwargs):
         except DatabaseError:
             # this can happen during initial syncdb when superuser is created but openresources tables have not been created yet
             import warnings
-            warnings.warn("UserProfile for user %s could not be created - happen during initial syncdb when superuser is created but openresources tables have not been created yet" % instance.username)
+            warnings.warn("UserProfile for user %s could not be created - this can happen during initial syncdb when superuser is created but openresources tables have not been created yet" % instance.username)
 
 models.signals.post_save.connect(user_post_save, sender=User)
 
