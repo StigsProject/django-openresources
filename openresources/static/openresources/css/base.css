@@ -248,6 +248,7 @@ html .lastcol {
     display: inline-block;
     vertical-align: top;
     width: 98px;
+    overflow: hidden;
     min-height: 26px;
     line-height: 0.9;
     xpadding: 3px 0 0 22px;
