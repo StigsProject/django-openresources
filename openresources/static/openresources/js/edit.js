@@ -31,7 +31,7 @@ function location_widget(el) {
         map.addLayer(layer_vector);
         
         var style = {
-            externalGraphic: STATIC_URL + "openresources/images/marker.png",
+            externalGraphic: STATIC_URL + "openresources/map_marker/marker.png",
             graphicWidth: 21,
             graphicHeight: 25,
             graphicXOffset: -10,
