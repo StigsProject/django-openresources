@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-13 17:03+0100\n"
+"POT-Creation-Date: 2012-11-13 17:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,14 +144,14 @@ msgid "all views..."
 msgstr "Alle Ansichten..."
 
 #: templates/openresources/base_index.html:62
-#: templates/openresources/view_list.html:6
-#: templates/openresources/view_list.html:8
+#: templates/openresources/view_embed.html:39
+#: templates/openresources/view_list.html:9
 #: templates/openresources/view_map.html:37
 msgid "Add resource"
-msgstr "Neue Ressource"
+msgstr "Ressource eintragen"
 
 #: templates/openresources/base_index.html:69
-#: templates/openresources/view_embed.html:36
+#: templates/openresources/view_embed.html:44
 #: templates/openresources/view_map.html:43
 msgid "Map Data Loading..."
 msgstr "Kartendaten werden geladen..."
@@ -373,6 +373,17 @@ msgid "Mappings determine the appearance of the resource."
 msgstr ""
 "Mappings bestimmen das Erscheinungsbild einer Ressource in der Ansicht."
 
+#: templates/openresources/view_embed.html:37
+#: templates/openresources/view_list.html:7
+#: templates/openresources/view_map.html:35
+#, python-format
+msgid "Add %(type)s"
+msgstr "%(type)s eintragen"
+
+#: templates/openresources/view_embed.html:41
+msgid "View on Vivir Bien"
+msgstr ""
+
 #: templates/openresources/view_export.html:5
 msgid "Use the following code to embed this view in other websites:"
 msgstr ""
@@ -381,11 +392,6 @@ msgstr ""
 #: templates/openresources/view_export.html:7
 msgid "in"
 msgstr "in"
-
-#: templates/openresources/view_map.html:35
-#, python-format
-msgid "Add %(type)s"
-msgstr "%(type)s eintragen"
 
 #: templates/openresources/view_map.html:39
 msgid "Fullscreen"
