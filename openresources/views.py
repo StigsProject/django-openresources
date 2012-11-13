@@ -175,14 +175,7 @@ def view(request, name=None, area=None, mode=None):
     if view.protected and not request.user.is_authenticated():
         return HttpResponse(status=403) # forbidden
 
-    order_field = 'name' 
-#    try:
-#        from transmeta import get_real_fieldname
-#        order_field = get_real_fieldname(order_field)
-#    except ImportError:
-#        pass
-
-    resources = view.get_resources().extra(select={'%s_lower' % order_field: 'lower(%s)' % order_field}, order_by=['%s_lower' % order_field])
+    resources = view.get_resources()
     if not request.user.is_authenticated():
         resources = resources.filter(protected=False)
     
@@ -216,8 +209,24 @@ def view(request, name=None, area=None, mode=None):
     map_attribution = settings.MAP_ATTRIBUTION
     default_resource_icon = settings.DEFAULT_RESOURCE_ICON
 
-    featured_areas = Area.objects.filter(featured=True)
-    featured_views = View.objects.filter(featured=True, protected=False)
+    order_field = 'name' 
+    try:
+        from transmeta import get_real_fieldname, get_fallback_fieldname
+        order_fallback_field = get_fallback_fieldname(order_field)
+        order_field = get_real_fieldname(order_field)
+        if order_field == order_fallback_field:
+            select_extra = {'%s_lower' % order_field: 'lower(%s)' % order_field}
+        else:
+            select_extra = {'%s_lower' % order_field: "lower(coalesce(%s,'') || coalesce(%s,''))" % (order_field, order_fallback_field)}
+    except ImportError:
+        select_extra = {'%s_lower' % order_field: 'lower(%s)' % order_field}
+    order_by = ['%s_lower' % order_field]
+
+    featured_areas = Area.objects.filter(featured=True).extra(select=select_extra, order_by=order_by)
+    featured_views = View.objects.filter(featured=True).extra(select=select_extra, order_by=order_by)
+
+    if not request.user.is_authenticated():
+        featured_views = featured_views.filter(protected=False)
 
     def is_valid_bounds(bounds):
         bounds = bounds.split(',')
