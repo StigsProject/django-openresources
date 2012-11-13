@@ -1,12 +1,12 @@
 {% load i18n %}
-{% load navitools %}
+{% load navitools url_optional %}
 <ul class="menu view-menu">
 <!--
 <li class="{% active request "/view/[a-zA-Z0-9-_\.]*/$" %}"><a href="{% url openresources_view name=view.shortname %}">{% trans "Overview" %}</a></li>-->
-<li{% ifequal mode "map" %} class="active"{% endifequal %}><a class="showmap" href="{% url openresources_view name=view.shortname mode="map" %}">{% trans "Map" %}</a></li>
+<li{% ifequal mode "map" %} class="active"{% endifequal %}><a class="showmap" href="{% url_optional openresources_view name=view.shortname area=area.shortname mode="map" %}">{% trans "Map" %}</a></li>
 <!--<li class=""><a href="">{% trans "Not on Map" %}</a></li>-->
-<li{% ifequal mode "list" %} class="active"{% endifequal %}><a class="showlist" href="{% url openresources_view name=view.shortname mode="list" %}">{% trans "List" %}</a></li>
+<li{% ifequal mode "list" %} class="active"{% endifequal %}><a class="showlist" href="{% url_optional openresources_view name=view.shortname area=area.shortname mode="list" %}">{% trans "List" %}</a></li>
 <!--<li class=""><a href="">{% trans "Upcoming" %}</a></li>-->
-<li{% ifequal mode "export" %} class="active"{% endifequal %}><a class="export" href="{% url openresources_view name=view.shortname mode="export" %}">{% trans "Export" %}</a></li>
+<li{% ifequal mode "export" %} class="active"{% endifequal %}><a class="export" href="{% url_optional openresources_view name=view.shortname area=area.shortname mode="export" %}">{% trans "Export" %}</a></li>
 </ul>
 

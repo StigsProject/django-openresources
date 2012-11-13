@@ -1,5 +1,5 @@
 {% extends "openresources/view_base.html" %}
-{% load i18n %}
+{% load i18n url_optional %}
 
 {% block extra_head %}
 {{ block.super }}
@@ -13,7 +13,7 @@ var MEDIA_URL = "{{ MEDIA_URL }}",
     STATIC_URL = "{{ STATIC_URL}}",
     VIEW = "{{ view.shortname }}",
     CONTEXT = {% if area %}{area:[{{ area.bounds }}]}{% else %}{}{% endif %},
-    JSON_URL = "{% url geojson name=view.shortname %}",
+    JSON_URL = "{% url openresources_view name=view.shortname mode="json" %}",
     MAP_ATTRIBUTION = '{{ map_attribution|safe }}',
     DEFAULT_ICON = '{{ STATIC_URL }}{{ default_resource_icon }}';
 
@@ -32,4 +32,5 @@ var icon_mappings = [
 <div id="map" class="map"></div>
 <div class="map-loading">{% trans "Map Data Loading..." %}</div>
 
+<a href="{% url_optional openresources_view area=area.shortname name=view.shortname mode="embed"%}">Fullscreen...</a>
 {% endblock %}

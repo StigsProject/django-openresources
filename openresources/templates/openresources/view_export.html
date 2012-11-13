@@ -1,9 +1,9 @@
 {% extends "openresources/view_base.html" %}
-{% load i18n %}
+{% load i18n url_optional %}
 
 {% block view_content %}
 <h2>{% trans "Use the following code to embed this view in other websites:" %}</h2>
 <textarea class="embed-code">
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://{{request.get_host}}{% url openresources_view name=view.shortname mode="embed" %}"></iframe><br /><small><a href="http://{{request.get_host}}{% url openresources_view name=view.shortname %}">{% trans "View" %} "{{ view.name }}" @ {{ request.get_host }}</a></small>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://{{request.get_host}}{% url_optional openresources_view area=area.shortname name=view_name mode="embed"%}""></iframe><br /><small><a href="http://{{request.get_host}}{% url_optional openresources_view area=area.shortname name=view_name %}"">{% trans "View" %} "{{ view.name }}"{% if area %} {% trans "in" %} {{ area.name }}{% endif %} @ {{ request.get_host }}</a></small>
 </textarea>
 {% endblock %}
