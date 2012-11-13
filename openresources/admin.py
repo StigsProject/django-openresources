@@ -93,15 +93,23 @@ class TagQueryInline(admin.TabularInline):
 class ViewAdmin(admin.ModelAdmin):
     inlines = [TagQueryInline]
     prepopulated_fields = {'shortname': (get_fallback_fieldname('name'),)} 
+    list_display = ['name','featured',]
+    list_editable = ['featured',]
+    save_on_top = True
+
+class AreaAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'shortname': (get_fallback_fieldname('name'),)} 
+    list_display = ['name','featured',]
+    list_editable = ['featured',]
     save_on_top = True
 
 
 admin.site.register(Resource, ResourceAdmin)
 admin.site.register(View, ViewAdmin)
 admin.site.register(ResourceTemplate, ResourceTemplateAdmin)
+admin.site.register(Area, AreaAdmin)
 
 admin.site.register(Icon)
-admin.site.register(Area)
 admin.site.register(UserProfile)
 
 
