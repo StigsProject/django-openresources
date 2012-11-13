@@ -2,11 +2,13 @@
 {% load i18n %}
 
 {% block view_content %}
+<div class="actions">
 {% if view.default_resource_template %}
-<a class="action add" href="{% url openresources_edit_with_template template=view.default_resource_template.shortname %}">{% trans "Add resource" %} ({{view.default_resource_template.name}})</a>
+<a class="action add" href="{% url openresources_edit_with_template template=view.default_resource_template.shortname %}">{% blocktrans with type=view.default_resource_template.name %}Add {{type}}{% endblocktrans %}</a>
 {% else %}
 <a class="action add" href="{% url openresources_templates %}">{% trans "Add resource" %}</a>
 {% endif %}
+</div>
 
 {% if groups %}
 <div class="column">
