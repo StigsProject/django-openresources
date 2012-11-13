@@ -1,6 +1,8 @@
 {% extends "openresources/view_base.html" %}
 {% load i18n url_optional %}
 
+{% block body_class %}{{ block.super }} view-map{% endblock %}
+
 {% block extra_head %}
 {{ block.super }}
 <script type="text/javascript" src="http://dev.openlayers.org/releases/OpenLayers-2.10/OpenLayers.js"></script>
@@ -28,9 +30,16 @@ var icon_mappings = [
 {% endblock %}
 
 {% block view_content %}
+<div class="actions">
+{% if view.default_resource_template %}
+<a class="action add" href="{% url openresources_edit_with_template template=view.default_resource_template.shortname %}">{% blocktrans with type=view.default_resource_template.name %}Add {{type}}{% endblocktrans %}</a>
+{% else %}
+<a class="action add" href="{% url openresources_templates %}">{% trans "Add resource" %}</a>
+{% endif %}
+<a class="action fullscreen" href="{% url_optional openresources_view area=area.shortname name=view.shortname mode="embed"%}">{% trans "Fullscreen" %}</a>
+</div>
 
 <div id="map" class="map"></div>
 <div class="map-loading">{% trans "Map Data Loading..." %}</div>
 
-<a href="{% url_optional openresources_view area=area.shortname name=view.shortname mode="embed"%}">Fullscreen...</a>
 {% endblock %}

@@ -159,7 +159,11 @@ def view(request, name=None, area=None, mode=None):
     view_name = name
     if mode == 'json': return view_json(request, name)
 
+    if name == None or name == 'all':
+        is_default_view = True
+
     if area: area = get_object_or_404(Area, shortname=area)
+
     view = get_object_or_404(View, shortname=name or 'all')
 
     if not mode:

@@ -208,11 +208,23 @@ ul#messages {
 }
 
 .listbox,
+.navbox,
 .formbox {
-    border: 1px solid #aaaaaa;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-    border-radius: 5px;   
+    border-radius: 5px;
+    
+    
+}
+.listbox ul,
+.navbox ul,
+.formbox ul {
+    margin-bottom: 5px;
+}
+
+.listbox,
+.formbox {
+    border: 1px solid #aaaaaa;
 }
 
 .navbox {
@@ -236,11 +248,11 @@ html .lastcol {
     margin-right: 0px;
 }
 
-.navbox, .formbox {
+.navbox,
+.formbox {
     clear: both;
     position: relative;
-    xwidth: 790px;
-    padding: 5px;
+    padding: 5px 5px 1px 5px;
     margin: 10px 0;
 }
 
@@ -297,6 +309,7 @@ h2 {
     margin: 12px 0 6px;
 }
 
+.navbox h2,
 h2:first-child {
     margin: 0 0 6px;
 }
@@ -384,6 +397,12 @@ h2 .prefix:after {
     background-repeat: no-repeat;
 }
 
+.fullscreen {
+    padding-left: 23px;
+    background-position: 4px 4px;
+    background-repeat: no-repeat;
+}
+
 .add, .remove, .edit {
     padding-left: 18px;
     background-position: 4px 6px;
@@ -413,6 +432,9 @@ h2 .prefix:after {
 }
 .say {
     background-image: url('../icons/speechbubble_16x16.png');
+}
+.fullscreen {
+    background-image: url('../icons/monitor_16x16.png');
 }
 
 .comment {
@@ -476,8 +498,8 @@ fieldset.advanced {
     cursor: pointer;
     padding-left: 18px;
     background-image: url('../icons/toggle-plus_16x16.png');
-    background-position: 0 1px;
-    background-color: #fff;
+    background-position: 0 50%;
+    xbackground-color: #fff;
 }
 
 html .toggle.on {
@@ -509,4 +531,12 @@ html .toggle.on {
     background: #eee;
 }
 
+.view-page .navbox .search-form {
+    float: right;
+    margin-bottom: 5px;
+}
+
+.navbox .list-wrapper {
+    margin: 10px 0;
+}
 
