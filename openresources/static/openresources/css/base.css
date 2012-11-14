@@ -257,13 +257,13 @@ html .lastcol {
 }
 
 .navbox li {
-    display: inline-block;
+    display: inline;
     vertical-align: top;
     width: 88px;
     overflow: hidden;
-    min-height: 26px;
-    line-height: 0.9;
-    padding: 0 5px;
+    xmin-height: 26px;
+    xline-height: 0.9;
+    padding: 0 8px 0 2px;
 }
 
 .listbox a.more,
@@ -523,11 +523,11 @@ html .toggle.on {
 
 .navbox .next-join {
     position: absolute;
-    width: 160px;
+    width: 140px;
     height: 8px;
     left: 50%;
     bottom: -9px;
-    margin-left: -80px;
+    margin-left: -70px;
     background: #eee;
 }
 

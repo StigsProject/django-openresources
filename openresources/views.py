@@ -224,7 +224,7 @@ def view(request, name=None, area=None, mode=None):
             select_extra = {'%s_lower' % order_field: "lower(coalesce(%s,'') || coalesce(%s,''))" % (order_field, order_fallback_field)}
     except ImportError:
         select_extra = {'%s_lower' % order_field: 'lower(%s)' % order_field}
-    order_by = ['%s_lower' % order_field]
+    order_by = ['feature_order','%s_lower' % order_field]
 
     featured_areas = Area.objects.filter(featured=True).extra(select=select_extra, order_by=order_by)
     featured_views = View.objects.filter(featured=True).extra(select=select_extra, order_by=order_by)

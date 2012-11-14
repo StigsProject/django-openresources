@@ -93,14 +93,14 @@ class TagQueryInline(admin.TabularInline):
 class ViewAdmin(admin.ModelAdmin):
     inlines = [TagQueryInline]
     prepopulated_fields = {'shortname': (get_fallback_fieldname('name'),)} 
-    list_display = ['name','featured',]
-    list_editable = ['featured',]
+    list_display = ['name','featured','feature_order']
+    list_editable = ['featured','feature_order']
     save_on_top = True
 
 class AreaAdmin(admin.ModelAdmin):
     prepopulated_fields = {'shortname': (get_fallback_fieldname('name'),)} 
-    list_display = ['name','featured',]
-    list_editable = ['featured',]
+    list_display = ['name','featured','feature_order']
+    list_editable = ['featured','feature_order']
     save_on_top = True
 
 

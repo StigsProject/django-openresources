@@ -141,6 +141,7 @@ class View(models.Model):
 
     show_map = models.BooleanField(default=True)
     featured = models.BooleanField(default=False)
+    feature_order = models.SmallIntegerField(default=0, db_index=True)
     protected = models.BooleanField(default=False, help_text=_('(Hidden from anonymous users)'))
 
     default_resource_template = models.ForeignKey('ResourceTemplate', null=True, blank=True)    
@@ -293,6 +294,7 @@ class Area(models.Model):
     shortname = models.SlugField(unique=True, blank=False, max_length=100)
 
     featured = models.BooleanField(default=False, db_index=True)
+    feature_order = models.SmallIntegerField(default=0, db_index=True)
 
     # for now just store a string with the bounds
     # TODO: look into geodjango    
