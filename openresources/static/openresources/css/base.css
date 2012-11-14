@@ -256,6 +256,10 @@ html .lastcol {
     margin: 10px 0;
 }
 
+.navbox ul {
+    padding: 0 2px;
+}
+
 .navbox li {
     display: inline;
     vertical-align: top;
@@ -263,7 +267,7 @@ html .lastcol {
     overflow: hidden;
     xmin-height: 26px;
     xline-height: 0.9;
-    padding: 0 8px 0 2px;
+    padding: 0 10px 0 0;
 }
 
 .listbox a.more,
@@ -341,7 +345,7 @@ h2.inline {
 
 h2 .prefix {
     float: left;
-    min-width: 100px;
+    min-width: 85px;
     margin: 0;
 }
 
@@ -511,6 +515,10 @@ html .toggle.on {
     margin: 0;
 }
 
+.arrow {
+    margin-bottom: 30px;
+}
+
 .navbox .next-arrow {
     position: absolute;
     width: 200px;
@@ -533,7 +541,7 @@ html .toggle.on {
 
 .view-page .navbox .search-form {
     float: right;
-    margin-bottom: 5px;
+    margin: 0 0 -2px 0;
 }
 
 .navbox .list-wrapper {
