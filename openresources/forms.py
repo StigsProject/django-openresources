@@ -98,6 +98,7 @@ class ViewForm(ModelForm):
         
         if not user.has_perm('openresources.feature_view'):
             del self.fields['featured']
+            del self.fields['feature_order']
 
     #key = forms.CharField(widget=AutoCompleteWidget('keys', force_selection=False))
     

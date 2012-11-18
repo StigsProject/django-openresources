@@ -52,7 +52,7 @@ var MEDIA_URL = "{{ MEDIA_URL}}",
 <div class="formbox">
 <h2 class="toggle off">{% trans "Settings" %}</h2>
 <fieldset>
-{% fieldset show_map,featured,protected,default_resource_template as fset from form %}
+{% fieldset show_map,featured,feature_order,protected,default_resource_template as fset from form %}
 {{ fset.as_p }}
 </fieldset>
 </div>
@@ -91,7 +91,6 @@ var MEDIA_URL = "{{ MEDIA_URL}}",
 <option value="">--------------</option>
 {% for tag in popular_tags %}
 <option value="{{ tag.key }}">{{ tag.key }}</option>
-{#{% include "openresources/includes/tag_actions.html" %}#}
 {% endfor %}
 </select>
 {% endifequal %}
