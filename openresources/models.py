@@ -136,7 +136,7 @@ class Tag(models.Model):
 class View(models.Model):
     __metaclass__ = TransMeta
     
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, verbose_name=_('Name'))
     shortname = models.SlugField(max_length=100, db_index=True, unique=True, help_text=_('(Will be part of the views\' URL)'))
 
     show_map = models.BooleanField(default=True)
@@ -290,7 +290,7 @@ class TagMapping(models.Model):
 class Area(models.Model):   
     __metaclass__ = TransMeta
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, verbose_name=_('Name'))
     shortname = models.SlugField(unique=True, blank=False, max_length=100)
 
     featured = models.BooleanField(default=False, db_index=True)
@@ -330,7 +330,7 @@ class ResourceTemplate(models.Model):
     
     name = models.CharField(max_length=255, verbose_name=_('Name'))
     shortname = models.SlugField(max_length=100, db_index=True, unique=True, help_text=_('(Will be part of the template\'s URL)'))
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, verbose_name=_('Description'))
 
     featured = models.BooleanField(default=False)
 
