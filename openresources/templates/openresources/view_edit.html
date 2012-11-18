@@ -31,7 +31,7 @@ var MEDIA_URL = "{{ MEDIA_URL}}",
 <h1>{% trans "New view" %}</h1>
 {% endif %}
 
-<form method="post" action="{% url openresources_edit_view name=view.shortname %}" autocomplete="off">
+<form method="post" action="" autocomplete="off"> {# {% url openresources_edit_view name=view.shortname %} #}
 {% csrf_token %}
 {% if form.non_field_errors %}
 <div class="error">
