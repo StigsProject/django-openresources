@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openresources\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-18 11:37+0100\n"
+"POT-Creation-Date: 2012-11-18 18:21+0100\n"
 "PO-Revision-Date: 2011-04-18 13:03+0000\n"
 "Last-Translator: floledermann <ledermann@ims.tuwien.ac.at>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: forms.py:121 templates/openresources/base_index.html:37
+#: forms.py:122 templates/openresources/base_index.html:37
 #: templates/openresources/view_base.html:12
 #: templates/openresources/view_base.html:17
 msgid "Everywhere"
-msgstr ""
+msgstr "Monde entier"
 
-#: forms.py:121 models.py:316
+#: forms.py:122 models.py:316
 msgid "Area"
 msgstr "Région"
 
-#: forms.py:294
+#: forms.py:295
 msgid "Delete"
 msgstr "Supprimer"
 
-#: forms.py:338
+#: forms.py:339
 msgid "More Tags"
 msgstr "Plus de Tags"
 
@@ -142,15 +142,15 @@ msgid "all views..."
 msgstr "tous les vues ..."
 
 #: templates/openresources/base_index.html:62
-#: templates/openresources/view_embed.html:39
+#: templates/openresources/view_embed.html:32
 #: templates/openresources/view_list.html:9
-#: templates/openresources/view_map.html:37
+#: templates/openresources/view_map.html:28
 msgid "Add resource"
 msgstr "Ajouter ressource"
 
 #: templates/openresources/base_index.html:69
-#: templates/openresources/view_embed.html:44
-#: templates/openresources/view_map.html:43
+#: templates/openresources/view_embed.html:37
+#: templates/openresources/view_map.html:34
 msgid "Map Data Loading..."
 msgstr "Carte chargement des données ..."
 
@@ -183,13 +183,13 @@ msgstr "Nouvelle ressource"
 
 #: templates/openresources/edit.html:64
 #: templates/openresources/view_edit.html:90
-#: templates/openresources/view_edit.html:137
+#: templates/openresources/view_edit.html:136
 msgid "Common Tags:"
 msgstr "Tags commune:"
 
 #: templates/openresources/edit.html:89
 #: templates/openresources/edit_with_template.html:59
-#: templates/openresources/view_edit.html:161
+#: templates/openresources/view_edit.html:160
 msgid "Help:"
 msgstr "Aide:"
 
@@ -197,14 +197,14 @@ msgstr "Aide:"
 #: templates/openresources/edit_with_template.html:67
 #: templates/openresources/icon_edit.html:23
 #: templates/openresources/template_edit.html:41
-#: templates/openresources/view_edit.html:168
+#: templates/openresources/view_edit.html:167
 msgid "Save"
 msgstr "Enregistrer"
 
 #: templates/openresources/edit.html:98
 #: templates/openresources/edit_with_template.html:68
 #: templates/openresources/template_edit.html:42
-#: templates/openresources/view_edit.html:169
+#: templates/openresources/view_edit.html:168
 msgid "Save and continue"
 msgstr "Enregistrer et continuer"
 
@@ -212,7 +212,7 @@ msgstr "Enregistrer et continuer"
 #: templates/openresources/edit_with_template.html:69
 #: templates/openresources/icon_edit.html:25
 #: templates/openresources/template_edit.html:44
-#: templates/openresources/view_edit.html:171
+#: templates/openresources/view_edit.html:170
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -239,7 +239,7 @@ msgid "New Icon"
 msgstr "Ajouter une icône"
 
 #: templates/openresources/icons.html:5 templates/openresources/icons.html:9
-#: templates/openresources/view_edit.html:162
+#: templates/openresources/view_edit.html:161
 msgid "Icons"
 msgstr "Icônes"
 
@@ -333,20 +333,17 @@ msgstr ""
 
 #: templates/openresources/view_base.html:37
 msgid "Topic:"
-msgstr ""
+msgstr "Thème:"
 
 #: templates/openresources/view_base.html:41
-#, fuzzy
 msgid "All Resources"
-msgstr "toutes les ressources ..."
+msgstr "Toutes les ressources"
 
 #: templates/openresources/view_base.html:53
-#, fuzzy
 msgid "more..."
-msgstr "Lire plus"
+msgstr "en plus..."
 
 #: templates/openresources/view_base.html:57
-#, fuzzy
 msgid "Resources tagged:"
 msgstr "Ressources avec le tag:"
 
@@ -360,11 +357,11 @@ msgstr "Nouvelle vue"
 
 #: templates/openresources/view_edit.html:42
 msgid "Basic Info"
-msgstr ""
+msgstr "Infos basiques"
 
 #: templates/openresources/view_edit.html:53
 msgid "Settings"
-msgstr ""
+msgstr "Paramètres"
 
 #: templates/openresources/view_edit.html:61
 msgid "Filters"
@@ -374,24 +371,24 @@ msgstr "Filtres"
 msgid "Resources which meet these criteria will be listed in the view."
 msgstr "Ressources qui répondent à ces critères seront listés dans la vue."
 
-#: templates/openresources/view_edit.html:114
+#: templates/openresources/view_edit.html:113
 msgid "Mappings"
 msgstr ""
 
-#: templates/openresources/view_edit.html:115
+#: templates/openresources/view_edit.html:114
 msgid "Mappings determine the appearance of the resource."
 msgstr ""
 
-#: templates/openresources/view_embed.html:37
+#: templates/openresources/view_embed.html:30
 #: templates/openresources/view_list.html:7
-#: templates/openresources/view_map.html:35
+#: templates/openresources/view_map.html:26
 #, python-format
 msgid "Add %(type)s"
-msgstr ""
+msgstr "Ajouter %(type)s"
 
-#: templates/openresources/view_embed.html:41
+#: templates/openresources/view_embed.html:34
 msgid "View on Vivir Bien"
-msgstr ""
+msgstr "Voir a Vivir Bien"
 
 #: templates/openresources/view_export.html:5
 msgid "Use the following code to embed this view in other websites:"
@@ -399,13 +396,12 @@ msgstr ""
 "Utilisez le code ci-dessous pour intégrer cette vue sur d'autres sites:"
 
 #: templates/openresources/view_export.html:7
-#, fuzzy
 msgid "in"
-msgstr "Principal"
+msgstr "en"
 
-#: templates/openresources/view_map.html:39
+#: templates/openresources/view_map.html:30
 msgid "Fullscreen"
-msgstr ""
+msgstr "Plein écran"
 
 #: templates/openresources/views.html:4
 msgid "List of views"
@@ -442,7 +438,7 @@ msgstr ""
 
 #: templates/openresources/includes/user_actions.html:6
 msgid "Welcome,"
-msgstr ""
+msgstr "Bienvenue"
 
 #: templates/openresources/includes/user_actions.html:8
 msgid "Not logged in"
@@ -458,7 +454,7 @@ msgstr ""
 
 #: templates/openresources/includes/user_actions.html:30
 msgid "language:"
-msgstr ""
+msgstr "langue:"
 
 #: templates/openresources/includes/view_modes.html:5
 msgid "Overview"
