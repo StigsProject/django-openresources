@@ -511,22 +511,18 @@ fieldset.advanced {
     position: relative;
     z-index: 1;
     cursor: pointer;
+}
+
+.toggle-plus,
+.toggle-plus.off {
     padding-left: 18px;
     background-image: url('../icons/toggle-plus_16x16.png');
     background-position: 0 50%;
-    xbackground-color: #fff;
+    background-color: #fff;
 }
 
-html .toggle.on {
+html .toggle-plus.on {
     background-image: url('../icons/toggle-minus_16x16.png');
-}
-
-h2.toggle,
-h2.toggle.off,
-h2.toggle.on {
-    padding-left: 0;
-    background-image: none;
-
 }
 
 .content .context-form {
