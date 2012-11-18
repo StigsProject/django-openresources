@@ -9,10 +9,9 @@
 
 {% block filter %}
 <div class="navbox">
-<h2 class="toggle off"><span class="prefix">{% trans "Where?" %}</span>{% if area %}{{ area.name }}{% else %}{% trans "Everywhere" %}{% endif %}</h2>
-{#<button class="uselocationbutton">{% trans "Use my current location" %}</button>#}
-<!--<span class="toggle off">{% trans "change" %}</span>-->
+<h2 class="toggle off">{% if area %}<span class="prefix">{% trans "In:" %} </span>{{ area.name }}{% else %}{% trans "Everywhere" %}{% endif %} <span class="change">{% trans "change..." %}</span></h2>
 <div class="list-wrapper">
+{#<button class="uselocationbutton">{% trans "Use my current location" %}</button>#}
 {% if area %}
 <ul class="areas-list">
 <li class="area"><a href="{% url_optional openresources_view name=view_name %}">{% trans "Everywhere" %}</a></li>
@@ -35,7 +34,7 @@
 <input name="q" type="text" size="15"/>
 <button type="submit">{% trans "Search" %}</button>
 </form>
-<h2 class="toggle off"><span class="prefix">{% trans "What?" %}</span>{{ view.name }}</h2>
+<h2 class="toggle off"><span class="prefix">{% trans "Topic:" %} </span>{{ view.name }} <span class="change">{% trans "change..." %}</span></h2>
 <div class="list-wrapper">
 {% if not is_default_view %}
 <ul class="views-list">

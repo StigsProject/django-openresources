@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-13 17:59+0100\n"
+"POT-Creation-Date: 2012-11-18 11:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Everywhere"
 msgstr ""
 
-#: forms.py:121 models.py:314
+#: forms.py:121 models.py:316
 msgid "Area"
 msgstr ""
 
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Template"
 msgstr ""
 
-#: models.py:55 models.py:144
+#: models.py:55 models.py:145
 msgid "(Hidden from anonymous users)"
 msgstr ""
 
@@ -71,43 +71,43 @@ msgstr ""
 msgid "(Will be part of the views' URL)"
 msgstr ""
 
-#: models.py:199
+#: models.py:200
 msgid "All tags"
 msgstr ""
 
-#: models.py:202
+#: models.py:203
 msgid "is present"
 msgstr ""
 
-#: models.py:204
+#: models.py:205
 msgid "begins with"
 msgstr ""
 
-#: models.py:208
+#: models.py:209
 msgid "and"
 msgstr ""
 
-#: models.py:209
+#: models.py:210
 msgid "or"
 msgstr ""
 
-#: models.py:250
+#: models.py:251
 msgid "Default Icon"
 msgstr ""
 
-#: models.py:251
+#: models.py:252
 msgid "Red"
 msgstr ""
 
-#: models.py:276
+#: models.py:277
 msgid "Subicon only"
 msgstr ""
 
-#: models.py:329 models.py:347 models.py:364
+#: models.py:331 models.py:349 models.py:366
 msgid "Name"
 msgstr ""
 
-#: models.py:330
+#: models.py:332
 msgid "(Will be part of the template's URL)"
 msgstr ""
 
@@ -121,7 +121,6 @@ msgid "Credits"
 msgstr ""
 
 #: templates/openresources/base_index.html:36
-#: templates/openresources/view_base.html:12
 msgid "Where?"
 msgstr ""
 
@@ -130,12 +129,11 @@ msgid "Use my current location"
 msgstr ""
 
 #: templates/openresources/base_index.html:44
-#: templates/openresources/view_base.html:33
 msgid "What?"
 msgstr ""
 
 #: templates/openresources/base_index.html:47
-#: templates/openresources/view_base.html:31
+#: templates/openresources/view_base.html:35
 msgid "Search"
 msgstr ""
 
@@ -322,23 +320,32 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: templates/openresources/view_base.html:14
-msgid "change"
+#: templates/openresources/view_base.html:12
+msgid "In:"
 msgstr ""
 
-#: templates/openresources/view_base.html:36
+#: templates/openresources/view_base.html:12
+#: templates/openresources/view_base.html:37
+msgid "change..."
+msgstr ""
+
+#: templates/openresources/view_base.html:37
+msgid "Topic:"
+msgstr ""
+
+#: templates/openresources/view_base.html:41
 msgid "All Resources"
 msgstr ""
 
-#: templates/openresources/view_base.html:40
+#: templates/openresources/view_base.html:53
 msgid "more..."
 msgstr ""
 
-#: templates/openresources/view_base.html:44
+#: templates/openresources/view_base.html:57
 msgid "Resources tagged:"
 msgstr ""
 
-#: templates/openresources/view_base.html:58
+#: templates/openresources/view_base.html:71
 msgid "Edit view"
 msgstr ""
 
