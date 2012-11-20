@@ -43,9 +43,10 @@ from openresources.models import Tag
 
 view_patterns = patterns('',
     url(r'^$', views.view, name='openresources_view'),
-    url(r'^view/(?P<name>[0-9A-Za-z-_]+)/json/$', views.view_json, name='geojson'),
-    url(r'^view/(?P<name>[0-9A-Za-z-_]+)/(?P<mode>.*)/$', views.view, name='openresources_view'),
-    url(r'^view/(?P<name>[0-9A-Za-z-_]+)/$', views.view, name='openresources_view'),
+    url(r'^in/(?P<area>[0-9A-Za-z-_]+)/$', views.view, name='openresources_view'),
+    url(r'^json/$', views.view_json, name='geojson'),
+    url(r'^(?P<mode>[0-9A-Za-z-_]+)/$', views.view, name='openresources_view'),
+    url(r'^in/(?P<area>[0-9A-Za-z-_]+)/(?P<mode>[0-9A-Za-z-_]+)/$', views.view, name='openresources_view'),
 )
 
 urlpatterns = patterns('',
@@ -89,8 +90,8 @@ urlpatterns = patterns('',
 
     url(r'^json/all/$', views.all_json, name='geojson_all'),
 
-    url(r'^in/(?P<area>[0-9A-Za-z-_]+)/', include(view_patterns)),
     url(r'^', include(view_patterns)),
+    url(r'^view/(?P<name>[0-9A-Za-z-_]+)/', include(view_patterns)),
 
     # this cannot be reached, as we show the default view as an index page
     # however this is used for reversing the index page url in templates
