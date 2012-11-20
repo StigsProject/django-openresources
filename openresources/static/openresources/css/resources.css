@@ -210,10 +210,12 @@ textarea.embed-code {
     background-repeat: no-repeat;
     background-image: url('../icons/tag_16x16.png');
 }
-a.tag {
+a.tag,
+a.tag-key {
     text-decoration: none;
 }
-a.tag:hover {
+a.tag:hover,
+a.tag-key:hover {
     text-decoration: underline;
 }
 

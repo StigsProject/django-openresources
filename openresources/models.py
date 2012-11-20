@@ -130,7 +130,9 @@ class Tag(models.Model):
         """
         return  not self.value_relation and \
                 not self.value_date and \
-                len(self.value) <= 200 and \
+                len(self.value) <= 100 and \
+                not self.value.startswith('http') and \
+                not self.value.startswith('lonlat:') and \
                 self.value.find('\n') == -1
 
 class View(models.Model):

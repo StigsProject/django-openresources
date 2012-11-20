@@ -54,11 +54,10 @@ function hide_reply_form(comment_id, url, person_name) {
 <table class="tags-table">
 {% for tag in resource.tags.all %}
 <tr><td><a class="tag" href="{% url openresources_tag_key key=tag.key %}">{{ tag.key }}</a>
-</td><td>{% if tag.value_relation %}<a href="{% url openresources_resource key=tag.value_relation.shortname %}">{% endif %}{{ tag.value|linebreaksbr|urlize }}{% if tag.value_relation %}</a>{% endif %}
+</td><td>{% if tag.value_relation %}<a href="{% url openresources_resource key=tag.value_relation.shortname %}">{% elif tag.is_category %}<a class="tag-key" href="{% url openresources_tag key=tag.key|urlencode value=tag.value|urlencode %}" title="{% trans "List all resources with tag:" %} {{tag.key}}={{tag.value}}">{% endif %}{{ tag.value|urlize|linebreaksbr }}{% if tag.value_relation or tag.is_category%}</a>{% endif %}
 {% if tag.value_date %}<img src="{{ STATIC_URL }}openresources/icons/calendar_10x10.png" />{% endif %}
 {% if tag.value_relation %}<img src="{{ STATIC_URL }}openresources/icons/chain_10x10.png" />{% endif %}
 {% if tag.value_geo %}<img src="{{ STATIC_URL }}openresources/icons/globe_10x10.png" />{% endif %}
-{% if tag.is_category %}<a href="{% url openresources_tag key=tag.key|urlencode value=tag.value|urlencode %}" title="{% trans "List all resources with tag:" %} {{tag.key}}={{tag.value}}"><img src="{{ STATIC_URL }}openresources/icons/chain_10x10.png" /></a>{% endif %}
 </td></li>
 {% endfor %}
 </table>
@@ -68,7 +67,7 @@ function hide_reply_form(comment_id, url, person_name) {
 <h2>{% trans "Related resources" %}</h2>
 <table class="related-resources">
 {% for t in related_tags %}
-<tr><td><a href="{% url openresources_resource key=t.resource.shortname %}">{{ t.resource.name }}</a></td><td><a class="tag" href="{% url openresources_tag_key key=t.key %}">{{ t.key }}</a></td></tr>
+<tr><td><a href="{% url openresources_resource key=t.resource.shortname %}">{{ t.resource.name }}</a></td><td><a class="tag" href="{% url openresources_tag_key key=t.key %}">{{ t.key }}</a> {{ resource.name }}</td></tr>
 {% endfor %}
 </table>
 {% endif %}
