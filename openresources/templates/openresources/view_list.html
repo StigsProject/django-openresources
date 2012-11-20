@@ -10,6 +10,10 @@
 {% endif %}
 </div>
 
+<div class="sort-header">
+{% trans "Order by:" %} <a href="?order=name"{% if order_field = 'name'%} class="active"{% endif %}>{% trans "Name" %}</a> <a href="?order=-creation_date"{% if order_field = '-creation_date'%} class="active"{% endif %}>{% trans "Newest" %}</a>
+</div>
+
 {% if groups %}
 <div class="column">
 {% for group in groups %}

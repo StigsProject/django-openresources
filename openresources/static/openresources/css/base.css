@@ -525,6 +525,10 @@ html .toggle-plus.on {
     background-image: url('../icons/toggle-minus_16x16.png');
 }
 
+h2.toggle {
+    display: inline-block;
+}
+
 .content .context-form {
     float: left;
     margin: 0;
@@ -561,5 +565,11 @@ html .toggle-plus.on {
 
 .navbox .list-wrapper {
     margin: 10px 0;
+}
+
+.sort-header a.active {
+    text-decoration: none;
+    padding: 2px;
+    border: 1px solid #bbb;
 }
 

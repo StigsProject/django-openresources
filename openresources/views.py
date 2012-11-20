@@ -183,6 +183,16 @@ def view(request, name=None, area=None, mode=None):
     if not request.user.is_authenticated():
         resources = resources.filter(protected=False)
     
+    default_ordering = '-creation_date'
+    order_field = request.GET.get('order', default_ordering)
+    _base_field = order_field.lstrip('-')
+    if _base_field not in ['name','creation_date']:
+        raise Http404
+    if order_field == 'name':
+        resources = resources.extra(select={'name_lower': 'lower(name)'}, order_by=['name_lower'])
+    else:
+        resources = resources.order_by(order_field)
+
     # extract tags for list display
     q = None
     for mapping in view.mappings.filter(show_in_list=True):
@@ -201,9 +211,10 @@ def view(request, name=None, area=None, mode=None):
     
         tags = tags_dict
         
-        for resource in resources:
-            if resource.id in tags_dict:
-                setattr(resource, 'view_tags', tags_dict[resource.id])
+        # ???
+#        for resource in resources:
+#            if resource.id in tags_dict:
+#                setattr(resource, 'view_tags', tags_dict[resource.id])
         
     icon_mappings = view.mappings.exclude(icon=None)
 
@@ -213,21 +224,21 @@ def view(request, name=None, area=None, mode=None):
     map_attribution = settings.MAP_ATTRIBUTION
     default_resource_icon = settings.DEFAULT_RESOURCE_ICON
 
-    order_field = 'name' 
+    _order_field = 'name' 
     try:
         from transmeta import get_real_fieldname, get_fallback_fieldname
-        order_fallback_field = get_fallback_fieldname(order_field)
-        order_field = get_real_fieldname(order_field)
-        if order_field == order_fallback_field:
-            select_extra = {'%s_lower' % order_field: 'lower(%s)' % order_field}
+        _order_fallback_field = get_fallback_fieldname(_order_field)
+        _order_field = get_real_fieldname(_order_field)
+        if _order_field == _order_fallback_field:
+            select_extra = {'%s_lower' % _order_field: 'lower(%s)' % _order_field}
         else:
-            select_extra = {'%s_lower' % order_field: "lower(coalesce(%s,'') || coalesce(%s,''))" % (order_field, order_fallback_field)}
+            select_extra = {'%s_lower' % _order_field: "lower(coalesce(%s,'') || coalesce(%s,''))" % (_order_field, _order_fallback_field)}
     except ImportError:
-        select_extra = {'%s_lower' % order_field: 'lower(%s)' % order_field}
-    order_by = ['feature_order','%s_lower' % order_field]
+        select_extra = {'%s_lower' % _order_field: 'lower(%s)' % _order_field}
+    _order_by = ['feature_order','%s_lower' % _order_field]
 
-    featured_areas = Area.objects.filter(featured=True).extra(select=select_extra, order_by=order_by)
-    featured_views = View.objects.filter(featured=True).extra(select=select_extra, order_by=order_by)
+    featured_areas = Area.objects.filter(featured=True).extra(select=select_extra, order_by=_order_by)
+    featured_views = View.objects.filter(featured=True).extra(select=select_extra, order_by=_order_by)
 
     if not request.user.is_authenticated():
         featured_views = featured_views.filter(protected=False)
