@@ -53,9 +53,17 @@
 <li class="more"><a href="{% url openresources_views %}">{% trans "more..." %}</a></li>
 </ul>
 </div>
-<p class="help">
-{% trans "Resources tagged:" %} {{ view.get_description|safe }}
+<div class="toggle off toggle-plus">Details</div>
+<div class="details-wrapper">
+<p>
+{% trans "This view shows resources with tags:" %} {{ view.get_description|safe }}
+{% if request.user.is_staff or request.user.is_authenticated and not is_default_view %}
+<div class="actions">
+<a class="action edit" href="{% url openresources_edit_view name=view.shortname %}">{% trans "Edit view" %} "{{ view.name }}"</a>
+</div>
+{% endif %}
 </p>
+</div>
 <div class="next-arrow"></div>
 </div>
 {% endblock %}
@@ -65,10 +73,5 @@
 <div class="view-content">
 {% block view_content %}{% endblock %}
 </div>
-
-{% if request.user.is_staff or request.user.is_authenticated and not is_default_view %}
-<div class="actions">
-<a class="action edit" href="{% url openresources_edit_view name=view.shortname %}">{% trans "Edit view" %} "{{ view.name }}"</a>
-</div>{% endif %}
 
 {% endblock %}

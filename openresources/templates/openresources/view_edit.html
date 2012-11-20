@@ -42,7 +42,7 @@ var MEDIA_URL = "{{ MEDIA_URL}}",
 <h2>{% trans "Basic Info" %}</h2>
 {% fieldset name as fset from form %}
 {{ fset.as_p }}
-<h4 class="toggle toggle-plus off">{% trans "advanced" %}</h4>
+<h4 class="toggle toggle-box off">{% trans "advanced" %}</h4>
 <fieldset class="advanced">
 {% fieldset shortname as fset from form %}
 {{ fset.as_p }}
@@ -50,7 +50,7 @@ var MEDIA_URL = "{{ MEDIA_URL}}",
 </div>
 
 <div class="formbox">
-<h2 class="toggle toggle-plus off">{% trans "Settings" %}</h2>
+<h2 class="toggle toggle-box off">{% trans "Settings" %}</h2>
 <fieldset>
 {% fieldset show_map,featured,feature_order,protected,default_resource_template as fset from form %}
 {{ fset.as_p }}

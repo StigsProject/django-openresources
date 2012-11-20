@@ -389,6 +389,7 @@ h2 .prefix:after {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
+    white-space: nowrap;
 }
 
 .action:hover {
@@ -514,14 +515,21 @@ fieldset.advanced {
 }
 
 .toggle-plus,
-.toggle-plus.off {
+.toggle-plus.off,
+.toggle-box,
+.toggle-box.off {
     padding-left: 18px;
     background-image: url('../icons/toggle-plus_16x16.png');
     background-position: 0 50%;
+    margin-bottom: 2px;
+}
+
+.toggle-box {
     background-color: #fff;
 }
 
-html .toggle-plus.on {
+html .toggle-plus.on,
+html .toggle-box.on {
     background-image: url('../icons/toggle-minus_16x16.png');
 }
 
