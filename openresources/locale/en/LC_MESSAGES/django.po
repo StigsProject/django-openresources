@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-18 18:21+0100\n"
+"POT-Creation-Date: 2012-11-20 14:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Everywhere"
 msgstr ""
 
-#: forms.py:122 models.py:316
+#: forms.py:122 models.py:318
 msgid "Area"
 msgstr ""
 
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Template"
 msgstr ""
 
-#: models.py:55 models.py:145
+#: models.py:55 models.py:147
 msgid "(Hidden from anonymous users)"
 msgstr ""
 
@@ -67,48 +67,53 @@ msgstr ""
 msgid "Value field parsed as relation to other resource."
 msgstr ""
 
-#: models.py:140
-msgid "(Will be part of the views' URL)"
-msgstr ""
-
-#: models.py:200
-msgid "All tags"
-msgstr ""
-
-#: models.py:203
-msgid "is present"
-msgstr ""
-
-#: models.py:205
-msgid "begins with"
-msgstr ""
-
-#: models.py:209
-msgid "and"
-msgstr ""
-
-#: models.py:210
-msgid "or"
-msgstr ""
-
-#: models.py:251
-msgid "Default Icon"
-msgstr ""
-
-#: models.py:252
-msgid "Red"
-msgstr ""
-
-#: models.py:277
-msgid "Subicon only"
-msgstr ""
-
-#: models.py:331 models.py:349 models.py:366
+#: models.py:141 models.py:295 models.py:333 models.py:351 models.py:368
+#: templates/openresources/view_list.html:14
 msgid "Name"
 msgstr ""
 
-#: models.py:332
+#: models.py:142
+msgid "(Will be part of the views' URL)"
+msgstr ""
+
+#: models.py:202
+msgid "All tags"
+msgstr ""
+
+#: models.py:205
+msgid "is present"
+msgstr ""
+
+#: models.py:207
+msgid "begins with"
+msgstr ""
+
+#: models.py:211
+msgid "and"
+msgstr ""
+
+#: models.py:212
+msgid "or"
+msgstr ""
+
+#: models.py:253
+msgid "Default Icon"
+msgstr ""
+
+#: models.py:254
+msgid "Red"
+msgstr ""
+
+#: models.py:279
+msgid "Subicon only"
+msgstr ""
+
+#: models.py:334
 msgid "(Will be part of the template's URL)"
+msgstr ""
+
+#: models.py:335
+msgid "Description"
 msgstr ""
 
 #: templates/openresources/base.html:6 templates/openresources/base.html:22
@@ -247,15 +252,15 @@ msgstr ""
 msgid "Add Icon"
 msgstr ""
 
-#: templates/openresources/resource.html:61
+#: templates/openresources/resource.html:57
 msgid "List all resources with tag:"
 msgstr ""
 
-#: templates/openresources/resource.html:68
+#: templates/openresources/resource.html:67
 msgid "Related resources"
 msgstr ""
 
-#: templates/openresources/resource.html:79
+#: templates/openresources/resource.html:78
 msgid "Edit"
 msgstr ""
 
@@ -341,11 +346,11 @@ msgstr ""
 msgid "more..."
 msgstr ""
 
-#: templates/openresources/view_base.html:57
-msgid "Resources tagged:"
+#: templates/openresources/view_base.html:59
+msgid "This view shows resources with tags:"
 msgstr ""
 
-#: templates/openresources/view_base.html:71
+#: templates/openresources/view_base.html:62
 msgid "Edit view"
 msgstr ""
 
@@ -394,6 +399,14 @@ msgstr ""
 
 #: templates/openresources/view_export.html:7
 msgid "in"
+msgstr ""
+
+#: templates/openresources/view_list.html:14
+msgid "Order by:"
+msgstr ""
+
+#: templates/openresources/view_list.html:14
+msgid "Newest"
 msgstr ""
 
 #: templates/openresources/view_map.html:30
