@@ -171,7 +171,7 @@ def view(request, name=None, area=None, mode=None):
         if view.show_map: mode = 'map'
         else: mode = 'list'
 
-    if not mode in ['map','list','export','embed']:
+    if not mode in ['map','list','export','embed','fullscreen']:
         raise Http404()
     
     template = 'openresources/view_%s.html' % mode 

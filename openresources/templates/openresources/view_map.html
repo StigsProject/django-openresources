@@ -27,7 +27,7 @@ var icon_mappings = [{% for mapping in icon_mappings %}
 {% else %}
 <a class="action add" href="{% url openresources_templates %}">{% trans "Add resource" %}</a>
 {% endif %}
-<a class="action fullscreen" href="{% url_optional openresources_view area=area.shortname name=view.shortname mode="embed"%}">{% trans "Fullscreen" %}</a>
+<a class="action fullscreen" href="{% url_optional openresources_view area=area.shortname name=view.shortname mode="fullscreen"%}">{% trans "Fullscreen" %}</a>
 </div>
 
 <div id="map" class="map"></div>
