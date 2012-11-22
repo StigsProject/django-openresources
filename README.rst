@@ -5,7 +5,7 @@ OpenResources
 
 OpenResources is a flexible, tag-based database application for Django_. It follows a similar approach to OpenStreetMap_ for creating a collaborative schema-less database based on tags (key-value pairs). OpenResources has been originally developed for `Vivir Bien`_, a mapping platform for solidarity economy resources.
 
-OpenResources comes with "batteries included", which means that you don't only get a Django app but also a set of templates and media files that should give you a starting point and are designed with easy customization in mind.
+OpenResources comes with "batteries included", which means that you don't only get a Django app but also a set of templates and static files that should give you a starting point and are designed with easy customization in mind.
 
 OpenResources is released under the `GNU Affero General Public License (AGPL)`_, which means you can use it for free if you make all (modified) source code available under the AGPL through a link on your site. For details see the file LICENSE.txt .
 
@@ -79,7 +79,7 @@ OpenResources incorporates parts of other open source projects:
 .. _OpenStreetMap: http://www.openstreetmap.org/
 .. _Transmeta: http://code.google.com/p/django-transmeta/
 .. _South: http://south.aeracode.org/
-.. _django-threadedcomments: https://github.com/ericflo/django-threadedcomments
+.. _django-threadedcomments: https://github.com/HonzaKral/django-threadedcomments
 .. _`GNU Affero General Public License (AGPL)`: http://www.gnu.org/licenses/agpl.html
 .. _`Florian Ledermann`: http://floledermann.com/
 .. _CC-by: http://creativecommons.org/licenses/by/3.0/
