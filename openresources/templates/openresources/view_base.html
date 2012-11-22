@@ -1,7 +1,7 @@
 {% extends "openresources/base.html" %}
 {% load i18n url_optional %}
 
-{% block title %}{% trans "View" %}: {{ view.name }}{% endblock %}
+{% block title %}{{ view.name }}, {% if area %}{{ area.name }}{% else %}{% trans "Everywhere" %}{% endif %}{% endblock %}
 
 {% block body_class %}{{ block.super }} view-page{% endblock %}
 
@@ -54,7 +54,7 @@
 </ul>
 </div>
 <p>
-{{ view.description }}
+{{ view.description|linebreaksbr }}
 </p>
 <div class="toggle off toggle-plus">Details</div>
 <div class="details-wrapper">
