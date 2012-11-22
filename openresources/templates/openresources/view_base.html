@@ -34,7 +34,11 @@
 <input name="q" type="text" size="15"/>
 <button type="submit">{% trans "Search" %}</button>
 </form>
+{% if is_default_view %}
+<h2>{{ view.name }}</h2>
+{% else %}
 <h2 class="toggle off"><span class="prefix">{% trans "Topic:" %} </span>{{ view.name }} <span class="change">{% trans "change..." %}</span></h2>
+{% endif %}
 <div class="list-wrapper">
 {% if not is_default_view %}
 <ul class="views-list">
@@ -46,12 +50,10 @@
 <ul class="views-list">
 {% for view in group.list %}
 <li><a href="{% url_optional openresources_view name=view.shortname area=area.shortname %}">{{ view.name }}</a></li>
+{% if forloop.last and forloop.parentloop.last %}<li class="more"><a href="{% url openresources_views %}">{% trans "more..." %}</a></li>{% endif %}
 {% endfor %}
 </ul>
 {% endfor %}
-<ul class="views-list">
-<li class="more"><a href="{% url openresources_views %}">{% trans "more..." %}</a></li>
-</ul>
 </div>
 <p>
 {{ view.description|linebreaksbr }}
