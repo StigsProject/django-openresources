@@ -11,6 +11,10 @@
 .widget .map {
     height: 340px;
 }
+textarea {
+    height: 50px;
+    width: auto;
+}
 </style>
 <script type="text/javascript">
 var MEDIA_URL = "{{ MEDIA_URL}}",
@@ -31,7 +35,7 @@ var MEDIA_URL = "{{ MEDIA_URL}}",
 <h1>{% trans "New view" %}</h1>
 {% endif %}
 
-<form method="post" action="" autocomplete="off"> {# {% url openresources_edit_view name=view.shortname %} #}
+<form method="post" action="" autocomplete="off">
 {% csrf_token %}
 {% if form.non_field_errors %}
 <div class="error">
@@ -40,7 +44,7 @@ var MEDIA_URL = "{{ MEDIA_URL}}",
 {% endif %}
 <div class="formbox">
 <h2>{% trans "Basic Info" %}</h2>
-{% fieldset name as fset from form %}
+{% fieldset name,description as fset from form %}
 {{ fset.as_p }}
 <h4 class="toggle toggle-box off">{% trans "advanced" %}</h4>
 <fieldset class="advanced">

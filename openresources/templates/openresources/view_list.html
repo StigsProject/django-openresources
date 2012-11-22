@@ -11,7 +11,7 @@
 </div>
 
 <div class="sort-header">
-{% trans "Order by:" %} <a href="?order=name"{% if order_field = 'name'%} class="active"{% endif %}>{% trans "Name" %}</a> <a href="?order=-creation_date"{% if order_field = '-creation_date'%} class="active"{% endif %}>{% trans "Newest" %}</a>
+{% trans "Order by:" %} <a href="?order=name"{% if order_field = 'name'%} class="active"{% endif %}>{% trans "Name" %}</a> <a href="?order=-creation_date"{% if order_field = '-creation_date'%} class="active"{% endif %}>{% trans "Newest first" %}</a> <a href="?order=creation_date"{% if order_field = 'creation_date'%} class="active"{% endif %}>{% trans "Oldest first" %}</a>
 </div>
 
 {% if groups %}

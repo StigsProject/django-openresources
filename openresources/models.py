@@ -141,6 +141,8 @@ class View(models.Model):
     name = models.CharField(max_length=200, verbose_name=_('Name'))
     shortname = models.SlugField(max_length=100, db_index=True, unique=True, help_text=_('(Will be part of the views\' URL)'))
 
+    description = models.TextField(blank=True, verbose_name=_('Description'))
+
     show_map = models.BooleanField(default=True)
     featured = models.BooleanField(default=False)
     feature_order = models.SmallIntegerField(default=0, db_index=True)
@@ -164,7 +166,7 @@ class View(models.Model):
         permissions = (
             ('feature_view', "Mark view as featured"),
         )
-        translate = ('name', )
+        translate = ('name', 'description')
 
     def __unicode__(self):
         return self.name

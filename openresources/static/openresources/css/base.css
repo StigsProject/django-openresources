@@ -328,6 +328,7 @@ h4 {
 
 label {
     padding-right: 5px;
+    vertical-align: top;
 }
 
 code {
@@ -564,6 +565,10 @@ h2.toggle {
     bottom: -9px;
     margin-left: -70px;
     background: #eee;
+}
+
+.navbox p {
+    max-width: 50em;
 }
 
 .view-page .navbox .search-form {
