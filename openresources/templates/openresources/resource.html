@@ -15,7 +15,8 @@ function show_reply_form(comment_id, url, person_name) {
     
     var to_add = $( new Array(
     '<div class="">' + pname,
-    '<form method="POST" action="' + url + "\">",
+    '<form method="POST" action="' + url + '">',
+    "{% csrf_token %}",
     '<ul>',  '<label for="id_comment">Kommentar:</label><textarea id="id_comment" name="comment" cols="40" rows="10"></textarea>',
     '<li><input type="submit" value="Submit Comment" /></li>',
     '</ul>', '</form>', '</div>').join(''));
