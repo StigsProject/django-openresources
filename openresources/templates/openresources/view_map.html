@@ -22,11 +22,6 @@ var icon_mappings = [{% for mapping in icon_mappings %}
 
 {% block view_content %}
 <div class="actions">
-{% if view.default_resource_template %}
-<a class="action add" href="{% url openresources_edit_with_template template=view.default_resource_template.shortname %}">{% blocktrans with type=view.default_resource_template.name %}Add {{type}}{% endblocktrans %}</a>
-{% else %}
-<a class="action add" href="{% url openresources_templates %}">{% trans "Add resource" %}</a>
-{% endif %}
 <a class="action fullscreen" href="{% url_optional openresources_view area=area.shortname name=view.shortname mode="fullscreen"%}">{% trans "Fullscreen" %}</a>
 </div>
 

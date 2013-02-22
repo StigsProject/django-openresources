@@ -324,3 +324,36 @@ fieldset.border {
     
 }
 
+.view-header {
+    background-color: #ded;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;    
+}
+
+.view-header .menu {
+    float: left;
+    margin: 18px 0 0 10px;
+}
+
+.view-header .actions {
+    float: right;
+    margin: 5px;
+}
+
+.view-header .actions .action,
+.view-header .actions form {
+    display: inline;
+}
+
+.view-content {
+    border: 1px solid #ddd;
+}
+
+.view-list {
+    padding: 10px;
+}
+

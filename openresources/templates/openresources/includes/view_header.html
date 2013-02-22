@@ -1,5 +1,16 @@
 {% load i18n %}
 {% load navitools url_optional %}
+<div class="actions">
+{% if view.default_resource_template %}
+<a class="action add" href="{% url openresources_edit_with_template template=view.default_resource_template.shortname %}">{% blocktrans with type=view.default_resource_template.name %}Add {{type}}{% endblocktrans %}{% if not is_default_view %} {% trans "in" %} "{{ view.name }}"{% endif %}</a>
+{% else %}
+<a class="action add" href="{% url openresources_templates %}">{% trans "Add Resource" %}{% if not is_default_view %} {% trans "in" %} "{{ view.name }}"{% endif %}</a>
+{% endif %}
+<form class="search-form" action="{% url openresources_search %}" method="get">
+<input name="q" type="text" size="15"/>
+<button type="submit">{% trans "Search" %}</button>
+</form>
+</div>
 <ul class="menu view-menu">
 <!--
 <li class="{% active request "/view/[a-zA-Z0-9-_\.]*/$" %}"><a href="{% url openresources_view name=view.shortname %}">{% trans "Overview" %}</a></li>-->
@@ -9,4 +20,5 @@
 <!--<li class=""><a href="">{% trans "Upcoming" %}</a></li>-->
 <li{% ifequal mode "export" %} class="active"{% endifequal %}><a class="export" href="{% url_optional openresources_view name=view.shortname area=area.shortname mode="export" %}">{% trans "Export" %}</a></li>
 </ul>
+<div class="clear"></div>
 

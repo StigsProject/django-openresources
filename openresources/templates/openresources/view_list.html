@@ -2,14 +2,7 @@
 {% load i18n %}
 
 {% block view_content %}
-<div class="actions">
-{% if view.default_resource_template %}
-<a class="action add" href="{% url openresources_edit_with_template template=view.default_resource_template.shortname %}">{% blocktrans with type=view.default_resource_template.name %}Add {{type}}{% endblocktrans %}</a>
-{% else %}
-<a class="action add" href="{% url openresources_templates %}">{% trans "Add resource" %}</a>
-{% endif %}
-</div>
-
+<div class="view-list">
 <div class="sort-header">
 {% trans "Order by:" %} <a href="?order=name"{% if order_field = 'name'%} class="active"{% endif %}>{% trans "Name" %}</a> <a href="?order=-creation_date"{% if order_field = '-creation_date'%} class="active"{% endif %}>{% trans "Newest first" %}</a> <a href="?order=creation_date"{% if order_field = 'creation_date'%} class="active"{% endif %}>{% trans "Oldest first" %}</a>
 </div>
@@ -48,4 +41,5 @@
 {% endfor %}
 </ul>
 {% endif %}
+</div>
 {% endblock %}
