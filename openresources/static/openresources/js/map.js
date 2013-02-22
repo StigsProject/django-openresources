@@ -73,16 +73,16 @@ OpenLayers.Layer.MapsWithoutBorders = OpenLayers.Class(OpenLayers.Layer.OSM, {
             options.base_url + options.style + "/${z}/${x}/${y}.png"
         ];
         this.osm_urls = [
-            "http://a.tile.openstreetmap.org/${z}/${x}/${y}.png",
-            "http://b.tile.openstreetmap.org/${z}/${x}/${y}.png",
-            "http://c.tile.openstreetmap.org/${z}/${x}/${y}.png"
+            "http://a.tile2.opencyclemap.org/transport/${z}/${x}/${y}.png",
+            "http://b.tile2.opencyclemap.org/transport/${z}/${x}/${y}.png",
+            "http://c.tile2.opencyclemap.org/transport/${z}/${x}/${y}.png"
         ];
         this.noborders_max_zoom = 6;
         var newArguments = [name, this.osm_urls, options];
         OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
 
         this.mwob_attribution = 'Map CC-by-SA <a href="http://www.mapswithoutborders.eu/" target="_blank">Mapswithoutborders.eu</a>, Data by <a href="http://www.naturalearthdata.com/" target="_blank">Natural Earth</a> &amp; CC-by-SA <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>';
-        this.osm_attribution = 'Map Data CC-by-SA <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>';
+        this.osm_attribution = 'Map by <a href="http://www.thunderforest.com/transport/" target="_blank">Thunderforest</a>, Data CC-by-SA <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>';
         this.attribution = this.mwob_attribution;
     
         this.events.register("moveend",this,function(event){
@@ -90,9 +90,16 @@ OpenLayers.Layer.MapsWithoutBorders = OpenLayers.Class(OpenLayers.Layer.OSM, {
                 //alert("zoom changed");
                 if (this.map.getZoom() > this.noborders_max_zoom) {
                     this.attribution = this.osm_attribution;
+                    if (this.map.getZoom() > 8) {
+                        this.setOpacity(0.8);
+                    }
+                    else {
+                        this.setOpacity(0.6);
+                    }
                 }
                 else {
                     this.attribution = this.mwob_attribution;
+                    this.setOpacity(1.0);
                 }
                 this.map.events.triggerEvent('changelayer',{property:'attribution'});
             }
@@ -170,7 +177,7 @@ function init_map() {
         graphicTitle: '${title}',
         graphicZIndex: 0,
         cursor: 'pointer',
-        graphicOpacity:0.8,
+        graphicOpacity:1.0,
         
         // fallback for non-svg browsers
         externalGraphic: '${externalGraphic}',
