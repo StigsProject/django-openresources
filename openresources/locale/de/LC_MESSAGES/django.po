@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-22 12:45+0100\n"
+"POT-Creation-Date: 2013-02-22 15:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: forms.py:122 templates/openresources/base_index.html:37
+#: templates/openresources/view_base.html:4
 #: templates/openresources/view_base.html:12
 #: templates/openresources/view_base.html:17
 msgid "Everywhere"
@@ -68,7 +69,7 @@ msgid "Value field parsed as relation to other resource."
 msgstr "Wert-Feld als Relation auf andere Ressource."
 
 #: models.py:141 models.py:297 models.py:335 models.py:353 models.py:370
-#: templates/openresources/view_list.html:14
+#: templates/openresources/view_list.html:7
 msgid "Name"
 msgstr "Name"
 
@@ -138,7 +139,7 @@ msgid "What?"
 msgstr "Was?"
 
 #: templates/openresources/base_index.html:47
-#: templates/openresources/view_base.html:35
+#: templates/openresources/includes/view_header.html:11
 msgid "Search"
 msgstr "Suche"
 
@@ -148,14 +149,12 @@ msgstr "Alle Themen..."
 
 #: templates/openresources/base_index.html:62
 #: templates/openresources/view_embed.html:32
-#: templates/openresources/view_list.html:9
-#: templates/openresources/view_map.html:28
 msgid "Add resource"
 msgstr "Ressource eintragen"
 
 #: templates/openresources/base_index.html:69
 #: templates/openresources/view_embed.html:37
-#: templates/openresources/view_map.html:34
+#: templates/openresources/view_map.html:29
 msgid "Map Data Loading..."
 msgstr "Kartendaten werden geladen..."
 
@@ -168,7 +167,7 @@ msgid "all resources..."
 msgstr "Alle Ressourcen..."
 
 #: templates/openresources/base_index.html:85
-#: templates/openresources/includes/view_modes.html:9
+#: templates/openresources/includes/view_header.html:20
 msgid "Upcoming"
 msgstr "Termine"
 
@@ -252,15 +251,15 @@ msgstr "Icons"
 msgid "Add Icon"
 msgstr "Neues Icon"
 
-#: templates/openresources/resource.html:57
+#: templates/openresources/resource.html:58
 msgid "List all resources with tag:"
 msgstr "Zeige alle Ressourcen mit Tag:"
 
-#: templates/openresources/resource.html:67
+#: templates/openresources/resource.html:68
 msgid "Related resources"
 msgstr "Verknüpfte Ressourcen"
 
-#: templates/openresources/resource.html:78
+#: templates/openresources/resource.html:79
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -319,22 +318,16 @@ msgstr "Neue Vorlage"
 msgid "Create resource without template"
 msgstr "Neue Ressource ohne Vorlage"
 
-#: templates/openresources/view_base.html:4
-#: templates/openresources/view_embed.html:4
-#: templates/openresources/view_export.html:7
-msgid "View"
-msgstr "Thema"
-
 #: templates/openresources/view_base.html:12
 msgid "In:"
 msgstr "In:"
 
 #: templates/openresources/view_base.html:12
-#: templates/openresources/view_base.html:37
+#: templates/openresources/view_base.html:36
 msgid "change..."
 msgstr "ändern..."
 
-#: templates/openresources/view_base.html:37
+#: templates/openresources/view_base.html:36
 msgid "Topic:"
 msgstr "Thema:"
 
@@ -342,16 +335,16 @@ msgstr "Thema:"
 msgid "All Resources"
 msgstr "Alle Ressourcen"
 
-#: templates/openresources/view_base.html:53
+#: templates/openresources/view_base.html:49
 msgid "more..."
 msgstr "mehr..."
 
-#: templates/openresources/view_base.html:62
-msgid "This view shows resources with tags:"
+#: templates/openresources/view_base.html:60
+msgid "This topic shows resources with tags:"
 msgstr "Dieses Thema zeigt Ressourcen mit den Tags:"
 
-#: templates/openresources/view_base.html:65
-msgid "Edit view"
+#: templates/openresources/view_base.html:63
+msgid "Edit topic"
 msgstr "Dieses Themenansicht bearbeiten"
 
 #: templates/openresources/view_edit.html:35
@@ -385,9 +378,12 @@ msgid "Mappings determine the appearance of the resource."
 msgstr ""
 "Mappings bestimmen das Erscheinungsbild einer Ressource in der Ansicht."
 
+#: templates/openresources/view_embed.html:4
+msgid "View"
+msgstr "Thema"
+
 #: templates/openresources/view_embed.html:30
-#: templates/openresources/view_list.html:7
-#: templates/openresources/view_map.html:26
+#: templates/openresources/includes/view_header.html:5
 #, python-format
 msgid "Add %(type)s"
 msgstr "%(type)s eintragen"
@@ -402,22 +398,32 @@ msgstr ""
 "Mit diesem Code kann die Karte auf anderen Webseiten eingebunden werden:"
 
 #: templates/openresources/view_export.html:7
+msgid "Topic"
+msgstr "Thema"
+
+#: templates/openresources/view_export.html:7
+#: templates/openresources/includes/view_header.html:5
+#: templates/openresources/includes/view_header.html:7
 msgid "in"
 msgstr "in"
 
-#: templates/openresources/view_list.html:14
+#: templates/openresources/view_export.html:7
+msgid "on"
+msgstr "auf"
+
+#: templates/openresources/view_list.html:7
 msgid "Order by:"
 msgstr "Sortierung:"
 
-#: templates/openresources/view_list.html:14
+#: templates/openresources/view_list.html:7
 msgid "Newest first"
 msgstr "Neueste zuerst"
 
-#: templates/openresources/view_list.html:14
+#: templates/openresources/view_list.html:7
 msgid "Oldest first"
 msgstr "Älteste zuerst"
 
-#: templates/openresources/view_map.html:30
+#: templates/openresources/view_map.html:25
 msgid "Fullscreen"
 msgstr "Fullscreen"
 
@@ -474,23 +480,28 @@ msgstr "Anmelden"
 msgid "language:"
 msgstr "Sprache:"
 
-#: templates/openresources/includes/view_modes.html:5
+#: templates/openresources/includes/view_header.html:7
+#, fuzzy
+msgid "Add Resource"
+msgstr "Ressource eintragen"
+
+#: templates/openresources/includes/view_header.html:16
 msgid "Overview"
 msgstr "Übersicht"
 
-#: templates/openresources/includes/view_modes.html:6
+#: templates/openresources/includes/view_header.html:17
 msgid "Map"
 msgstr "Karte"
 
-#: templates/openresources/includes/view_modes.html:7
+#: templates/openresources/includes/view_header.html:18
 msgid "Not on Map"
 msgstr "Ohne Ort"
 
-#: templates/openresources/includes/view_modes.html:8
+#: templates/openresources/includes/view_header.html:19
 msgid "List"
 msgstr "Liste"
 
-#: templates/openresources/includes/view_modes.html:10
+#: templates/openresources/includes/view_header.html:21
 msgid "Export"
 msgstr "Exportieren"
 
